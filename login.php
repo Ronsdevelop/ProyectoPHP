@@ -49,18 +49,10 @@
     </section>
     <!-- Essential javascripts for application to work-->
  
-    <script src="login/js/jquery-3.2.1.min.js"></script>
-    <script src="login/js/popper.min.js"></script>
+    <script src="login/js/jquery-3.2.1.min.js"></script> 
     <script src="login/js/bootstrap.min.js"></script>
-    <script src="login/js/main.js"></script>
     <!-- The javascript plugin to display page loading on top-->
     <script src="login/js/plugins/pace.min.js"></script>
-    <script type="text/javascript">
-      // Login Page Flipbox control
-      $('.login-content [data-toggle="flip"]').click(function() {
-      	$('.login-box').toggleClass('flipped');
-      	return false;
-      });
-    </script>
+  
   </body>
 </html>
