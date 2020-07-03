@@ -3,7 +3,7 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -15,12 +15,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- DataTables -->
     <link rel="stylesheet" href="../public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../public/plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
+  
+   <!-- Tempusdominus Bbootstrap 4 -->   
+   <link rel="stylesheet" href="../public/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../public/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+   <!-- JQVMap -->
+   <link rel="stylesheet" href="../public/plugins/jqvmap/jqvmap.min.css">
+   <!-- overlayScrollbars -->
+   <link rel="stylesheet" href="../public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="../public/plugins/daterangepicker/daterangepicker.css">
+  
+  <!-- summernote -->
+  <link rel="stylesheet" href="../public/plugins/summernote/summernote-bs4.css">
+ 
+ <!-- Theme style -->
   <link rel="stylesheet" href="../public/dist/css/adminlte.css">
+ 
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  
+   <!-- Ionicons -->
+   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -157,33 +179,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview menu-open">
-              <a href="#" class="nav-link active">
+              <a href="inicio.php" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
-                  Dashboard
-                  <i class="right fas fa-angle-left"></i>
+                  Inicio            
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="./index.html" class="nav-link active">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Dashboard v1</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="./index2.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Dashboard v2</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="./index3.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Dashboard v3</p>
-                  </a>
-                </li>
-              </ul>
+             
             </li>
             <li class="nav-item">
               <a href="pages/widgets.html" class="nav-link">
