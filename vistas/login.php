@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="login/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../public/login/css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Login</title>
@@ -16,11 +16,11 @@
     </section>
     <section class="login-content">
       <div class="logo">
-          <img src="login/img/logo.png" width="300" height="150" alt="logo"/>
+          <img src="../public/login/img/logo.png" width="300" height="150" alt="logo"/>
 
       </div>
       <div class="login-box">
-        <form class="login-form" action="index.html">
+        <form class="login-form" action="categoria.php">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>INICIAR SESION</h3>
           <div class="form-group">
             <label class="control-label">USERNAME</label>
@@ -49,10 +49,10 @@
     </section>
     <!-- Essential javascripts for application to work-->
  
-    <script src="login/js/jquery-3.2.1.min.js"></script> 
-    <script src="login/js/bootstrap.min.js"></script>
+    <script src="../public/login/js/jquery-3.2.1.min.js"></script> 
+    <script src="../public/login/js/bootstrap.min.js"></script>
     <!-- The javascript plugin to display page loading on top-->
-    <script src="login/js/plugins/pace.min.js"></script>
+    <script src="../public/login/js/plugins/pace.min.js"></script>
   
   </body>
 </html>
