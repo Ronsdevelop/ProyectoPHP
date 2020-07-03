@@ -120,7 +120,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Menu Footer-->
             <li class="user-footer">
               <a href="#" class="btn btn-default btn-flat">Perfil</a>
-              <a href="#" class="btn btn-default btn-flat float-right">Salir</a>
+              <a href="login.php" class="btn btn-default btn-flat float-right">Salir</a>
             </li>
           </ul>
         </li>
