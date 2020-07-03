@@ -29,8 +29,7 @@
 
 <!-- Sparkline -->
 <script src="../public/plugins/sparklines/sparkline.js"></script>
-<!-- AdminLTE App -->
-<script src="../public/dist/js/adminlte.min.js"></script>
+ 
 
 <!-- jQuery Knob Chart -->
 <script src="../public/plugins/jquery-knob/jquery.knob.min.js"></script>
