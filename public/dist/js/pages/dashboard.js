@@ -117,7 +117,7 @@ $(function () {
     labels  : ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'July'],
     datasets: [
       {
-        label               : 'Digital Goods',
+        label               : 'Compras',
         backgroundColor     : 'rgba(60,141,188,0.9)',
         borderColor         : 'rgba(60,141,188,0.8)',
         pointRadius          : false,
@@ -125,10 +125,10 @@ $(function () {
         pointStrokeColor    : 'rgba(60,141,188,1)',
         pointHighlightFill  : '#fff',
         pointHighlightStroke: 'rgba(60,141,188,1)',
-        data                : [28, 48, 40, 19, 86, 12000, 15000]
+        data                : [12000, 4800, 7000, 19000, 8600, 12000, 15000]
       },
       {
-        label               : 'Electronics',
+        label               : 'Ventas',
         backgroundColor     : 'rgba(210, 214, 222, 1)',
         borderColor         : 'rgba(210, 214, 222, 1)',
         pointRadius         : false,
@@ -136,7 +136,7 @@ $(function () {
         pointStrokeColor    : '#c1c7d1',
         pointHighlightFill  : '#fff',
         pointHighlightStroke: 'rgba(220,220,220,1)',
-        data                : [90, 59, 80, 81, 13000, 55, 40]
+        data                : [9000, 5900, 8000, 8100, 13000, 5500, 9000]
       },
     ]
   }
@@ -145,24 +145,24 @@ $(function () {
     maintainAspectRatio : false,
     responsive : true,
     legend: {
-      display: false
+      display: true
     },
     scales: {
       xAxes: [{
         gridLines : {
-          display : false,
+          display : true,
         }
       }],
       yAxes: [{
         gridLines : {
-          display : false,
+          display : true,
         }
       }]
     }
   }
 
   // This will get the first returned node in the jQuery collection.
-  var salesChart = new Chart(salesChartCanvas, { 
+  var salesChart = new Chart (salesChartCanvas, { 
       type: 'line', 
       data: salesChartData, 
       options: salesChartOptions
