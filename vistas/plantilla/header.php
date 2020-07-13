@@ -40,7 +40,7 @@
                   <!-- item-->
                   <a href="javascript:void(0);" class="dropdown-item notify-item active">
                       <div class="notify-icon">
-                          <img src="assets/images/users/user-1.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                          <img src="../public/assets/images/users/user-1.jpg" class="img-fluid rounded-circle" alt="" /> </div>
                       <p class="notify-details">Cristina Pride</p>
                       <p class="text-muted mb-0 user-msg">
                           <small>Hi, How are you? What about our next meeting</small>
@@ -60,7 +60,7 @@
                   <!-- item-->
                   <a href="javascript:void(0);" class="dropdown-item notify-item">
                       <div class="notify-icon">
-                          <img src="assets/images/users/user-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                          <img src="../public/assets/images/users/user-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
                       <p class="notify-details">Karen Robinson</p>
                       <p class="text-muted mb-0 user-msg">
                           <small>Wow ! this admin looks good and awesome design</small>
@@ -110,7 +110,7 @@
 
       <li class="dropdown notification-list">
           <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-              <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
+              <img src="../public/assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
               <span class="pro-user-name ml-1">
                   Marcia J. <i class="mdi mdi-chevron-down"></i> 
               </span>
@@ -165,12 +165,12 @@
   <div class="logo-box">
       <a href="index.html" class="logo text-center">
           <span class="logo-lg">
-              <img src="../../public/assets/images/logo-light.png" alt="" height="16">
+              <img src="../public/assets/images/logo-light.png" alt="" height="16">
               <!-- <span class="logo-lg-text-light">Xeria</span> -->
           </span>
           <span class="logo-sm">
               <!-- <span class="logo-sm-text-dark">X</span> -->
-              <img src="../../public/assets/images/logo-sm.png" alt="" height="18">
+              <img src="../public/assets/images/logo-sm.png" alt="" height="18">
           </span>
       </a>
   </div>
