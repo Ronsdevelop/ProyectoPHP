@@ -11,7 +11,7 @@
 <li class="menu-title">Navegación</li>
 
 <li>
-    <a href="inicio.html">
+    <a href="tablero.html">
         <i class="la la-dashboard"></i>
         <span> Tablero </span>
     </a>

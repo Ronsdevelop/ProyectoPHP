@@ -3,7 +3,7 @@
   <ul class="list-unstyled topnav-menu float-right mb-0"> 
 
       <li class="dropdown notification-list">
-          
+          <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
               <i class="fe-bell noti-icon"></i>
               <span class="badge badge-danger rounded-circle noti-icon-badge">5</span>
           </a>
@@ -86,7 +86,7 @@
 
               <!-- All-->
               <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                  Ver odo
+                  Ver Todo
                   <i class="fi-arrow-right"></i>
               </a>
 
@@ -97,7 +97,7 @@
           <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
               <img src="../public/assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
               <span class="pro-user-name ml-1">
-                  Marcia J. <i class="mdi mdi-chevron-down"></i> 
+                  Rony Aguilera <i class="mdi mdi-chevron-down"></i> 
               </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -137,7 +137,6 @@
           </div>
       </li>
 
-  
 
   </ul>
 
@@ -145,12 +144,12 @@
   <div class="logo-box">
       <a href="index.html" class="logo text-center">
           <span class="logo-lg">
-              <img src="../logo/logo_sistema.png" alt="" height="50">
+              <img src="../logo/logo_sistema.png" alt="" height="45">
               <!-- <span class="logo-lg-text-light">Xeria</span> -->
           </span>
           <span class="logo-sm">
               <!-- <span class="logo-sm-text-dark">X</span> -->
-              <img src="../logo/logo_sistema_sm.png" alt="" height="50">
+              <img src="../logo/logo_sistema_sm.png" alt="" height="45">
           </span>
       </a>
   </div>
@@ -160,9 +159,10 @@
           <button class="button-menu-mobile waves-effect">
               <span></span>
               <span></span>
-              <span></span>              
+              <span></span>
           </button>
-      </li>  
+      </li>
+ 
   </ul>
 </div>
 <!-- end Topbar -->
