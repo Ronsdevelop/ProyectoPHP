@@ -1,24 +1,9 @@
 <!-- Topbar Start -->
 <div class="navbar-custom">
-  <ul class="list-unstyled topnav-menu float-right mb-0">
-
-      <li class="d-none d-sm-block">
-          <form class="app-search">
-              <div class="app-search-box">
-                  <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search...">
-                      <div class="input-group-append">
-                          <button class="btn" type="submit">
-                              <i class="fe-search"></i>
-                          </button>
-                      </div>
-                  </div>
-              </div>
-          </form>
-      </li>
+  <ul class="list-unstyled topnav-menu float-right mb-0"> 
 
       <li class="dropdown notification-list">
-          <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+          
               <i class="fe-bell noti-icon"></i>
               <span class="badge badge-danger rounded-circle noti-icon-badge">5</span>
           </a>
@@ -29,9 +14,9 @@
                   <h5 class="m-0 text-white">
                       <span class="float-right">
                           <a href="" class="text-light">
-                              <small>Clear All</small>
+                              <small>Limpiar Todo</small>
                           </a>
-                      </span>Notification
+                      </span>Notificaciones
                   </h5>
               </div>
 
@@ -101,7 +86,7 @@
 
               <!-- All-->
               <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                  View all
+                  Ver odo
                   <i class="fi-arrow-right"></i>
               </a>
 
@@ -119,26 +104,26 @@
               <!-- item-->
               <div class="dropdown-item noti-title">
                   <h5 class="m-0 text-white">
-                      Welcome !
+                      Bienvenido !
                   </h5>
               </div>
 
               <!-- item-->
               <a href="javascript:void(0);" class="dropdown-item notify-item">
                   <i class="fe-user"></i>
-                  <span>My Account</span>
+                  <span>Mi Perfil</span>
               </a>
 
               <!-- item-->
               <a href="javascript:void(0);" class="dropdown-item notify-item">
                   <i class="fe-settings"></i>
-                  <span>Settings</span>
+                  <span>Configuración</span>
               </a>
 
               <!-- item-->
               <a href="javascript:void(0);" class="dropdown-item notify-item">
                   <i class="fe-lock"></i>
-                  <span>Lock Screen</span>
+                  <span>Bloquear Pantalla</span>
               </a>
 
               <div class="dropdown-divider"></div>
@@ -146,18 +131,13 @@
               <!-- item-->
               <a href="javascript:void(0);" class="dropdown-item notify-item">
                   <i class="fe-log-out"></i>
-                  <span>Logout</span>
+                  <span>Salir</span>
               </a>
 
           </div>
       </li>
 
-      <li class="dropdown notification-list">
-          <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect">
-              <i class="fe-settings noti-icon"></i>
-          </a>
-      </li>
-
+  
 
   </ul>
 
@@ -165,12 +145,12 @@
   <div class="logo-box">
       <a href="index.html" class="logo text-center">
           <span class="logo-lg">
-              <img src="../public/assets/images/logo-light.png" alt="" height="16">
+              <img src="../logo/logo_sistema.png" alt="" height="50">
               <!-- <span class="logo-lg-text-light">Xeria</span> -->
           </span>
           <span class="logo-sm">
               <!-- <span class="logo-sm-text-dark">X</span> -->
-              <img src="../public/assets/images/logo-sm.png" alt="" height="18">
+              <img src="../logo/logo_sistema_sm.png" alt="" height="50">
           </span>
       </a>
   </div>
@@ -180,138 +160,9 @@
           <button class="button-menu-mobile waves-effect">
               <span></span>
               <span></span>
-              <span></span>
+              <span></span>              
           </button>
-      </li>
-
-      <li class="dropdown d-none d-lg-block">
-          <a class="nav-link dropdown-toggle waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-              Reports
-              <i class="mdi mdi-chevron-down"></i> 
-          </a>
-          <div class="dropdown-menu">
-              <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item">
-                  Finance Report
-              </a>
-
-              <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item">
-                  Monthly Report
-              </a>
-
-              <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item">
-                  Revenue Report
-              </a>
-
-              <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item">
-                  Settings
-              </a>
-
-              <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item">
-                  Help & Support
-              </a>
-
-          </div>
-      </li>
-
-      <li class="dropdown dropdown-mega d-none d-lg-block">
-          <a class="nav-link dropdown-toggle waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-              Mega Menu
-              <i class="mdi mdi-chevron-down"></i> 
-          </a>
-          <div class="dropdown-menu dropdown-megamenu">
-              <div class="row">
-                  <div class="col-sm-8">
-          
-                      <div class="row">
-                          <div class="col-md-4">
-                              <h5 class="text-dark mt-0">UI Components</h5>
-                              <ul class="list-unstyled megamenu-list mt-2">
-                                  <li>
-                                      <a href="javascript:void(0);">Widgets</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Nestable List</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Range Sliders</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Masonry Items</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Sweet Alerts</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Treeview Page</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Tour Page</a>
-                                  </li>
-                              </ul>
-                          </div>
-
-                          <div class="col-md-4">
-                              <h5 class="text-dark mt-0">Applications</h5>
-                              <ul class="list-unstyled megamenu-list mt-2">
-                                  <li>
-                                      <a href="javascript:void(0);">Email Pages</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Profile</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Calendar</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Team Contacts</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Maintenance</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Coming Soon Page</a>
-                                  </li>
-                              </ul>
-                          </div>
-
-                          <div class="col-md-4">
-                              <h5 class="text-dark mt-0">Layouts</h5>
-                              <ul class="list-unstyled megamenu-list mt-2">
-                                  <li>
-                                      <a href="javascript:void(0);">Small Sidebar</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Light Sidebar</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Dark Topbar</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Preloader</a>
-                                  </li>
-                                  <li>
-                                      <a href="javascript:void(0);">Sidebar Collapsed</a>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-4">
-                      <div class="text-center mt-3">
-                          <h3 class="text-dark">Launching Discount Sale!</h3>
-                          <p class="font-16">Save up to 55% off.</p>
-                          <button class="btn btn-primary mt-1">Download Now <i class="mdi mdi-arrow-right-bold-outline ml-1"></i></button>
-                      </div>
-                  </div>
-              </div>
-
-          </div>
-      </li>
+      </li>  
   </ul>
 </div>
 <!-- end Topbar -->

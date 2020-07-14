@@ -8,23 +8,15 @@
 
 <ul class="metismenu" id="side-menu">
 
-<li class="menu-title">Navigation</li>
+<li class="menu-title">Navegación</li>
 
 <li>
-    <a href="javascript: void(0);">
+    <a href="inicio.html">
         <i class="la la-dashboard"></i>
-        <span class="badge badge-info badge-pill float-right">2</span>
-        <span> Dashboards </span>
+        <span> Tablero </span>
     </a>
-    <ul class="nav-second-level" aria-expanded="false">
-        <li>
-            <a href="index.html">Dashboard 1</a>
-        </li>
-        <li>
-            <a href="dashboard-2.html">Dashboard 2</a>
-        </li>
-    </ul>
 </li>
+ 
 
 <li>
     <a href="javascript: void(0);">
@@ -166,7 +158,7 @@
     </ul>
 </li>
 
-<li class="menu-title mt-2">Components</li>
+<li class="menu-title mt-2">Administración</li>
 
 <li>
     <a href="javascript: void(0);">
