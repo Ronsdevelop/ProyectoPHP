@@ -195,28 +195,25 @@
                                     </div>
     
                                 </div> <!-- end card-box-->
-                            </div>
-                           
-                            <div class="col-lg-9">
-                                <div class="card-box" dir="ltr">
-                                    <h4 class="header-title mb-3">Area Chart</h4>
-                                    <div class="text-center">
-                                        <p class="text-muted font-15 font-family-secondary mb-0">
-                                            <span class="mx-2"><i class="mdi mdi-checkbox-blank-circle text-danger"></i> Bitcoin</span>
-                                            <span class="mx-2"><i class="mdi mdi-checkbox-blank-circle text-info"></i> Ethereum</span>
-                                        </p>
+
+                                <div class="card cta-box bg-info text-white">
+                                    <div class="card-body">
+                                        <div class="media align-items-center">
+                                            <div class="media-body">
+                                                <div class="avatar-md bg-soft-light rounded-circle text-center mb-2">
+                                                    <i class="mdi mdi-store font-22 avatar-title text-light"></i>
+                                                </div>
+                                                <h3 class="m-0 font-weight-normal text-white sp-line-1 cta-box-title">Special launcing <b>Discount</b> offer</h3>
+                                                <p class="text-light mt-2 sp-line-2">Suspendisse vel quam malesuada, aliquet sem sit amet, fringilla elit. Morbi tempor tincidunt tempor. Etiam id turpis viverra.</p>
+                                                <a href="javascript: void(0);" class="text-white font-weight-semibold text-uppercase">Read More <i class="mdi mdi-arrow-right"></i></a>
+                                            </div>
+                                            <img class="ml-3" src="../public/assets/images/update.svg" width="120" alt="Generic placeholder image">
+                                        </div>
                                     </div>
-                                    <div id="morris-area-example" style="height: 350px;" class="morris-chart"></div>
-                                </div> <!-- end card-box-->
-                            </div> <!-- end col-->
-
-                          
-                        </div>
-                        <!-- end row -->
-
-
-                        <div class="row">
-                            <div class="col-xl-8">
+                                    <!-- end card-body -->
+                                </div>
+                            </div>
+                            <div class="col-xl-9">
                                 <!-- Portlet card -->
                                 <div class="card">
                                     <div class="card-body" dir="ltr">
@@ -225,27 +222,27 @@
                                             <a data-toggle="collapse" href="#cardCollpase1" role="button" aria-expanded="false" aria-controls="cardCollpase1"><i class="mdi mdi-minus"></i></a>
                                             <a href="javascript: void(0);" data-toggle="remove"><i class="mdi mdi-close"></i></a>
                                         </div>
-                                        <h4 class="header-title mb-0">Revenue</h4>
+                                        <h4 class="header-title mb-0">Resumen de Ventas y Compras por mes</h4>
 
                                         <div id="cardCollpase1" class="collapse pt-3 show">
                                             <div class="bg-soft-light border-light border">
                                                 <div class="row text-center">
                                                     <div class="col-md-4">
-                                                        <p class="text-muted mb-0 mt-3">Today's Earning</p>
+                                                        <p class="text-muted mb-0 mt-3">Ganancias del Mes</p>
                                                         <h2 class="font-weight-normal mb-3">
                                                             <small class="mdi mdi-checkbox-blank-circle text-muted align-middle mr-1"></small>
                                                             <span>$751.<sup class="font-13">25</sup></span>
                                                         </h2>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <p class="text-muted mb-0 mt-3">Current Week</p>
+                                                        <p class="text-muted mb-0 mt-3">Compras del Mes</p>
                                                         <h2 class="font-weight-normal mb-3">
                                                             <small class="mdi mdi-checkbox-blank-circle text-info align-middle mr-1"></small>
                                                             <span>$2,874.<sup class="font-13">07</sup></span>
                                                         </h2>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <p class="text-muted mb-0 mt-3">Previous Week</p>
+                                                        <p class="text-muted mb-0 mt-3">Ventas del Mes</p>
                                                         <h2 class="font-weight-normal mb-3">
                                                             <small class="mdi mdi-checkbox-blank-circle text-danger align-middle mr-1"></small>
                                                             <span>$1,258.<sup class="font-13">66</sup></span>
@@ -254,9 +251,9 @@
                                                 </div>
                                             </div>
                                             <div class="dash-item-overlay d-none d-md-block">
-                                                <h5>Today's Earning: $751.25</h5>
+                                                <h5>Ganancias del Mes: $751.25</h5>
                                                 <p class="text-muted font-13 mb-3 mt-2">Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget...</p>
-                                                <a href="javascript: void(0);" class="btn btn-primary">View Statements
+                                                <a href="javascript: void(0);" class="btn btn-primary">Ver mas Resumenes
                                                     <i class="mdi mdi-arrow-right ml-2"></i>
                                                 </a>
                                             </div>
@@ -265,6 +262,14 @@
                                     </div> <!-- end card-body -->
                                 </div> <!-- end card-->
                             </div> <!-- end col-->
+
+                          
+                        </div>
+                        <!-- end row -->
+
+
+                        <div class="row">
+                      
 
                             <div class="col-xl-4">
                                 <div class="card">
@@ -282,23 +287,24 @@
                                     </div> <!-- end card-body -->
                                 </div> <!-- end card-->
 
-                                <div class="card cta-box bg-info text-white">
-                                    <div class="card-body">
-                                        <div class="media align-items-center">
-                                            <div class="media-body">
-                                                <div class="avatar-md bg-soft-light rounded-circle text-center mb-2">
-                                                    <i class="mdi mdi-store font-22 avatar-title text-light"></i>
-                                                </div>
-                                                <h3 class="m-0 font-weight-normal text-white sp-line-1 cta-box-title">Special launcing <b>Discount</b> offer</h3>
-                                                <p class="text-light mt-2 sp-line-2">Suspendisse vel quam malesuada, aliquet sem sit amet, fringilla elit. Morbi tempor tincidunt tempor. Etiam id turpis viverra.</p>
-                                                <a href="javascript: void(0);" class="text-white font-weight-semibold text-uppercase">Read More <i class="mdi mdi-arrow-right"></i></a>
-                                            </div>
-                                            <img class="ml-3" src="assets/images/update.svg" width="120" alt="Generic placeholder image">
+                            
+                            </div> <!-- end col-->
+                                   
+                            <div class="col-xl-8">
+                                <div class="card-box" dir="ltr">
+                                    <div class="float-right d-none d-md-inline-block">
+                                        <div class="btn-group mb-2">
+                                            <button type="button" class="btn btn-xs btn-secondary">Today</button>
+                                            <button type="button" class="btn btn-xs btn-light">Weekly</button>
+                                            <button type="button" class="btn btn-xs btn-light">Monthly</button>
                                         </div>
                                     </div>
-                                    <!-- end card-body -->
-                                </div>
-                            </div> <!-- end col-->
+                                    <h4 class="header-title mb-1">Transaction History</h4>
+                                    <div id="rotate-labels-column" class="apex-charts"></div>
+                                </div> <!-- end card-box-->
+                            </div> <!-- end col -->
+
+                          
                         </div>
                         <!-- end row -->
 
@@ -471,7 +477,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="width: 36px;">
-                                                        <img src="assets/images/users/user-2.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                                        <img src="../public/assets/images/users/user-2.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                                     </td>
     
                                                     <td>
@@ -499,7 +505,7 @@
     
                                                 <tr>
                                                     <td style="width: 36px;">
-                                                        <img src="assets/images/users/user-3.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                                        <img src="../public/assets/images/users/user-3.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                                     </td>
     
                                                     <td>
@@ -526,7 +532,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="width: 36px;">
-                                                        <img src="assets/images/users/user-4.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                                        <img src="../public/assets/images/users/user-4.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                                     </td>
     
                                                     <td>
@@ -553,7 +559,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="width: 36px;">
-                                                        <img src="assets/images/users/user-5.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                                        <img src="../public/assets/images/users/user-5.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                                     </td>
     
                                                     <td>
@@ -580,7 +586,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="width: 36px;">
-                                                        <img src="assets/images/users/user-6.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                                        <img src="../public/assets/images/users/user-6.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                                     </td>
     
                                                     <td>
@@ -787,16 +793,11 @@
         </div>
         <!-- END wrapper -->
 
-        
         <!-- Vendor js -->
         <script src="../public/assets/js/vendor.min.js"></script>
-        
-         <!--Morris Chart-->
-         <script src="../public/assets/libs/morris-js/morris.min.js"></script>
-        <script src="../public/assets/libs/raphael/raphael.min.js"></script>
+    
+ 
 
-        <!-- Init js -->
-        <script src="../public/assets/js/pages/morris.init.js"></script>
  
 
         <!-- Third Party js-->
@@ -804,12 +805,11 @@
         <script src="../public/assets/libs/peity/jquery.peity.min.js"></script> 
         <script src="../public/assets/libs/apexcharts/apexcharts.min.js"></script>      
         <script src="../public/assets/libs/jquery-vectormap/jquery-jvectormap-1.2.2.min.js"></script>
-        <script src="../public/assets/libs/jquery-vectormap/jquery-jvectormap-us-merc-en.js"></script>
-
+        <script src="../public/assets/libs/jquery-vectormap/jquery-jvectormap-us-merc-en.js"></script>  
+        
         <!-- Dashboard init -->
-        <script src="../public/assets/js/pages/dashboard-1.init.js"></script>  
-        <!-- init js -->
-       
+        <script src="../public/assets/js/pages/dashboard-1.init.js"></script>    
+    
 
         <!-- App js -->
         <script src="../public/assets/js/app.min.js"></script>

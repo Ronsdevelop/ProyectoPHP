@@ -20,7 +20,7 @@ var options = {
     },
     colors: ["#f0643b"],
     series: [{
-        name: "Growth",
+        name: "Ventas",
         data: [44, 55, 41, 67, 22, 43, 21, 33, 45, 31, 87, 65]
     }],
     grid: {
@@ -32,12 +32,12 @@ var options = {
         }
     },
     xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        categories: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
         offsetX: 0
     },
     yaxis: {
         title: {
-            text: "Growth"
+            text: "Historial de ventas"
         }
     },
     fill: {
@@ -58,7 +58,7 @@ var options = {
 options = {
     chart: {
         height: 480,
-        type: "line",
+        type: "area",
         zoom: {
             enabled: !1
         },
@@ -75,10 +75,10 @@ options = {
         curve: "smooth"
     },
     series: [{
-        name: "Previus Week",
+        name: "Compras",
         data: [32, 42, 42, 62, 52, 75, 62]
     }, {
-        name: "Current Week",
+        name: "Ventas",
         data: [42, 58, 66, 93, 82, 105, 92]
     }],
     grid: {
@@ -93,9 +93,9 @@ options = {
         size: 6
     },
     xaxis: {
-        categories: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        categories: ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"],
         title: {
-            text: "Week 12 - March 18, 2019 to March 24, 2019"
+            text: "Ventas por Semana"
         }
     },
     yaxis: {
