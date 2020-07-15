@@ -109,7 +109,7 @@
               </div>
 
               <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item notify-item">
+              <a href="../vistas/perfil.php" class="dropdown-item notify-item">
                   <i class="fe-user"></i>
                   <span>Mi Perfil</span>
               </a>
@@ -129,7 +129,7 @@
               <div class="dropdown-divider"></div>
 
               <!-- item-->
-              <a href="javascript:void(0);" class="dropdown-item notify-item">
+              <a href="../vistas/login.php" class="dropdown-item notify-item">
                   <i class="fe-log-out"></i>
                   <span>Salir</span>
               </a>

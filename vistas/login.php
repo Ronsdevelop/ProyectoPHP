@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="../public/login/css/login.css ">
     </head>
     <body  >
-        <form class="login-form" action="../vistas/inicio.php" method="POST">
+        <form class="login-form" action="../vistas/tablero.php" method="POST">
             <div class="login-form__logo-container">
                 <img class="login-form__logo" src="../public/login/img/logo.png" alt="Logo">
             </div>

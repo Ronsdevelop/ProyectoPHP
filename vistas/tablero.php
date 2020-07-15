@@ -11,7 +11,7 @@
         <link rel="shortcut icon" href="">
 
          <!-- plugin css -->
-         <link href="../publicassets/libs/jquery-vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+         <link href="../public/assets/libs/jquery-vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
 
         <!-- App css -->
         <link href="../public/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -60,153 +60,117 @@
                         </div>     
                         <!-- end page title --> 
 
+
+                        
+
                         <div class="row">
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-md-6 col-xl-3">
                                 <div class="card-box">
-                                    <div class="dropdown float-right">
-                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
-                                            <i class="mdi mdi-dots-horizontal"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-sm bg-soft-purple rounded">
+                                                <i class="fe-aperture avatar-title font-22 text-purple"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="text-dark my-1">$<span data-plugin="counterup">12,145</span></h3>
+                                                <p class="text-muted mb-1 text-truncate">Income status</p>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <h4 class="header-title mt-0 mb-2">New Customers</h4>
-
-                                    <div class="mt-1">
-                                        <div class="float-left" dir="ltr">
-                                            <input data-plugin="knob" data-width="64" data-height="64" data-fgColor="#f05050 "
-                                                data-bgColor="#F9B9B9" value="58"
-                                                data-skin="tron" data-angleOffset="180" data-readOnly=true
-                                                data-thickness=".15"/>
+                                    <div class="mt-3">
+                                        <h6 class="text-uppercase">Target <span class="float-right">60%</span></h6>
+                                        <div class="progress progress-sm m-0">
+                                            <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                                <span class="sr-only">60% Complete</span>
+                                            </div>
                                         </div>
-                                        <div class="text-right">
-                                            <h2 class="mt-3 pt-1 mb-1"> 268 </h2>
-                                            <p class="text-muted mb-0">Since last week</p>
-                                        </div>
-                                        <div class="clearfix"></div>
                                     </div>
-                                </div>
-                            </div><!-- end col -->
+                                </div> <!-- end card-box-->
+                            </div> <!-- end col -->
 
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-md-6 col-xl-3">
                                 <div class="card-box">
-                                    <div class="dropdown float-right">
-                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
-                                            <i class="mdi mdi-dots-horizontal"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-sm bg-soft-success rounded">
+                                                <i class="fe-shopping-cart avatar-title font-22 text-success"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="text-dark my-1"><span data-plugin="counterup">1576</span></h3>
+                                                <p class="text-muted mb-1 text-truncate">January's Sales</p>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <h4 class="header-title mt-0 mb-3">Online Orders</h4>
-
-                                    <div class="mt-1">
-                                        <div class="float-left" dir="ltr">
-                                            <input data-plugin="knob" data-width="64" data-height="64" data-fgColor="#675db7"
-                                                data-bgColor="#e8e7f4" value="80"
-                                                data-skin="tron" data-angleOffset="180" data-readOnly=true
-                                                data-thickness=".15"/>
+                                    <div class="mt-3">
+                                        <h6 class="text-uppercase">Target <span class="float-right">49%</span></h6>
+                                        <div class="progress progress-sm m-0">
+                                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="49" aria-valuemin="0" aria-valuemax="100" style="width: 49%">
+                                                <span class="sr-only">49% Complete</span>
+                                            </div>
                                         </div>
-                                        <div class="text-right">
-                                            <h2 class="mt-3 pt-1 mb-1"> 8715 </h2>
-                                            <p class="text-muted mb-0">Since last month</p>
-                                        </div>
-                                        <div class="clearfix"></div>
                                     </div>
-                                </div>
-                            </div><!-- end col -->
+                                </div> <!-- end card-box-->
+                            </div> <!-- end col -->
 
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-md-6 col-xl-3">
                                 <div class="card-box">
-                                    <div class="dropdown float-right">
-                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
-                                            <i class="mdi mdi-dots-horizontal"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-sm bg-soft-primary rounded">
+                                                <i class="fe-bar-chart-2 avatar-title font-22 text-primary"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="text-dark my-1">$<span data-plugin="counterup">8947</span></h3>
+                                                <p class="text-muted mb-1 text-truncate">Payouts</p>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <h4 class="header-title mt-0 mb-3">Revenue</h4>
-
-                                    <div class="mt-1">
-                                        <div class="float-left" dir="ltr">
-                                            <input data-plugin="knob" data-width="64" data-height="64" data-fgColor="#23b397"
-                                                data-bgColor="#c8ece5" value="77"
-                                                data-skin="tron" data-angleOffset="180" data-readOnly=true
-                                                data-thickness=".15"/>
+                                    <div class="mt-3">
+                                        <h6 class="text-uppercase">Target <span class="float-right">18%</span></h6>
+                                        <div class="progress progress-sm m-0">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100" style="width: 18%">
+                                                <span class="sr-only">18% Complete</span>
+                                            </div>
                                         </div>
-                                        <div class="text-right">
-                                            <h2 class="mt-3 pt-1 mb-1"> $925 </h2>
-                                            <p class="text-muted mb-0">This week</p>
-                                        </div>
-                                        <div class="clearfix"></div>
                                     </div>
-                                </div>
-                            </div><!-- end col -->
+                                </div> <!-- end card-box-->
+                            </div> <!-- end col -->
 
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-md-6 col-xl-3">
                                 <div class="card-box">
-                                    <div class="dropdown float-right">
-                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
-                                            <i class="mdi mdi-dots-horizontal"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-sm bg-soft-info rounded">
+                                                <i class="fe-cpu avatar-title font-22 text-info"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="text-dark my-1"><span data-plugin="counterup">178</span></h3>
+                                                <p class="text-muted mb-1 text-truncate">Available Stores</p>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <h4 class="header-title mt-0 mb-3">Daily Average</h4>
-
-                                    <div class="mt-1">
-                                        <div class="float-left" dir="ltr">
-                                            <input data-plugin="knob" data-width="64" data-height="64" data-fgColor="#ffbd4a"
-                                                data-bgColor="#FFE6BA" value="35"
-                                                data-skin="tron" data-angleOffset="180" data-readOnly=true
-                                                data-thickness=".15"/>
+                                    <div class="mt-3">
+                                        <h6 class="text-uppercase">Target <span class="float-right">74%</span></h6>
+                                        <div class="progress progress-sm m-0">
+                                            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100" style="width: 74%">
+                                                <span class="sr-only">74% Complete</span>
+                                            </div>
                                         </div>
-                                        <div class="text-right">
-                                            <h2 class="mt-3 pt-1 mb-1"> $78.58 </h2>
-                                            <p class="text-muted mb-0">Revenue today</p>
-                                        </div>
-                                        <div class="clearfix"></div>
                                     </div>
-                                </div>
-                            </div><!-- end col -->
-
+                                </div> <!-- end card-box-->
+                            </div> <!-- end col -->
+                            
                         </div>
                         <!-- end row -->
+
 
                         <div class="row">
                             <div class="col-xl-3">
@@ -232,70 +196,21 @@
     
                                 </div> <!-- end card-box-->
                             </div>
-                            
-                            <div class="col-xl-6">
+                           
+                            <div class="col-lg-9">
                                 <div class="card-box" dir="ltr">
-                                    <div class="float-right d-none d-md-inline-block">
-                                        <div class="btn-group mb-2">
-                                            <button type="button" class="btn btn-xs btn-secondary">Today</button>
-                                            <button type="button" class="btn btn-xs btn-light">Weekly</button>
-                                            <button type="button" class="btn btn-xs btn-light">Monthly</button>
-                                        </div>
+                                    <h4 class="header-title mb-3">Area Chart</h4>
+                                    <div class="text-center">
+                                        <p class="text-muted font-15 font-family-secondary mb-0">
+                                            <span class="mx-2"><i class="mdi mdi-checkbox-blank-circle text-danger"></i> Bitcoin</span>
+                                            <span class="mx-2"><i class="mdi mdi-checkbox-blank-circle text-info"></i> Ethereum</span>
+                                        </p>
                                     </div>
-                                    <h4 class="header-title mb-1">Transaction History</h4>
-                                    <div id="rotate-labels-column" class="apex-charts"></div>
+                                    <div id="morris-area-example" style="height: 350px;" class="morris-chart"></div>
                                 </div> <!-- end card-box-->
-                            </div> <!-- end col -->
+                            </div> <!-- end col-->
 
-                            <div class="col-xl-3">
-                                <div class="card-box">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="avatar-sm bg-light rounded">
-                                                <i class="fe-shopping-cart avatar-title font-22 text-success"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="text-right">
-                                                <h3 class="text-dark my-1"><span data-plugin="counterup">1576</span></h3>
-                                                <p class="text-muted mb-1 text-truncate">January's Sales</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-3">
-                                        <h6 class="text-uppercase">Target <span class="float-right">49%</span></h6>
-                                        <div class="progress progress-sm m-0">
-                                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="49" aria-valuemin="0" aria-valuemax="100" style="width: 49%">
-                                                <span class="sr-only">49% Complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> <!-- end card-box-->
-
-                                <div class="card-box">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="avatar-sm bg-light rounded">
-                                                <i class="fe-aperture avatar-title font-22 text-purple"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="text-right">
-                                                <h3 class="text-dark my-1">$<span data-plugin="counterup">12,145</span></h3>
-                                                <p class="text-muted mb-1 text-truncate">Income status</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-3">
-                                        <h6 class="text-uppercase">Target <span class="float-right">60%</span></h6>
-                                        <div class="progress progress-sm m-0">
-                                            <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                                <span class="sr-only">60% Complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> <!-- end card-box-->
-                            </div>
+                          
                         </div>
                         <!-- end row -->
 
@@ -875,18 +790,26 @@
         
         <!-- Vendor js -->
         <script src="../public/assets/js/vendor.min.js"></script>
+        
+         <!--Morris Chart-->
+         <script src="../public/assets/libs/morris-js/morris.min.js"></script>
+        <script src="../public/assets/libs/raphael/raphael.min.js"></script>
+
+        <!-- Init js -->
+        <script src="../public/assets/js/pages/morris.init.js"></script>
+ 
 
         <!-- Third Party js-->
-        <script src="../public/assets/libs/peity/jquery.peity.min.js"></script>
-        <script src="../public/assets/libs/apexcharts/apexcharts.min.js"></script>
         <script src="../public/assets/libs/jquery-knob/jquery.knob.min.js"></script>
+        <script src="../public/assets/libs/peity/jquery.peity.min.js"></script> 
+        <script src="../public/assets/libs/apexcharts/apexcharts.min.js"></script>      
         <script src="../public/assets/libs/jquery-vectormap/jquery-jvectormap-1.2.2.min.js"></script>
         <script src="../public/assets/libs/jquery-vectormap/jquery-jvectormap-us-merc-en.js"></script>
 
         <!-- Dashboard init -->
-        <script src="../public/assets/js/pages/dashboard-1.init.js"></script>   
- 
- 
+        <script src="../public/assets/js/pages/dashboard-1.init.js"></script>  
+        <!-- init js -->
+       
 
         <!-- App js -->
         <script src="../public/assets/js/app.min.js"></script>
