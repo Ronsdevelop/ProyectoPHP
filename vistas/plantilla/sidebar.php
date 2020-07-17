@@ -21,18 +21,21 @@
         <li>
             <a href="javascript: void(0);">
                 <i class="la la-cube"></i>
-                <span> Apps </span>
+                <span>Kardex</span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="apps-calendar.html">Calendar</a>
+                    <a href="../vistas/productos.php">Productos</a>
                 </li>
                 <li>
-                    <a href="apps-contacts.html">Contacts</a>
+                    <a href="../vistas/categoria.php">Categorias</a>
                 </li>
                 <li>
-                    <a href="apps-tickets.html">Tickets</a>
+                    <a href="#">Seccion</a>
+                </li>
+                <li>
+                    <a href="#">Almacen</a>
                 </li>
             </ul>
         </li>
@@ -40,27 +43,27 @@
         <li>
             <a href="javascript: void(0);">
                 <i class="la la-clone"></i>
-                <span> Layouts </span>
+                <span> Ventas</span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="layouts-sidebar-sm.html">Small Sidebar</a>
+                    <a href="#">Small Sidebar</a>
                 </li>
                 <li>
-                    <a href="layouts-light-sidebar.html">Light Sidebar</a>
+                    <a href="#">Light Sidebar</a>
                 </li>
                 <li>
-                    <a href="layouts-dark-topbar.html">Dark Topbar</a>
+                    <a href="#">Dark Topbar</a>
                 </li>
                 <li>
-                    <a href="layouts-preloader.html">Preloader</a>
+                    <a href="#">Preloader</a>
                 </li>
                 <li>
-                    <a href="layouts-sidebar-collapsed.html">Sidebar Collapsed</a>
+                    <a href="#">Sidebar Collapsed</a>
                 </li>
                 <li>
-                    <a href="layouts-boxed.html">Boxed</a>
+                    <a href="#">Boxed</a>
                 </li>
             </ul>
         </li>
@@ -68,21 +71,21 @@
         <li>
             <a href="javascript: void(0);">
                 <i class="la la-envelope"></i>
-                <span> Email </span>
+                <span>Correo</span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="email-inbox.html">Inbox</a>
+                    <a href="#">Inbox</a>
                 </li>
                 <li>
-                    <a href="email-read.html">Read Email</a>
+                    <a href="#">Read Email</a>
                 </li>
                 <li>
-                    <a href="email-compose.html">Compose Email</a>
+                    <a href="#">Compose Email</a>
                 </li>
                 <li>
-                    <a href="email-templates.html">Email Templates</a>
+                    <a href="#">Email Templates</a>
                 </li>
             </ul>
         </li>
@@ -90,109 +93,80 @@
         <li>
             <a href="javascript: void(0);">
                 <i class="la la-file-text-o"></i>
-                <span> Pages </span>
+                <span>Caja</span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="pages-starter.html">Starter</a>
+                    <a href="#">Starter</a>
                 </li>
                 <li>
-                    <a href="pages-login.html">Log In</a>
+                    <a href="#">Log In</a>
                 </li>
                 <li>
-                    <a href="pages-register.html">Register</a>
+                    <a href="#">Register</a>
                 </li>
                 <li>
-                    <a href="pages-recoverpw.html">Recover Password</a>
+                    <a href="#">Recover Password</a>
                 </li>
                 <li>
-                    <a href="pages-lock-screen.html">Lock Screen</a>
+                    <a href="#">Lock Screen</a>
                 </li>
                 <li>
-                    <a href="pages-logout.html">Logout</a>
+                    <a href="#">Logout</a>
                 </li>
                 <li>
-                    <a href="pages-confirm-mail.html">Confirm Mail</a>
+                    <a href="#">Confirm Mail</a>
                 </li>
                 <li>
-                    <a href="pages-404.html">Error 404</a>
+                    <a href="#">Error 404</a>
                 </li>
                 <li>
-                    <a href="pages-404-alt.html">Error 404-alt</a>
+                    <a href="#">Error 404-alt</a>
                 </li>
                 <li>
-                    <a href="pages-500.html">Error 500</a>
+                    <a href="#">Error 500</a>
                 </li>
             </ul>
         </li>
 
-        <li>
-            <a href="javascript: void(0);">
-                <i class="la la-diamond"></i>
-                <span class="badge badge-danger float-right">New</span>
-                <span> Extra Pages </span>
-            </a>
-            <ul class="nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="extras-profile.html">Profile</a>
-                </li>
-                <li>
-                    <a href="extras-timeline.html">Timeline</a>
-                </li>
-                <li>
-                    <a href="extras-invoice.html">Invoice</a>
-                </li>
-                <li>
-                    <a href="extras-faqs.html">FAQs</a>
-                </li>
-                <li>
-                    <a href="extras-pricing.html">Pricing</a>
-                </li>
-                <li>
-                    <a href="extras-maintenance.html">Maintenance</a>
-                </li>
-                <li>
-                    <a href="extras-coming-soon.html">Coming Soon</a>
-                </li>
-            </ul>
-        </li>
+     
 
 <li class="menu-title mt-2">Administración</li>
 
         <li>
             <a href="javascript: void(0);">
                 <i class="la la-briefcase"></i>
-                <span> UI Elements </span>
+                <span>Configuración </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="ui-buttons.html">Buttons</a>
+                    <a href="#">Buttons</a>
                 </li>
                 <li>
-                    <a href="ui-cards.html">Cards</a>
+                    <a href="#">Cards</a>
                 </li>
                 <li>
-                    <a href="ui-tabs-accordions.html">Tabs & Accordions</a>
+                    <a href="#">Tabs & Accordions</a>
                 </li>
                 <li>
-                    <a href="ui-modals.html">Modals</a>
+                    <a href="#">Modals</a>
                 </li>
                 <li>
-                    <a href="ui-progress.html">Progress</a>
+                    <a href="#">Progress</a>
                 </li>
                 <li>
-                    <a href="ui-notifications.html">Notifications</a>
+                    <a href="#">Notifications</a>
                 </li>
                 <li>
-                    <a href="ui-general.html">General UI</a>
+                    <a href="#">General UI</a>
                 </li>
                 <li>
-                    <a href="ui-typography.html">Typography</a>
+                    <a href="#">Typography</a>
                 </li>
                 <li>
-                    <a href="ui-grid.html">Grid</a>
+                    <a href="#">Grid</a>
                 </li>
             </ul>
         </li>
