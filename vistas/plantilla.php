@@ -8,19 +8,23 @@
         <meta content="Ronsdevelop" name="Autor" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="">
+        <link rel="icon" href="logo/logo_sistema_sm.png">
 
         <!-- App css -->
-        <link href="public/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="public/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="public/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="vistas/public/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="vistas/public/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="vistas/public/assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
     </head>
 
-    <body>  
-        <!-- Incio de pagina -->
-        <div id="wrapper"> 
-        <?php
+    <body>    
+  
+        <?php 
+        if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"]== "ok") {   
+  
+        /* ----- Incio de la pagina o wrapper----- */
+
+        echo '<div id="wrapper">';
 
         /* ----- ----- CABEZOTE ----- ----- */
             include "modulos/cabezote.php";
@@ -34,24 +38,29 @@
                 $_GET["ruta"]== "usuarios"
             ) {
                 include "modulos/".$_GET["ruta"].".php";  
-            }
+            }else{
+                include "modulos/404.php" ;
+             }
+        }else{
+            include "modulos/inicio.php" ; 
         }
             
-        ?>   
-    
-
-    
-
-        <?php
+       
 
         /* ----- ----- FOOTER ----- ----- */
             include "modulos/footer.php";
+
+        echo '</div>';
+        
+        /* ----- Fin del Wrapper ----- */
+    }else{
+        include "modulos/login.php";
+    }
     
         ?>         
 
 
-        </div>
-        <!-- END wrapper -->
+
  
 
      
@@ -60,10 +69,10 @@
         <div class="rightbar-overlay"></div>
 
         <!-- Vendor js -->
-        <script src="public/assets/js/vendor.min.js"></script>
+        <script src="vistas/public/assets/js/vendor.min.js"></script>
 
         <!-- App js -->
-        <script src="public/assets/js/app.min.js"></script>
+        <script src="vistas/public/assets/js/app.min.js"></script>
         
     </body>
 </html>

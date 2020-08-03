@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.1.37-MariaDB : Database - bdpanaderialeos
+MySQL - 5.5.5-10.1.32-MariaDB : Database - bdpanaderialeos
 *********************************************************************
 */
 
@@ -58,11 +58,13 @@ CREATE TABLE `cargo` (
   `cargo_id` int(11) NOT NULL AUTO_INCREMENT,
   `cargo` varchar(45) NOT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
-  `fCreacion` datetime DEFAULT NULL,
+  `fCreacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cargo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `cargo` */
+
+insert  into `cargo`(`cargo_id`,`cargo`,`descripcion`,`fCreacion`) values (1,'ADMINISTRADOR','ACCESO TOTAL AL SISTEMA','2020-08-03 14:06:07'),(2,'VENDEDOR','ACCESO AL AREA DE VENTAS','2020-08-03 14:06:09'),(3,'PANADERO','ACCESO AL AREA DE PRODUCION','2020-08-03 14:06:14');
 
 /*Table structure for table `categoria` */
 
@@ -135,10 +137,13 @@ CREATE TABLE `colaborador` (
   `email` varchar(80) NOT NULL,
   `cargo_id` int(11) NOT NULL,
   PRIMARY KEY (`colaborador_id`),
-  KEY `fk_COLABORADOR_CARGO1_idx` (`cargo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `fk_COLABORADOR_CARGO1_idx` (`cargo_id`),
+  CONSTRAINT `fk_COLABORADOR_CARGO1` FOREIGN KEY (`cargo_id`) REFERENCES `cargo` (`cargo_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `colaborador` */
+
+insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`fCreacion`,`avatar`,`user`,`pass`,`email`,`cargo_id`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15','0000-00-00 00:00:00',NULL,'Rony','admin123','rony@panaderialeos.com',1);
 
 /*Table structure for table `compras_ingresos` */
 

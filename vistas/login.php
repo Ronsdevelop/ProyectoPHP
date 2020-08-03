@@ -4,12 +4,12 @@
         <title>Sistema Panaderia Leos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
-        <link rel="stylesheet" href="../public/login/css/login.css ">
+        <link rel="stylesheet" href="../vistas/public/login/css/login.css ">
     </head>
     <body  >
-        <form class="login-form" action="../vistas/tablero.php" method="POST">
+        <form class="login-form" action="inicio" method="POST">
             <div class="login-form__logo-container">
-                <img class="login-form__logo" src="../public/login/img/logo.png" alt="Logo">
+                <img class="login-form__logo" src="../vistas/public/login/img/logo.png" alt="Logo">
             </div>
             <div class="login-form__content">
                 <div class="login-form__header">Bienvenido</div>
