@@ -3,8 +3,8 @@ require_once "../modelos/Categoria.php";
 
 $categoria=new Categoria();
 
-$idcategoria= isset($_POST["idcategoria"])? limpiarCadena($_POST["idcategoria"]):"";
-$nombre= isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
+$categoria_id= isset($_POST["categoria_id"])? limpiarCadena($_POST["categoria_id"]):"";
+$categoria= isset($_POST["categoria"])? limpiarCadena($_POST["categoria"]):"";
 $descripcion= isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):"";
 
 switch ($_GET["op"]) {
@@ -33,15 +33,16 @@ switch ($_GET["op"]) {
 
     break;
     case 'listar':
-        $rspta =$categoria -> listar();
+        $rspta =$categoria -> listado();
         //vmos a declara un array
         $data = Array();
         while ($reg =$rspta ->fetch_object()) {
             $data[]=array(
-                "0"=>$reg -> idcategoria,
-                "1"=>$reg -> nombre,
+                "0"=>$reg -> categoria_id,
+                "1"=>$reg -> categoria,
                 "2"=>$reg -> descripcion,
-                "3"=>$reg -> condicion
+                "3"=>$reg -> seccion_id
+                
             );
         }
         $results = array(

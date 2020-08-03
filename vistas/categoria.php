@@ -62,9 +62,13 @@
                                     </div>
                                     <h4 class="page-title">Categorias</h4>
                                 </div>
+
+                          
                             </div>
                         </div>     
                         <!-- end page title --> 
+
+
                         
                         <div class="row">
                             <div class="col-12">
@@ -77,82 +81,34 @@
                                      
                                     <h4 class="mb-4">CATEGORIA DE PRODUCTOS</h4>
 
-                                    <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" id="tickets-table">
+                                    <table  class="table table-hover m-0 table-centered dt-responsive nowrap w-100" id="tbllistado">   <!--id="tickets-table" -->
                                         <thead class="thead-dark">
                                         <tr>
                                             <th>
                                                 ID
                                             </th>
-                                            <th>Requested By</th>
-                                            <th>Subject</th>
-                                            <th>Assignee</th>
-                                            <th>Priority</th>
-                                            <th>Status</th>
-                                            <th>Created Date</th>
-                                            <th>Due Date</th>
-                                            <th class="hidden-sm">Action</th>
+                                            <th>Categoria</th>
+                                            <th>Descripcion</th>
+                                            <th>Estado</th>
+                                            <th>Seccion</th>                                    
                                         </tr>
                                         </thead>
 
-                                        <tbody>
-
-                                        <?php
-                                        for ($i=0; $i < 15; $i++) {  ?>
-                                             
- 
-                                        <tr>
-                                            <td><b>#1256</b></td>
-                                            <td>
-                                                <a href="javascript: void(0);" class="text-body">
-                                                    <img src="../public/assets/images/users/user-2.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-xs" />
-                                                    <span class="ml-2">George A. Llanes</span>
-                                                </a>
-                                            </td>
-
-                                            <td>
-                                                Support for theme
-                                            </td>
-
-                                            <td>
-                                                <a href="javascript: void(0);">
-                                                    <img src="../public/assets/images/users/user-10.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-xs" />
-                                                </a>
-                                            </td>
-
-                                            <td>
-                                                <span class="badge badge-light-secondary">Low</span>
-                                            </td>
-
-                                            <td>
-                                                <span class="badge badge-success">Open</span>
-                                            </td>
-
-                                            <td>
-                                                2017/04/28
-                                            </td>
-
-                                            <td>
-                                                2017/04/28
-                                            </td>
-
-                                            <td>
-                                                <div class="btn-group dropdown">
-                                                    <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-danger btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Editar</a>                                                   
-                                                        <a class="dropdown-item" href="#"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Eliminar</a>                                                     
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                       <?php }
-                                        ?>
-
-                                 
+                                        <tbody>                               
                            
 
                                         </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th>
+                                                ID
+                                            </th>
+                                            <th>Categoria</th>
+                                            <th>Descripcion</th>
+                                            <th>Estado</th>
+                                            <th>Seccion</th>  
+                                        </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
                             </div><!-- end col -->
@@ -269,6 +225,7 @@
    
         <!-- App js -->
         <script src="../public/assets/js/app.min.js"></script>
+        <script type="text/javascript" src="scripts/categoria.js" ></script>
         
     </body>
 </html>

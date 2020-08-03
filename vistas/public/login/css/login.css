@@ -74,6 +74,8 @@
 .login-form__header {
     margin-bottom: 15px;
     text-align: center;
+    font-family: fantasy;
+    font-size: x-large;
     color: #59120E;
 }
 

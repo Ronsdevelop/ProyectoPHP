@@ -35,6 +35,7 @@ function cancelarform(){
 }
 //Función Listar
 function listar(){
+
     tabla = $('#tbllistado').dataTable({
         "responsive": true,
         "autoWidth": false,

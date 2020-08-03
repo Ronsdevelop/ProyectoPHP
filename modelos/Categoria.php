@@ -9,9 +9,9 @@ Class Categoria{
 
     }
     //Metodo para insertar registros
-    public function insertar($nombre,$descripcion){
+    public function insertar($categoria,$descripcion,$estado,$seccion){
 
-        $sql = "INSERT INTO categoria (nombre, descripcion, condicion) VALUES('$nombre','$descripcion','1')";
+        $sql = "CALL sp_ingresaCategoria('$categoria','$descripcion','$estado','$seccion')  ";
         return ejecutarConsulta($sql);
     }
     //Metodo para editar para los registros
@@ -35,8 +35,8 @@ Class Categoria{
       return ejecutarConsultaSimpleFila($sql);
   }
   //Método para listar registros
-  public function listar(){
-      $sql = "SELECT * FROM categoria";
+  public function listado(){
+      $sql = "SELECT * FROM Categoria";
       return ejecutarConsulta($sql);
   }
 

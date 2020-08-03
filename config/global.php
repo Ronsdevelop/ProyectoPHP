@@ -3,7 +3,7 @@
 define("DB_HOST","localhost");
 
 //Nombre de la Base de datos
-define("DB_NAME","dbsistema");
+define("DB_NAME","bdpanaderialeos");
 
 //Usuario de la base de datos
 define("DB_USERNAME","root");
@@ -15,7 +15,7 @@ define("DB_PASSWORD","HEAVYmetal2018");
 define("DB_ENCODE","utf8");
 
 //Definimos la constante como nombre de proyecto 
-define("PRO_NOMBRE","SistemaPHP");
+define("PRO_NOMBRE","PanaderiaLeos");
 
 
 ?>

@@ -12,7 +12,7 @@
                 <img class="login-form__logo" src="../public/login/img/logo.png" alt="Logo">
             </div>
             <div class="login-form__content">
-                <div class="login-form__header">Iniciar Sesion</div>
+                <div class="login-form__header">Bienvenido</div>
                 <input class="login-form__input" type="text" name="dc_username" placeholder="Usuario">
                 <input class="login-form__input" type="password" name="dc_username" placeholder="Contraseña">
                 <button class="login-form__button" type="submit">ACCEDER</button>

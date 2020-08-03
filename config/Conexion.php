@@ -9,6 +9,7 @@ if(mysqli_connect_error()) {
     exit();
 }
 if (!function_exists('ejecutarConsulta')) {
+    
    function ejecutarConsulta($sql){
        global $conexion;
        $query = $conexion -> query($sql);
