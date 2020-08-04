@@ -203,6 +203,20 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group"> 
+                                                            <label for="field-3" class="control-label">Tipo Usuario</label>                                                       
+                                                            <select class="form-control" data-toggle="select2">
+                                                            <option>Select</option>                                                  
+                                                            <option value="AK">Alaska</option>
+                                                            <option value="HI">Hawaii</option>
+                                                            <option value="HI">Hawaii</option>   
+                                                            </select>                                             
+                                                            </div>                                                        
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
                                                         <div class="col-md-12">  
                                                            
                                                             <div class="form-group">

@@ -90,10 +90,15 @@
  
         <!-- Datatables init -->
      <script src="vistas/js/plantilla.js"></script>
+
+     <script src="vistas/public/assets/libs/select2/select2.min.js"></script>
+     <script src="vistas/public/assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
+    <!-- Init js-->
  
 
-        <!-- App js -->
-        <script src="vistas/public/assets/js/app.min.js"></script>
+
+    <!-- App js -->
+    <script src="vistas/public/assets/js/app.min.js"></script>
 
        
         
