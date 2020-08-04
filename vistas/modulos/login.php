@@ -24,7 +24,7 @@
 
                                     <div class="form-group mb-3">
                                         <label for="password">Password</label>
-                                        <input class="form-control" type="password" required="" id="ingPassword" name="ingPassword"placeholder="Ingresa Tú password">
+                                        <input class="form-control" type="password" required="" id="ingPassword" name="ingPassword" placeholder="Ingresa Tú password">
                                     </div>
 
                                     <div class="form-group mb-3">

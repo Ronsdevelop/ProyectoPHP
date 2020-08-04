@@ -1,3 +1,7 @@
+<?php
+ session_start(); 
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -35,8 +39,8 @@
         /* ----- ----- CONTENIDO ----- ----- */
         if (isset($_GET["ruta"])) {
             if ($_GET["ruta"]== "inicio" ||
-                $_GET["ruta"]== "usuarios"
-            ) {
+                $_GET["ruta"]== "usuarios"||
+                $_GET["ruta"]=="salir") {
                 include "modulos/".$_GET["ruta"].".php";  
             }else{
                 include "modulos/404.php" ;

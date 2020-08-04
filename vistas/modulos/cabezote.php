@@ -129,7 +129,7 @@
               <div class="dropdown-divider"></div>
 
               <!-- item-->
-              <a href="../vistas/login.php" class="dropdown-item notify-item">
+              <a href="salir" class="dropdown-item notify-item">
                   <i class="fe-log-out"></i>
                   <span>Salir</span>
               </a>
