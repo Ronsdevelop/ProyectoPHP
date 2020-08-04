@@ -14,10 +14,16 @@
         <!-- App favicon -->
         <link rel="icon" href="logo/logo_sistema_sm.png">
 
+         <!-- Datatables css -->
+        <link href="vistas/public/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+     <link href="vistas/public/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+      
+
         <!-- App css -->
         <link href="vistas/public/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="vistas/public/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="vistas/public/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    
 
     </head>
 
@@ -75,8 +81,21 @@
         <!-- Vendor js -->
         <script src="vistas/public/assets/js/vendor.min.js"></script>
 
+
+        <!-- third party js -->
+        <script src="vistas/public/assets/libs/datatables/jquery.dataTables.min.js"></script>
+        <script src="vistas/public/assets/libs/datatables/dataTables.bootstrap4.js"></script>
+        <script src="vistas/public/assets/libs/datatables/dataTables.responsive.min.js"></script>
+      <script src="vistas/public/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
+ 
+        <!-- Datatables init -->
+     <script src="vistas/js/plantilla.js"></script>
+ 
+
         <!-- App js -->
         <script src="vistas/public/assets/js/app.min.js"></script>
+
+       
         
     </body>
 </html>

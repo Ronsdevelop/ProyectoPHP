@@ -12,17 +12,17 @@
 
       
         <!-- third party css -->
-        <link href="../public/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
-        <link href="../public/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="../vistas/public/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="../vistas/public/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
         <!-- third party css end -->
 
         <!-- Custom box css -->
-        <link href="../public/assets/libs/custombox/custombox.min.css" rel="stylesheet">
+        <link href="../vistas/public/assets/libs/custombox/custombox.min.css" rel="stylesheet">
 
         <!-- App css -->
-        <link href="../public/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="../public/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="../public/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="../vistas/public/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../vistas/public/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../vistas/public/assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -184,7 +184,7 @@
                                         </div>
                                     </div><!-- /.modal -->
 
-                        
+                        </div>
                    
 
                         
@@ -208,24 +208,24 @@
         <!-- END wrapper -->     
 
         <!-- Vendor js -->
-        <script src="../public/assets/js/vendor.min.js"></script>
+        <script src="../vistas/public/assets/js/vendor.min.js"></script>
 
         <!-- third party js -->
-        <script src="../public/assets/libs/datatables/jquery.dataTables.min.js"></script>
-        <script src="../public/assets/libs/datatables/dataTables.bootstrap4.js"></script>
-        <script src="../public/assets/libs/datatables/dataTables.responsive.min.js"></script>
-        <script src="../public/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
+        <script src="../vistas/public/assets/libs/datatables/jquery.dataTables.min.js"></script>
+        <script src="../vistas/public/assets/libs/datatables/dataTables.bootstrap4.js"></script>
+        <script src="../vistas/public/assets/libs/datatables/dataTables.responsive.min.js"></script>
+        <script src="../vistas/public/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
 
         <!-- Tickets js -->
-        <script src="../public/assets/js/pages/tickets.js"></script>
+        <script src="../vistas/public/assets/js/pages/tickets.js"></script>
 
           <!-- Modal-Effect -->
-        <script src="../public/assets/libs/custombox/custombox.min.js"></script>
+        <script src="../vistas/public/assets/libs/custombox/custombox.min.js"></script>
 
    
         <!-- App js -->
-        <script src="../public/assets/js/app.min.js"></script>
-        <script type="text/javascript" src="scripts/categoria.js" ></script>
+        <script src="../vistas/public/assets/js/app.min.js"></script>
+        <script type="text/javascript" src="../vistas/js/categoria.js" ></script>
         
     </body>
 </html>

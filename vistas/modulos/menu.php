@@ -235,37 +235,14 @@
         <li>
             <a href="javascript: void(0);">
                 <i class="la la-wrench"></i>
-                <span> Forms </span>
+                <span> Administracion </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="forms-elements.html">General Elements</a>
+                    <a href="usuarios">Usuarios</a>
                 </li>
-                <li>
-                    <a href="forms-advanced.html">Advanced</a>
-                </li>
-                <li>
-                    <a href="forms-validation.html">Validation</a>
-                </li>
-                <li>
-                    <a href="forms-pickers.html">Pickers</a>
-                </li>
-                <li>
-                    <a href="forms-wizard.html">Wizard</a>
-                </li>
-                <li>
-                    <a href="forms-masks.html">Masks</a>
-                </li>
-                <li>
-                    <a href="forms-summernote.html">Summernote</a>
-                </li>
-                <li>
-                    <a href="forms-quilljs.html">Quilljs Editor</a>
-                </li>
-                <li>
-                    <a href="forms-file-uploads.html">File Uploads</a>
-                </li>
+              
             </ul>
         </li>
 
