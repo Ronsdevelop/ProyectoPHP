@@ -17,6 +17,9 @@
          <!-- Datatables css -->
         <link href="vistas/public/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
      <link href="vistas/public/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+
+     <!-- SweeAlert2 -->
+     <script src="vistas/public/plugins/sweetAlert2/sweetalert2.all.min.js"></script>
       
 
         <!-- App css -->
@@ -75,25 +78,28 @@
 
      
 
-        <!-- Right bar overlay-->
-        <div class="rightbar-overlay"></div>
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
 
-        <!-- Vendor js -->
-        <script src="vistas/public/assets/js/vendor.min.js"></script>
+    <!-- Vendor js -->
+    <script src="vistas/public/assets/js/vendor.min.js"></script>
 
 
-        <!-- third party js -->
-        <script src="vistas/public/assets/libs/datatables/jquery.dataTables.min.js"></script>
-        <script src="vistas/public/assets/libs/datatables/dataTables.bootstrap4.js"></script>
-        <script src="vistas/public/assets/libs/datatables/dataTables.responsive.min.js"></script>
-      <script src="vistas/public/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
+    <!-- third party js -->
+    <script src="vistas/public/assets/libs/datatables/jquery.dataTables.min.js"></script>
+    <script src="vistas/public/assets/libs/datatables/dataTables.bootstrap4.js"></script>
+    <script src="vistas/public/assets/libs/datatables/dataTables.responsive.min.js"></script>
+    <script src="vistas/public/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
  
-        <!-- Datatables init -->
-     <script src="vistas/js/plantilla.js"></script>
+    <!-- Datatables init -->
+    <script src="vistas/js/plantilla.js"></script>
+
+     
 
      <script src="vistas/public/assets/libs/select2/select2.min.js"></script>
      <script src="vistas/public/assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
     <!-- Init js-->
+    
  
 
 

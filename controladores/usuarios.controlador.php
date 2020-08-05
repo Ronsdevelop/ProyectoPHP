@@ -2,7 +2,7 @@
     class ControladorUsuarios{
 
         /* ----- Ingreso de Usuarios ----- */   
-        public function ctrIngresoUsuario(){
+            static public function ctrIngresoUsuario(){
             if (isset($_POST["ingUsuario"])) {
                if (preg_match('/^[a-zA-Z0-9]+$/',$_POST["ingUsuario"]) && preg_match('/^[a-zA-Z0-9]+$/',$_POST["ingPassword"])) {
                    $tabla = "colaborador";
@@ -26,6 +26,38 @@
                }
             }
 
+        }
+
+        /* ------------------------- */
+        /* REGISTRO DE USUARIO */
+        /* ------------------------- */
+        static public function ctrCrearUsuario(){
+
+       
+          
+
+            if(isset($_POST["txtNombres"])) {
+                if (preg_match('/^[a-zA-Z0-9ñÑáíóúÁÉÍÓÚ ]+$/',$_POST["txtNombres"]) && preg_match('/^[a-zA-Z0-9]+$/',$_POST["txtUsuario"]) && preg_match('/^[a-zA-Z0-9]+$/',$_POST["txtPass"])) {
+                    echo'
+                     <script> 
+                     Swal.fire({
+                         icon:"success",
+                         title:"Error al registrar",
+                     });
+                     </script>
+                     ';
+                     
+                }else{
+                     echo'
+                     <script> 
+                     Swal.fire({
+                         icon:"error",
+                         title:"Error al registrar",
+                     });
+                     </script>
+                     ';
+                }
+            }
         }
 
 
