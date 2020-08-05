@@ -46,7 +46,8 @@
                                 <th>Nombre</th>
                                 <th>Foto</th>
                                 <th>Dni</th>
-                                <th>Cargo</th> 
+                                <th>Dirección</th>
+                                <th>Usuario</th> 
                                 <th>Estado</th>
                                 <th>Celular</th>  
                                 <th>Acciones</th>                                    
@@ -54,48 +55,60 @@
                             </thead>
 
                             <tbody>    
-                            <tr>
-                                <td><b>#1256</b></td>
-                                <td>
+                            <?php
+                                $item = null;
+                                $valor = null;
+                                $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+                                foreach ($usuarios as $key => $value) {
+                                    echo'<tr>
+                                    <td><b>'.$value["colaborador_id"].'</b></td>
+                                    <td>
+                                        
+                                        
+                                            <span class="ml-2">'.$value["nombre"]." ".$value["aPaterno"]." ".$value["aMaterno"].'</span>
+                                        
+                                    </td>
+                                    <td>
+                                        <a href="javascript: void(0);">
+                                            <img src="vistas/public/assets/images/users/user-anonimo.png" alt="contact-img" title="contact-img" class="rounded-circle avatar-xs" />
+                                        </a>
+                                    </td>
+    
+                                    <td>
+                                    '.$value["dni"].'
+                                    </td>
+                                    <td>
+                                    '.$value["direccion"].'
+                                    </td>
+                                    <td>
+                                    '.$value["user"].'
+                                    </td>
                                     
-                                    
-                                        <span class="ml-2">George A. Llanes</span>
-                                    
-                                </td>
-                                <td>
-                                    <a href="javascript: void(0);">
-                                        <img src="vistas/public/assets/images/users/user-anonimo.png" alt="contact-img" title="contact-img" class="rounded-circle avatar-xs" />
-                                    </a>
-                                </td>
-
-                                <td>
-                                    46565757
-                                </td>
-                                <td>
-                                    admin
-                                </td>
-                                
-                                <td>
-                                    <span class="badge badge-success">Activo</span>
-                                </td>
-
-                                <td>
-                                    9645566455
-                                </td>                                           
-
-                                <td>
-                                    <div class="btn-group dropdown">
-                                        <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-secondary btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Editar</a>
-                                            <a class="dropdown-item" href="#"><i class="mdi mdi-block-helper mr-2 text-muted font-18 vertical-middle"></i>Desactivar</a>
-                                            <a class="dropdown-item" href="#"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Eliminar</a>
-                                            
+                                    <td>
+                                        <span class="badge badge-success">Activo</span>
+                                    </td>
+    
+                                    <td>
+                                    '.$value["nCelular"].'
+                                    </td>                                           
+    
+                                    <td>
+                                        <div class="btn-group dropdown">
+                                            <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-secondary btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Editar</a>
+                                                <a class="dropdown-item" href="#"><i class="mdi mdi-block-helper mr-2 text-muted font-18 vertical-middle"></i>Desactivar</a>
+                                                <a class="dropdown-item" href="#"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Eliminar</a>
+                                                
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>                           
-                
+                                    </td>
+                                </tr>                           
+                    ';
+                               
+                                }
+                            ?>
+                            
 
                             </tbody>
                             <tfoot>
@@ -106,7 +119,8 @@
                                 <th>Nombre</th>
                                 <th>Foto</th>
                                 <th>Dni</th>
-                                <th>Cargo</th> 
+                                <th>Dirección</th>
+                                <th>Usuario</th> 
                                 <th>Estado</th>
                                 <th>Celular</th>  
                                 <th>Acciones</th>                                    

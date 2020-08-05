@@ -38,26 +38,93 @@
 
             if(isset($_POST["txtNombres"])) {
                 if (preg_match('/^[a-zA-Z0-9ñÑáíóúÁÉÍÓÚ ]+$/',$_POST["txtNombres"]) && preg_match('/^[a-zA-Z0-9]+$/',$_POST["txtUsuario"]) && preg_match('/^[a-zA-Z0-9]+$/',$_POST["txtPass"])) {
-                    echo'
+                    $tabla = "colaborador";
+                    $datos = array(
+                            "nombre"=>$_POST["txtNombres"],
+                            "aPaterno"=>$_POST["txtApaterno"],
+                            "aMaterno"=>$_POST["txtAmaterno"],
+                            "dni"=>$_POST["txtDni"],
+                            "direccion"=>$_POST["txtDireccion"],
+                            "nCelular"=>$_POST["txtCelular"],
+                            "fIngreso"=>$_POST["txtFecha"],
+                            "user"=>$_POST["txtUsuario"],
+                            "pass"=>$_POST["txtPass"],
+                            "email"=>$_POST["txtCorreo"],
+                            "cargo_id"=>$_POST["txtTipo"]
+                    );
+                    $respuesta = ModeloUsuario::MdlIngresarUsuario($tabla,$datos);
+                    if ($respuesta =="ok") {
+                        
+                        echo'
+                        <script> 
+                        Swal.fire({
+                            icon:"success",
+                            title:"Se Registro correctamente",
+                            showConfirmButton: true,
+                            confirmButtonText: "Cerrar"
+                        }).then(function(result){
+
+                            if(result.value){
+                            
+                                window.location = "usuarios";
+    
+                            }
+    
+                        });
+                        </script>
+                        ';
+                        
+                    }else {
+                        echo'
                      <script> 
                      Swal.fire({
-                         icon:"success",
-                         title:"Error al registrar",
-                     });
+                         icon:"error",
+                         title:"Error al Registro",
+                         showConfirmButton: true,
+						 confirmButtonText: "Cerrar"
+                     }).then(function(result){
+
+						if(result.value){
+						
+							window.location = "usuarios";
+
+						}
+
+					});
                      </script>
                      ';
-                     
+                    }    
                 }else{
                      echo'
                      <script> 
                      Swal.fire({
                          icon:"error",
-                         title:"Error al registrar",
-                     });
+                         title:"No puede ingresar caracteres especiaes",
+                         showConfirmButton: true,
+						 confirmButtonText: "Cerrar"
+                     }).then(function(result){
+
+						if(result.value){
+						
+							window.location = "usuarios";
+
+						}
+
+					});
+
                      </script>
                      ';
                 }
             }
+        }
+
+        static public function ctrMostrarUsuarios($item,$valor){
+
+            $tabla = "colaborador";
+            $respuesta = ModeloUsuario::MdlMostrarUsuarios($tabla,$item,$valor);
+
+            return $respuesta;
+
         }
 
 
