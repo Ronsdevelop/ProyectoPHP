@@ -13,6 +13,8 @@
                    
                    if ($respuesta["user"]== $_POST["ingUsuario"] && $respuesta["pass"]==$_POST["ingPassword"]) {
                        $_SESSION["iniciarSesion"]="ok";
+                       $_SESSION["nombre"]=$respuesta["nombre"]." ".$respuesta["aPaterno"];
+                    
                        echo '<script>
                                 window.location = "inicio";                      
                        </script>';

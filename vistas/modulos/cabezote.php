@@ -1,4 +1,7 @@
+
+
 <!-- Topbar Start -->
+
 <div class="navbar-custom">
   <ul class="list-unstyled topnav-menu float-right mb-0"> 
 
@@ -97,14 +100,15 @@
           <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
               <img src="vistas/public/assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
               <span class="pro-user-name ml-1">
-                  Rony Aguilera <i class="mdi mdi-chevron-down"></i> 
+                  <?php echo $_SESSION["nombre"];?> <i class="mdi mdi-chevron-down"></i>                  
+                  
               </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
               <!-- item-->
               <div class="dropdown-item noti-title">
                   <h5 class="m-0 text-white">
-                      Bienvenido !
+                      ADMINISTRADOR
                   </h5>
               </div>
 
