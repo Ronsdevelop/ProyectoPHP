@@ -10,8 +10,9 @@
                    $valor = $_POST["ingUsuario"];
 
                    $respuesta = ModeloUsuario::MdlMostrarUsuarios($tabla,$item,$valor);
+                 
                    
-                   if ($respuesta["user"]== $_POST["ingUsuario"] && $respuesta["pass"]==$_POST["ingPassword"]) {
+                   if ($respuesta["user"]== $_POST["ingUsuario"] && password_verify($_POST["ingPassword"],$respuesta["pass"])) {
                        $_SESSION["iniciarSesion"]="ok";
                        $_SESSION["nombre"]=$respuesta["nombre"]." ".$respuesta["aPaterno"];
                        $_SESSION["avatar"]=$respuesta["avatar"];
@@ -75,6 +76,7 @@
 
 
                     $tabla = "colaborador";
+                    $conEncriptada = password_hash($_POST["txtPass"], PASSWORD_DEFAULT);
                     $datos = array(
                             "nombre"=>$_POST["txtNombres"],
                             "aPaterno"=>$_POST["txtApaterno"],
@@ -85,7 +87,7 @@
                             "nCelular"=>$_POST["txtCelular"],
                             "fIngreso"=>$_POST["txtFecha"],
                             "user"=>$_POST["txtUsuario"],
-                            "pass"=>$_POST["txtPass"],
+                            "pass"=>$conEncriptada,
                             "email"=>$_POST["txtCorreo"],
                             "cargo_id"=>$_POST["txtTipo"]
                     );

@@ -96,7 +96,7 @@
                                         <div class="btn-group dropdown">
                                             <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-secondary btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Editar</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEditarUsuario" ><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Editar</a>
                                                 <a class="dropdown-item" href="#"><i class="mdi mdi-block-helper mr-2 text-muted font-18 vertical-middle"></i>Desactivar</a>
                                                 <a class="dropdown-item" href="#"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Eliminar</a>
                                                 
@@ -249,6 +249,136 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Cancelar</button>
                                         <button type="submit" class="btn btn-success waves-effect waves-light">Guardar</button>
+                                    </div>
+
+                                    <?php
+                                        $crearUsuario = new ControladorUsuarios();
+                                        $crearUsuario -> ctrCrearUsuario();
+                                    ?>
+
+                                    </form>
+                                    
+                                </div>
+                            </div>
+            </div><!-- /.modal -->
+
+            <!-- MODAL EDITAR USUARIO --> 
+
+            <div id="modalEditarUsuario" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <form role="form" method="post" enctype="multipart/form-data">
+                                    <div class="modal-header bg-success">
+                                        <h4 class="modal-title text-light ">Ediar Usuario</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    </div>
+                                    <div class="modal-body p-4">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="field-3" class="control-label">Nombres</label>
+                                                    <input type="text" class="form-control" name="txtNombresEdit" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="field-1" class="control-label">Apellido Paterno</label>
+                                                    <input type="text" class="form-control" name="txtApaternoEdit" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="field-2" class="control-label">Apellido Materno</label>
+                                                    <input type="text" class="form-control" name="txtAmaternoEdit" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="field-3" class="control-label">Direccion</label>
+                                                    <input type="text" class="form-control"name="txtDireccionEdit" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="field-4" class="control-label">Dni</label>
+                                                    <input type="text" class="form-control" name="txtDniEdit" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="field-5" class="control-label">Celular</label>
+                                                    <input type="text" class="form-control" name="txtCelularEdit" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="field-6" class="control-label">Fecha Ingreso</label>
+                                                    <input type="date" class="form-control" name="txtFechaEdit"  >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="field-1" class="control-label">Usuario</label>
+                                                    <input type="text" class="form-control" name="txtUsuarioEdit" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="field-2" class="control-label">Password</label>
+                                                    <input type="password" class="form-control" name="txtPassEdit" placeholder="Ingrese nuevo Pass">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="field-3" class="control-label">Correo</label>
+                                                    <input type="email" class="form-control" name="txtCorreoEdit" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group"> 
+                                                <label for="field-3" class="control-label">Tipo Usuario</label>                                                       
+                                                <select class="form-control" name="txtTipoEdit" data-toggle="select2">
+                                                <option id="tipoEdit"></option>                                            
+                                                <option value="1">Administrador</option>
+                                                <option value="2">Vendedor</option>
+                                                <option value="3">Panadero</option>   
+                                                </select>                                             
+                                                </div>                                                        
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">  
+                                                
+                                                <div class="form-group">
+                                                    <label for="field-1" class="control-label">Foto de Perfil</label>
+                                                    <input type="file" name="nuevaFotoEdit" class="nuevaFoto" >
+                                                    <p class="text-muted font-13 m-b-30">
+                                                        Peso Maximo de la foto 2MB
+                                                    </p>
+                                                    <img src="vistas/public/assets/images/users/user-anonimo.png" alt="" class="img-thumbnail avatar-xl previsualizar">
+                                                </div>                                                
+                                    
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-success waves-effect waves-light">Modificar Usuario</button>
                                     </div>
 
                                     <?php

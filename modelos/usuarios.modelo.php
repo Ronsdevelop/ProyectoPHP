@@ -37,7 +37,7 @@
         $stmt->bindParam(":direccion",$datos["direccion"],PDO::PARAM_STR);
         $stmt->bindParam(":nCelular",$datos["nCelular"],PDO::PARAM_STR);
         $stmt->bindParam(":fIngreso",$datos["fIngreso"],PDO::PARAM_STR);
-        $stmt->bindParam(":avatar",$datos["ruta"],PDO::PARAM_STR);
+        $stmt->bindParam(":avatar",$datos["avatar"],PDO::PARAM_STR);
         $stmt->bindParam(":user",$datos["user"],PDO::PARAM_STR);
         $stmt->bindParam(":pass",$datos["pass"],PDO::PARAM_STR);
         $stmt->bindParam(":email",$datos["email"],PDO::PARAM_STR);
