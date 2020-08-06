@@ -14,6 +14,7 @@
                    if ($respuesta["user"]== $_POST["ingUsuario"] && $respuesta["pass"]==$_POST["ingPassword"]) {
                        $_SESSION["iniciarSesion"]="ok";
                        $_SESSION["nombre"]=$respuesta["nombre"]." ".$respuesta["aPaterno"];
+                       $_SESSION["avatar"]=$respuesta["avatar"];
                     
                        echo '<script>
                                 window.location = "inicio";                      
@@ -40,6 +41,39 @@
 
             if(isset($_POST["txtNombres"])) {
                 if (preg_match('/^[a-zA-Z0-9ñÑáíóúÁÉÍÓÚ ]+$/',$_POST["txtNombres"]) && preg_match('/^[a-zA-Z0-9]+$/',$_POST["txtUsuario"]) && preg_match('/^[a-zA-Z0-9]+$/',$_POST["txtPass"])) {
+                   /* ====================================== 
+                   VALIDAR FOTO
+                   ====================================== */
+                   $ruta ="";
+
+                    if (isset($_FILES["nuevaFoto"]["tmp_name"])) {
+                        list($ancho,$alto)=getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
+                        $nuevoAncho = 500;
+                        $nuevoAlto = 500;
+                        /* ----- ----- CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO ----- ----- */
+                        $directorio = "vistas/public/img/usuarios/".$_POST["txtUsuario"];
+                        mkdir($directorio,0755);
+                        /* ------------------------- */
+                        /* DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP */
+                        /* ------------------------- */
+                        if ($_FILES["nuevaFoto"]["type"]== "image/jpeg") {
+                           /* ====================================== 
+                           GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+                           ====================================== */
+                           $aleatorio = mt_rand(100,999);
+                           $ruta = "vistas/public/img/usuarios/".$_POST["txtUsuario"]."/".$aleatorio.".jpeg";
+                           $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
+                           $destino = imagecreatetruecolor($nuevoAncho,$nuevoAlto);
+                           //imagecopyresized(dst_image,src_image,dst_x,dst_y,src_x,src_y,dst_w,dst_h,src_w,src_h);
+                           imagecopyresized($destino,$origen,0,0,0,0,$nuevoAncho,$nuevoAlto,$ancho,$alto);
+                           imagejpeg($destino,$ruta);
+                            
+                        }
+
+                        
+                    }
+
+
                     $tabla = "colaborador";
                     $datos = array(
                             "nombre"=>$_POST["txtNombres"],
@@ -47,6 +81,7 @@
                             "aMaterno"=>$_POST["txtAmaterno"],
                             "dni"=>$_POST["txtDni"],
                             "direccion"=>$_POST["txtDireccion"],
+                            "avatar"=>$ruta,
                             "nCelular"=>$_POST["txtCelular"],
                             "fIngreso"=>$_POST["txtFecha"],
                             "user"=>$_POST["txtUsuario"],

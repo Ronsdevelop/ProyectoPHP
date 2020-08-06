@@ -70,7 +70,7 @@
                                     </td>
                                     <td>
                                         <a href="javascript: void(0);">
-                                            <img src="vistas/public/assets/images/users/user-anonimo.png" alt="contact-img" title="contact-img" class="rounded-circle avatar-xs" />
+                                            <img src="'.$value["avatar"].'" alt="contact-img" title="contact-img" class="rounded-circle avatar-xs" />
                                         </a>
                                     </td>
     
@@ -235,11 +235,11 @@
                                                 
                                                 <div class="form-group">
                                                     <label for="field-1" class="control-label">Foto de Perfil</label>
-                                                    <input type="file" name="file" >
+                                                    <input type="file" name="nuevaFoto" class="nuevaFoto" >
                                                     <p class="text-muted font-13 m-b-30">
-                                                        Peso Maximo de la foto 200 mb
+                                                        Peso Maximo de la foto 2MB
                                                     </p>
-                                                    <img src="vistas/public/assets/images/users/user-anonimo.png" alt="" class="img-thumbnail avatar-xl">
+                                                    <img src="vistas/public/assets/images/users/user-anonimo.png" alt="" class="img-thumbnail avatar-xl previsualizar">
                                                 </div>                                                
                                     
                                             </div>

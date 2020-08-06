@@ -98,7 +98,12 @@
 
       <li class="dropdown notification-list">
           <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-              <img src="vistas/public/assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
+          <?php
+           if ($_SESSION['avatar'] != "") {
+              echo '<img src="'.$_SESSION['avatar'].'" alt="user-image" class="rounded-circle">';
+           } 
+          ?>
+              
               <span class="pro-user-name ml-1">
                   <?php echo $_SESSION["nombre"];?> <i class="mdi mdi-chevron-down"></i>                  
                   
@@ -108,7 +113,7 @@
               <!-- item-->
               <div class="dropdown-item noti-title">
                   <h5 class="m-0 text-white">
-                      ADMINISTRADOR
+                      Bienvenido!
                   </h5>
               </div>
 

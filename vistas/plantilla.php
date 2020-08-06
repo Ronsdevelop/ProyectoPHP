@@ -94,7 +94,9 @@
     <script src="vistas/public/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
  
     <!-- Datatables init -->
+    <script src="vistas/js/usuarios.js"></script>
     <script src="vistas/js/plantilla.js"></script>
+    
 
      
 
