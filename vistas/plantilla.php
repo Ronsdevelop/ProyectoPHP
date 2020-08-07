@@ -100,8 +100,6 @@
 
      
 
-     <script src="vistas/public/assets/libs/select2/select2.min.js"></script>
-     <script src="vistas/public/assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
     <!-- Init js-->
     
  

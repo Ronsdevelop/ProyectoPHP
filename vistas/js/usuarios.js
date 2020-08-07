@@ -4,8 +4,6 @@
 
 $(".nuevaFoto").change(function() {
      let imagen = this.files[0];
-     console.log("imagen",imagen);
-
      /* ------------------------- */
      /* VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG */
      /* ------------------------- */
@@ -39,3 +37,39 @@ $(".nuevaFoto").change(function() {
 
     
 })
+
+/* ------------------------- */
+/* FUNCION PARA ASIGNAR LOS DATOS A CADA ELEMENTO DEL MODAL EDITAR USURAIO*/
+/* ------------------------- */
+
+function cargarDatos(datos) {
+    document.getElementById("txtNombresEdit").value = datos["nombre"];
+    document.getElementById("txtApaternoEdit").value = datos["aPaterno"];
+    document.getElementById("txtAmaternoEdit").value = datos["aMaterno"];
+    document.getElementById("txtDireccionEdit").value = datos["direccion"];
+    document.getElementById("txtDniEdit").value = datos["dni"];
+    document.getElementById("txtCelularEdit").value = datos["nCelular"];
+    document.getElementById("txtFechaEdit").value = datos["fIngreso"];
+    document.getElementById("txtUsuariosEdit").value = datos["user"];
+    document.getElementById("txtCorreoEdit").value = datos["email"]; 
+    document.getElementById("previsualizarEdit").setAttribute("src",datos["avatar"]); 
+}
+/* ------------------------- */
+/* TRAENDO DATOS MEDIANTE FETCH */
+/* ------------------------- */
+
+ 
+ function editUser(cod) {
+     const data = new FormData();
+     data.append('codigUser',cod)
+ 
+  let url = "ajax/usuarios.ajax.php";
+ 
+  fetch(url,{
+      method:'POST',
+      body: data
+
+  }).then(resp=> resp.json())
+  .then(response =>cargarDatos(response));
+ }
+

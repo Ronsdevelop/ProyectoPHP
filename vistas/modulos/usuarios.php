@@ -96,9 +96,9 @@
                                         <div class="btn-group dropdown">
                                             <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-secondary btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEditarUsuario" ><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Editar</a>
-                                                <a class="dropdown-item" href="#"><i class="mdi mdi-block-helper mr-2 text-muted font-18 vertical-middle"></i>Desactivar</a>
-                                                <a class="dropdown-item" href="#"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Eliminar</a>
+                                                <button class="dropdown-item " onClick="editUser('.$value["colaborador_id"].')"  data-toggle="modal" data-target="#modalEditarUsuario" ><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Editar</button>
+                                                <button class="dropdown-item" ><i class="mdi mdi-block-helper mr-2 text-muted font-18 vertical-middle"></i>Desactivar</button>
+                                                <button class="dropdown-item" ><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Eliminar</button>
                                                 
                                             </div>
                                         </div>
@@ -278,7 +278,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="field-3" class="control-label">Nombres</label>
-                                                    <input type="text" class="form-control" name="txtNombresEdit" value="">
+                                                    <input type="text" class="form-control" name="txtNombresEdit" id="txtNombresEdit" >
                                                 </div>
                                             </div>
                                         </div>
@@ -286,13 +286,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="field-1" class="control-label">Apellido Paterno</label>
-                                                    <input type="text" class="form-control" name="txtApaternoEdit" value="">
+                                                    <input type="text" class="form-control" name="txtApaternoEdit" id="txtApaternoEdit" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="field-2" class="control-label">Apellido Materno</label>
-                                                    <input type="text" class="form-control" name="txtAmaternoEdit" value="">
+                                                    <input type="text" class="form-control" name="txtAmaternoEdit" id="txtAmaternoEdit" >
                                                 </div>
                                             </div>
                                         </div>
@@ -300,7 +300,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="field-3" class="control-label">Direccion</label>
-                                                    <input type="text" class="form-control"name="txtDireccionEdit" value="">
+                                                    <input type="text" class="form-control"name="txtDireccionEdit"  id="txtDireccionEdit">
                                                 </div>
                                             </div>
                                         </div>
@@ -308,19 +308,19 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="field-4" class="control-label">Dni</label>
-                                                    <input type="text" class="form-control" name="txtDniEdit" value="">
+                                                    <input type="text" class="form-control" name="txtDniEdit"  id="txtDniEdit">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="field-5" class="control-label">Celular</label>
-                                                    <input type="text" class="form-control" name="txtCelularEdit" value="">
+                                                    <input type="text" class="form-control" name="txtCelularEdit" id="txtCelularEdit">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="field-6" class="control-label">Fecha Ingreso</label>
-                                                    <input type="date" class="form-control" name="txtFechaEdit"  >
+                                                    <input type="date" class="form-control" name="txtFechaEdit" id="txtFechaEdit"  >
                                                 </div>
                                             </div>
                                         </div>
@@ -328,7 +328,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="field-1" class="control-label">Usuario</label>
-                                                    <input type="text" class="form-control" name="txtUsuarioEdit" value="">
+                                                    <input type="text" class="form-control" name="txtUsuarioEdit" id="txtUsuariosEdit">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -342,7 +342,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="field-3" class="control-label">Correo</label>
-                                                    <input type="email" class="form-control" name="txtCorreoEdit" value="">
+                                                    <input type="email" class="form-control" name="txtCorreoEdit" id="txtCorreoEdit">
                                                 </div>
                                             </div>
                                         </div>
@@ -369,7 +369,7 @@
                                                     <p class="text-muted font-13 m-b-30">
                                                         Peso Maximo de la foto 2MB
                                                     </p>
-                                                    <img src="vistas/public/assets/images/users/user-anonimo.png" alt="" class="img-thumbnail avatar-xl previsualizar">
+                                                    <img src="vistas/public/assets/images/users/user-anonimo.png" alt="" id="previsualizarEdit" class="img-thumbnail avatar-xl previsualizar">
                                                 </div>                                                
                                     
                                             </div>

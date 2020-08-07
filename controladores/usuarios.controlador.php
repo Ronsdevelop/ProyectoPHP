@@ -10,7 +10,7 @@
                    $valor = $_POST["ingUsuario"];
 
                    $respuesta = ModeloUsuario::MdlMostrarUsuarios($tabla,$item,$valor);
-                 
+      
                    
                    if ($respuesta["user"]== $_POST["ingUsuario"] && password_verify($_POST["ingPassword"],$respuesta["pass"])) {
                        $_SESSION["iniciarSesion"]="ok";

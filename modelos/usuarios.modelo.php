@@ -1,5 +1,6 @@
 <?php
-    require_once "Conexion.php";
+    require_once "Conexion.php"; 
+
     class ModeloUsuario{
 
         /* ----- MOstrar Usuarios ----- */
