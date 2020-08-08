@@ -30,16 +30,16 @@
         <link href="vistas/public/assets/css/app.min.css" rel="stylesheet" type="text/css" />
     
 
-    </head>
+    </head>  
 
-    <body>    
-  
         <?php 
         if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"]== "ok") {   
   
         /* ----- Incio de la pagina o wrapper----- */
 
-        echo '<div id="wrapper">';
+        echo '
+        <body>
+        <div id="wrapper">';
 
         /* ----- ----- CABEZOTE ----- ----- */
             include "modulos/cabezote.php";
