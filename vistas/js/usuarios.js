@@ -52,7 +52,11 @@ function cargarDatos(datos) {
     document.getElementById("txtFechaEdit").value = datos["fIngreso"];
     document.getElementById("txtUsuariosEdit").value = datos["user"];
     document.getElementById("txtCorreoEdit").value = datos["email"]; 
-    document.getElementById("previsualizarEdit").setAttribute("src",datos["avatar"]); 
+    document.getElementById("selecTCargo").selectedIndex = datos["cargo_id"];
+    if (datos["avatar"] != "") {
+        document.getElementById("previsualizarEdit").setAttribute("src",datos["avatar"]);   
+    } 
+     
 }
 /* ------------------------- */
 /* TRAENDO DATOS MEDIANTE FETCH */

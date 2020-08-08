@@ -216,15 +216,20 @@
                                                 </div>
                                             </div>
                                         </div>
+                                      
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group"> 
                                                 <label for="field-3" class="control-label">Tipo Usuario</label>                                                       
                                                 <select class="form-control" name="txtTipo" data-toggle="select2">
-                                                <option>Seleciona</option>                                            
-                                                <option value="1">Administrador</option>
-                                                <option value="2">Vendedor</option>
-                                                <option value="3">Panadero</option>   
+                                                <option>Seleciona</option>  
+                                                <?php
+                                                $cargos = ControladorUsuarios::crtMostrarCargos($item,$valor);
+                                                foreach ($cargos as $key => $value) {
+                                                    echo'<option value="'.$value["cargo_id"].'">'.$value["cargo"].'</option>';
+                                                         }
+                                                ?>
+                                                 
                                                 </select>                                             
                                                 </div>                                                        
                                             </div>
@@ -350,11 +355,16 @@
                                             <div class="col-md-12">
                                                 <div class="form-group"> 
                                                 <label for="field-3" class="control-label">Tipo Usuario</label>                                                       
-                                                <select class="form-control" name="txtTipoEdit" data-toggle="select2">
-                                                <option id="tipoEdit"></option>                                            
-                                                <option value="1">Administrador</option>
-                                                <option value="2">Vendedor</option>
-                                                <option value="3">Panadero</option>   
+                                                <select class="form-control" name="txtTipoEdit" id="selecTCargo" data-toggle="select2">                                                                                          
+                                                <option>Seleciona</option>  
+                                                <?php
+                                                $cargos = ControladorUsuarios::crtMostrarCargos($item,$valor);
+                                                foreach ($cargos as $key => $value) {
+                                                    echo'<option value="'.$value["cargo_id"].'">'.$value["cargo"].'</option>';
+                                                         }
+                                                ?>
+                                                 
+                                                </select>       
                                                 </select>                                             
                                                 </div>                                                        
                                             </div>
