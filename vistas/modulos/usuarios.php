@@ -275,7 +275,7 @@
 
                                     <form role="form" method="post" enctype="multipart/form-data">
                                     <div class="modal-header bg-success">
-                                        <h4 class="modal-title text-light ">Ediar Usuario</h4>
+                                        <h4 class="modal-title text-light ">Editar Usuario</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
                                     <div class="modal-body p-4">
@@ -333,13 +333,14 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="field-1" class="control-label">Usuario</label>
-                                                    <input type="text" class="form-control" name="txtUsuarioEdit" id="txtUsuariosEdit">
+                                                    <input type="text" class="form-control" name="txtUsuarioEdit" id="txtUsuariosEdit" readOnly>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="field-2" class="control-label">Password</label>
                                                     <input type="password" class="form-control" name="txtPassEdit" placeholder="Ingrese nuevo Pass">
+                                                    <input type="hidden" name="passwordActual" id="passwordActual">
                                                 </div>
                                             </div>
                                         </div>
@@ -376,6 +377,7 @@
                                                 <div class="form-group">
                                                     <label for="field-1" class="control-label">Foto de Perfil</label>
                                                     <input type="file" name="nuevaFotoEdit" class="nuevaFoto" >
+                                                    <input type="hidden" name="fotoSinEditar" id="fotoSinEditar" >
                                                     <p class="text-muted font-13 m-b-30">
                                                         Peso Maximo de la foto 2MB
                                                     </p>
@@ -392,8 +394,8 @@
                                     </div>
 
                                     <?php
-                                        $crearUsuario = new ControladorUsuarios();
-                                        $crearUsuario -> ctrCrearUsuario();
+                                        $editarUsuario = new ControladorUsuarios();
+                                        $editarUsuario -> ctrEditarUsuario();
                                     ?>
 
                                     </form>

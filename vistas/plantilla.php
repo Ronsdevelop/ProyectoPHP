@@ -1,14 +1,12 @@
 <?php
- session_start(); 
- 
-
+ session_start();
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="utf-8" />
-        <title>Plantilla - Panaderia Leos</title>
+        <title>Panaderia Leos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Sistema de Gestion para la Panaderia Leos" name="Descripcion" />
         <meta content="Ronsdevelop" name="Autor" />

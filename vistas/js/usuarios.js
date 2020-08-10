@@ -51,6 +51,8 @@ function cargarDatos(datos) {
     document.getElementById("txtCelularEdit").value = datos["nCelular"];
     document.getElementById("txtFechaEdit").value = datos["fIngreso"];
     document.getElementById("txtUsuariosEdit").value = datos["user"];
+    document.getElementById("passwordActual").value = datos["pass"];
+    document.getElementById("fotoSinEditar").value = datos["avatar"];
     document.getElementById("txtCorreoEdit").value = datos["email"]; 
     document.getElementById("selecTCargo").selectedIndex = datos["cargo_id"];
     if (datos["avatar"] != "") {

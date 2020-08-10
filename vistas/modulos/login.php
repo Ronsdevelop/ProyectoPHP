@@ -36,7 +36,7 @@
                             </div>
 
                             <div class="form-group mb-0 text-center">
-                                <button class="btn btn-danger btn-block" type="submit"> ACCEDER </button>
+                                <button class="btn btn-danger btn-block" style="background:#59120E; border:#59120E;" type="submit"> ACCEDER </button>
                             </div>
 
                             <?php
