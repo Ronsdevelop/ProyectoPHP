@@ -13,13 +13,19 @@
                 
                             
                             if ($respuesta["user"]== $_POST["ingUsuario"] && password_verify($_POST["ingPassword"],$respuesta["pass"])) {
-                                $_SESSION["iniciarSesion"]="ok";
-                                $_SESSION["nombre"]=$respuesta["nombre"]." ".$respuesta["aPaterno"];
-                                $_SESSION["avatar"]=$respuesta["avatar"];
-                                
-                                echo '<script>
-                                            window.location = "inicio";                      
-                                </script>';
+
+                                if ($respuesta["estado"]==1) {
+                                    $_SESSION["iniciarSesion"]="ok";
+                                    $_SESSION["nombre"]=$respuesta["nombre"]." ".$respuesta["aPaterno"];
+                                    $_SESSION["avatar"]=$respuesta["avatar"];
+                                    
+                                    echo '<script>
+                                                window.location = "inicio";                      
+                                    </script>';
+                                }else {
+                                    echo'<br><div class="alert alert-danger" role="alert" ><i class="mdi mdi-block-helper mr-2"></i>No puedes Acceder tú usuario todavia no está activado!!</div>';
+                                }
+                               
 
                                 
                             

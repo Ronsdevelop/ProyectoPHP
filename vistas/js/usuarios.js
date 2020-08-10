@@ -65,9 +65,9 @@ function cargarDatos(datos) {
 /* ------------------------- */
 
  
- function editUser(cod) {
+ function editUser(codUser) {
      const data = new FormData();
-     data.append('codigUser',cod)
+     data.append('codigUser',codUser)
  
   let url = "ajax/usuarios.ajax.php";
  
@@ -78,4 +78,40 @@ function cargarDatos(datos) {
   }).then(resp=> resp.json())
   .then(response =>cargarDatos(response));
  }
+/* ------------------------- */
+/* CAMBIANDO EL ESTADO DE LOS USUARIOS */
+/* ------------------------- */
+
+
+function estadoUser(idUser,estadoUsuario) {
+
+    if (estadoUsuario==0) {
+        estadoUsuario = 1;
+        estado = "Activo";
+        clase = "badge badge-success classEstado";
+    }else{
+        estadoUsuario = 0;
+        estado = "Inactivo";
+        clase ="badge badge-danger classEstado";
+    } 
+
+
+    const data = new FormData();
+    data.append('codigoUser',idUser);
+    data.append('estadoUser',estadoUsuario);       
+
+ 
+    let url = "ajax/usuarios.ajax.php";
+    
+    fetch(url,{
+        method:'POST',
+        body: data
+
+    }).then(resp=> resp.text())
+    .then( )         
+
+    
+}
+
+
 
