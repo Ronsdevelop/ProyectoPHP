@@ -30,6 +30,32 @@
       $respuesta = ModeloUsuario::MdlActualizarUsuario($tabla,$item1,$valor1,$item2,$valor2);
       echo $respuesta;
     }
+
+      /* ----- VALIDAR PARA NO REPETIR USURIO ----- */
+
+      public $validarUsuario;
+      public function ajaxValidarUsuario(){
+        $item = "user";
+        $valor = $this-> validarUsuario;
+        $respuesta = ControladorUsuarios::ctrMostrarUsuarios($item,$valor);
+        echo json_encode($respuesta);
+      }
+
+      /* ----- ELIMINAR USUARIO ----- */
+
+      public $codigoEliminar;
+      public $fotoUser;
+      public $user;
+      public function ajaxEliminarUsuario(){
+        $tabla = "colaborador";
+        $item = "colaborador_id";
+        $valor = $this->codigoEliminar;
+        $usuario = $this->user;
+        $fotousario = $this->fotoUser;
+ 
+        $respuesta = ControladorUsuarios::ctrEliminarUsuario($tabla,$item,$valor,$fotousario,$usuario);
+        echo  json_encode($respuesta);
+      }
  
   }
 
@@ -53,6 +79,21 @@
      
   }
 
-   
- 
+  /* ----- VALIDAR PARA NO REPETIR USURIO ----- */
+
+  if (isset($_POST["validarUsuario"])) {
+    $validarUsuario = new AjaxUsuarios();
+    $validarUsuario -> validarUsuario = $_POST["validarUsuario"]; 
+    $validarUsuario -> ajaxValidarUsuario();
+     
+  }
+
+  /* ----- ELIMINAR USUARIO ----- */   
+ if (isset($_POST["codUsuario"])) {
+    $codigoEliminar = new ajaxUsuarios();
+    $codigoEliminar -> codigoEliminar = $_POST["codUsuario"];
+    $codigoEliminar -> user = $_POST["user"];
+    $codigoEliminar -> fotoUser = $_POST["fotoUser"];
+    $codigoEliminar -> ajaxEliminarUsuario();
+ }
 ?>

@@ -30,7 +30,7 @@
     /* ----- REGISTRO DE USUARIO ----- */
     static public function MdlIngresarUsuario($tabla, $datos){
 
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre,aPaterno,aMaterno,dni,direccion,nCelular,fIngreso,avatar,user,pass,email,cargo_id)values(:nombre,:aPaterno,:aMaterno,:dni,:direccion,:nCelular,:fIngreso,:avatar,:user,:pass,:email,:cargo_id)");
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre,aPaterno,aMaterno,dni,direccion,nCelular,fIngreso,avatar,user,pass,email,cargo_id,estado)values(:nombre,:aPaterno,:aMaterno,:dni,:direccion,:nCelular,:fIngreso,:avatar,:user,:pass,:email,:cargo_id,:estado)");
         $stmt->bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
         $stmt->bindParam(":aPaterno",$datos["aPaterno"],PDO::PARAM_STR);
         $stmt->bindParam(":aMaterno",$datos["aMaterno"],PDO::PARAM_STR);
@@ -43,6 +43,7 @@
         $stmt->bindParam(":pass",$datos["pass"],PDO::PARAM_STR);
         $stmt->bindParam(":email",$datos["email"],PDO::PARAM_STR);
         $stmt->bindParam(":cargo_id",$datos["cargo_id"],PDO::PARAM_STR);
+        $stmt->bindParam(":estado",$datos["estado"],PDO::PARAM_STR);
 
         if ($stmt->execute()) {
            return"ok";
@@ -91,6 +92,19 @@
              return "error";
          }
          $stmt -> close();
+         $stmt = null;
+
+    }
+
+    static public function MdlEliminaUsuario($tabla,$item,$valor){
+        $stmt = Conexion::conectar()-> prepare("DELETE FROM $tabla WHERE $item=:$item");
+        $stmt -> bindParam(":".$item,$valor, PDO::PARAM_STR);
+        if ($stmt ->execute()) {
+            return "ok";
+        }else{
+            return"error";
+        }
+        $stmt -> close();
          $stmt = null;
 
     }

@@ -48,6 +48,7 @@
                                 <th>Dni</th>
                                 <th>Dirección</th>
                                 <th>Usuario</th> 
+                                <th>Ultimo Acceso</th> 
                                 <th>Estado</th>
                                 <th>Celular</th>  
                                 <th>Acciones</th>                                    
@@ -83,6 +84,9 @@
                                     <td>
                                     '.$value["user"].'
                                     </td>
+                                    <td>
+                                    '.$value["ultimoLogeo"].'
+                                    </td>
                                     ';
                                     if($value["estado"]==1) {
                                       echo'  <td>
@@ -111,7 +115,7 @@
                                                     echo'<button class="dropdown-item btn-activar" idUsuario="'.$value["colaborador_id"].'" estadoUsuario="1"><i class="mdi mdi-check-all mr-2 text-muted font-18 vertical-middle"></i>Activar</button>';
                                                 }
                                                 echo'
-                                                <button class="dropdown-item" ><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Eliminar</button>
+                                                <button class="dropdown-item btn-eliminar" idUsuario="'.$value["colaborador_id"].'" usuario="'.$value["user"].'" fotoUser="'.$value["avatar"].'"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Eliminar</button>
                                                 
                                             </div>
                                         </div>
@@ -134,6 +138,7 @@
                                 <th>Dni</th>
                                 <th>Dirección</th>
                                 <th>Usuario</th> 
+                                <th>Ultimo Acceso</th> 
                                 <th>Estado</th>
                                 <th>Celular</th>  
                                 <th>Acciones</th>                                    
@@ -211,7 +216,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="field-1" class="control-label">Usuario</label>
-                                                    <input type="text" class="form-control" name="txtUsuario" placeholder="Usuario">
+                                                    <input type="text" class="form-control" name="txtUsuario" id="txtUsuario" placeholder="Usuario">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">

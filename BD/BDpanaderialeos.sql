@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.1.37-MariaDB : Database - bdpanaderialeos
+MySQL - 5.5.5-10.1.32-MariaDB : Database - bdpanaderialeos
 *********************************************************************
 */
 
@@ -140,11 +140,11 @@ CREATE TABLE `colaborador` (
   PRIMARY KEY (`colaborador_id`),
   KEY `fk_COLABORADOR_CARGO1_idx` (`cargo_id`),
   CONSTRAINT `fk_COLABORADOR_CARGO1` FOREIGN KEY (`cargo_id`) REFERENCES `cargo` (`cargo_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 /*Data for the table `colaborador` */
 
-insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15','vistas/public/img/usuarios/Rony/rony.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,NULL,NULL),(2,'JESUS','RAMOS','GARCIA','46261366','CASTILLA - PIURA','927665353','2019-11-15','vistas/public/img/usuarios/Jess/690.jpeg','Jess','$2y$10$339Gwi4k/ubGkncCfg0i/epaM84CC/QCHqe2iFHN5YJ1d4CCgpvBO','jesus@panaderialeos.com',2,NULL,NULL),(3,'RAUL','CORREA','CUERO','83338383','PIURA - PIURA','984383838','2020-08-09','vistas/public/img/usuarios/Fernando/858.jpeg','Fernando','$2y$10$mN1xirSUpTzqp9LWGB0gdO5rWyleNzcNtHw7VtzgcCzfEo5ZuiBra','fernando@hotmail.com',2,NULL,NULL),(4,'MARTIN','RIVAS','DOLORES','34747473','26 DE OCTUBRE - PIURA','35453663','2020-08-09','vistas/public/img/usuarios/Martin/508.jpeg','Martin','$2y$10$nl5OZis9tBMkAf16GGLCDeFp2P2V3yStXEm32keoyj5SULDHX6f/C','martin@hotmail.com',3,NULL,NULL);
+insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15','vistas/public/img/usuarios/Rony/rony.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-11 14:58:28',1),(36,'JESÃšS','RAMOS','GARCIA','48585858','CASTILLA - PIURA','983763737','2020-08-11','vistas/public/img/usuarios/Jess/211.jpeg','Jess','$2y$10$/Qnkc.8hRpoy62RvpERorOueGXK2/ZN1nbMOM1yoNoJFqWGlDikom','jesus@panaderialeos.com',2,NULL,1);
 
 /*Table structure for table `compras_ingresos` */
 

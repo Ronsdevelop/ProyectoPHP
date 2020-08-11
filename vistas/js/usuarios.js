@@ -116,14 +116,9 @@ function estadoUser(idUser,estadoUsuario) {
 /* ====================================== 
 ACTIVAR USUSARIO
 ====================================== */
+ 
 
-function alertar(resp) {
-     
-    
-    
-}
-
-$(".btn-activar").click(function(){ 
+$(document).on("clik",".btn-activar", function(){ 
     
     let idUsuario = $(this).attr("idUsuario");
     let estadoUsuario = $(this).attr("estadoUsuario");
@@ -157,5 +152,104 @@ $(".btn-activar").click(function(){
     
     );
    
+});
+
+
+/*=====================
+COMPROBAR SI NO ESTA REPETIDO EL USUARIO
+======================*/
+
+function comprobarDatosUser(resp) {
+    if (resp) {
+        $("#txtUsuario").parent().after('<div class="alert alert-danger" role="alert" ><i class="mdi mdi-block-helper mr-2"></i>El usuario ya esta registrado en la base de datos!!</div>');
+        $("#txtUsuario").val("");
+        
+    }
+    
+}
+
+$("#txtUsuario").change(function(){ 
+    $(".alert").remove();
+   let usuario = $(this).val();
+   
+   const datos = new FormData();
+   datos.append('validarUsuario',usuario); 
+   let url = "ajax/usuarios.ajax.php";
+ 
+  fetch(url,{
+      method:'POST',
+      body: datos
+
+  }).then(resp=> resp.json())
+  .then(response => comprobarDatosUser(response));
+    
+    
+});
+
+ 
+
+function confirmarEliminacion(respuesta){ 
+    console.log(respuesta);
+   
+    if (respuesta == "ok"){        
+        Swal.fire({
+            icon:"success",
+            title:"Se Elimino correctamente",
+            showConfirmButton: true,
+            confirmButtonText: "Cerrar"
+        }).then(function(result){
+
+            if(result.value){
+            
+                window.location = "usuarios";
+
+            }
+
+        });
+         
+        
+    }else{
+        Swal.fire(
+            'No se pudo Eliminar!',
+            'El usuario no se a eliminado de la base de datos.',
+            'error'
+          )
+      }
+} 
+ 
+
+$(".btn-eliminar").click(function() { 
+    let codUsuario = $(this).attr("idUsuario");
+    let usuario = $(this).attr("usuario");
+    let userfoto = $(this).attr("fotoUser");
+
+ 
+    const datos = new FormData();
+    datos.append('codUsuario',codUsuario); 
+    datos.append('user',usuario);
+    datos.append('fotoUser',userfoto);
+    const url = "ajax/usuarios.ajax.php";
+
+    Swal.fire({
+        title: 'Seguro que deseas elimar el usuario?',
+        text: "Se eliminara totalmente de la base de datos!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, eliminar!'
+      }).then((result) => { 
+          if (result.value) {
+                fetch(url,{
+                    method:'POST',
+                    body: datos
+        
+                }).then(resp => resp.json())
+                .then(response => confirmarEliminacion(response))
+          }      
+        
+        
+        });
 });
 

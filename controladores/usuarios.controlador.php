@@ -18,10 +18,29 @@
                                     $_SESSION["iniciarSesion"]="ok";
                                     $_SESSION["nombre"]=$respuesta["nombre"]." ".$respuesta["aPaterno"];
                                     $_SESSION["avatar"]=$respuesta["avatar"];
-                                    
-                                    echo '<script>
-                                                window.location = "inicio";                      
-                                    </script>';
+
+                                    /* ----- REGISTRAR FECHA DEL ULTIMO LOGIN ----- */
+                                    date_default_timezone_set("America/Lima");
+
+                                    $fecha = date('y-m-d');
+                                    $hora = date('H:i:s');
+                                    $tabla = "colaborador";
+                                    $fechaActual = $fecha.' '.$hora;
+                                    $item1 = "ultimoLogeo";
+                                    $valor1=$fechaActual;
+                                    $item2="colaborador_id";
+                                    $valor2= $respuesta["colaborador_id"];
+
+                                    $ultimoLogin = ModeloUsuario::MdlActualizarUsuario($tabla,$item1,$valor1,$item2,$valor2);
+                                    if ($ultimoLogin =="ok") {
+                                        
+                                        echo '<script>
+                                        window.location = "inicio";                      
+                                        </script>';
+                                    }
+
+
+
                                 }else {
                                     echo'<br><div class="alert alert-danger" role="alert" ><i class="mdi mdi-block-helper mr-2"></i>No puedes Acceder tú usuario todavia no está activado!!</div>';
                                 }
@@ -111,7 +130,8 @@
                                 "user"=>$_POST["txtUsuario"],
                                 "pass"=>$conEncriptada,
                                 "email"=>$_POST["txtCorreo"],
-                                "cargo_id"=>$_POST["txtTipo"]
+                                "cargo_id"=>$_POST["txtTipo"],
+                                "estado"=>1
                         );
                         $respuesta = ModeloUsuario::MdlIngresarUsuario($tabla,$datos);
                         if ($respuesta =="ok") {
@@ -363,6 +383,20 @@
                     
         
                 }
+            }
+
+            static public function ctrEliminarUsuario($tabla,$item,$valor,$fotousario,$usuario){         
+              
+                $respuesta = ModeloUsuario::MdlEliminaUsuario($tabla,$item,$valor);
+                if ($respuesta != "error") {                  
+                    unlink('../'.$fotousario);
+                    rmdir('../vistas/public/img/usuarios/'.$usuario);                
+                }
+            
+                return $respuesta;
+           
+               
+            
             }
 
     }
