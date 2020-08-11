@@ -86,11 +86,11 @@
                                     ';
                                     if($value["estado"]==1) {
                                       echo'  <td>
-                                      <span class="badge badge-success classEstado" id="estado">Activo</span>
+                                      <span class="badge badge-success classEstado" idUsuario="'.$value["colaborador_id"].'">Activo</span>
                                   </td>';
                                     }else{
                                         echo'  <td>
-                                        <span class="badge badge-danger classEstado" id="estado">Inactivo</span>
+                                        <span class="badge badge-danger classEstado" idUsuario="'.$value["colaborador_id"].'">Inactivo</span>
                                     </td>';  
                                     };
                                     echo'
@@ -106,9 +106,9 @@
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <button class="dropdown-item" onClick="editUser('.$value["colaborador_id"].')"  data-toggle="modal" data-target="#modalEditarUsuario" ><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Editar</button>';
                                                 if ($value['estado']==1) {
-                                                  echo'<button class="dropdown-item" onClick="estadoUser('.$value["colaborador_id"].','.$value["estado"].')" ><i class="mdi mdi-block-helper mr-2 text-muted font-18 vertical-middle"></i>Desactivar</button>';
+                                                  echo'<button class="dropdown-item btn-activar" idUsuario="'.$value["colaborador_id"].'" estadoUsuario="0" ><i class="mdi mdi-block-helper mr-2 text-muted font-18 vertical-middle"></i>Desactivar</button>';
                                                 }else{
-                                                    echo'<button class="dropdown-item" onClick="estadoUser('.$value["colaborador_id"].','.$value["estado"].')" ><i class="mdi mdi-check-all mr-2 text-muted font-18 vertical-middle"></i>Activar</button>';
+                                                    echo'<button class="dropdown-item btn-activar" idUsuario="'.$value["colaborador_id"].'" estadoUsuario="1"><i class="mdi mdi-check-all mr-2 text-muted font-18 vertical-middle"></i>Activar</button>';
                                                 }
                                                 echo'
                                                 <button class="dropdown-item" ><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Eliminar</button>

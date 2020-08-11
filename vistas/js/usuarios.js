@@ -82,7 +82,7 @@ function cargarDatos(datos) {
 /* CAMBIANDO EL ESTADO DE LOS USUARIOS */
 /* ------------------------- */
 
-
+/*
 function estadoUser(idUser,estadoUsuario) {
 
     if (estadoUsuario==0) {
@@ -111,7 +111,51 @@ function estadoUser(idUser,estadoUsuario) {
     .then( )         
 
     
+} */
+
+/* ====================================== 
+ACTIVAR USUSARIO
+====================================== */
+
+function alertar(resp) {
+     
+    
+    
 }
 
+$(".btn-activar").click(function(){ 
+    
+    let idUsuario = $(this).attr("idUsuario");
+    let estadoUsuario = $(this).attr("estadoUsuario");
+     
+    
+    const datos = new FormData();
+    datos.append('activarId',idUsuario);
+    datos.append('activarUsuario',estadoUsuario);
+    let url = "ajax/usuarios.ajax.php";
+ 
+  fetch(url,{
+      method:'POST',
+      body: datos
 
+  }).then(resp=> resp.text())
+  .then(response =>  
+    Swal.fire({
+        icon:"success",
+        title:"!El Usuario se Cambio de Estado",
+        showConfirmButton: true,
+        confirmButtonText: "Cerrar"
+    }).then(function(result){
+
+        if(result.value){
+        
+            window.location = "usuarios";
+
+        }
+
+    })
+    
+    );
+   
+});
 

@@ -14,6 +14,10 @@
 
 
     }
+
+    /* ====================================== 
+    activar usuario
+    ====================================== */
     public $codigUser;
     public $estadoUser;
     public function ajaxActivarUsuario(){
@@ -23,9 +27,10 @@
       $item2 = "colaborador_id";   
       $valor2= $this->codigUser;
 
-      $respuesta = ModeloUsuario::MdlActualizarUsuario($tabla,$item1,$item2,$valor1,$valor2);
+      $respuesta = ModeloUsuario::MdlActualizarUsuario($tabla,$item1,$valor1,$item2,$valor2);
       echo $respuesta;
     }
+ 
   }
 
   /* ----- Editar Usuario ----- */
@@ -36,13 +41,18 @@
     $editar -> ajaxEditarUsuario();
   }
 
-  if (isset($_POST["codigoUser"])) {
-    $activarUser= new AjaxUsuarios();
-    $activarUser -> codigUser = $_POST["codigoUser"];
-    $activarUser -> estadoUser = $_POST["estadoUser"];
+  /* ====================================== 
+  activar usuario
+  ====================================== */
+
+  if (isset($_POST["activarUsuario"])) {
+    $activarUser = new AjaxUsuarios();
+    $activarUser -> codigUser = $_POST["activarId"];
+    $activarUser -> estadoUser = $_POST["activarUsuario"];
     $activarUser -> ajaxActivarUsuario();
      
   }
- 
+
+   
  
 ?>
