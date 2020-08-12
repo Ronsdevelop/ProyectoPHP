@@ -30,14 +30,14 @@
                 <div class="col-12">
                     <div class="card-box">
 
-                    <button type="button" class="btn btn-success width-xl waves-effect waves-light float-right" onClick="abrirModal();" id="btnAbrirModal"><i
+                    <button type="button" class="btn btn-success width-xl waves-effect waves-light float-right" data-toggle="modal" data-target="#con-close-modal"><i
                                         class="mdi mdi-plus-circle mr-1"></i>Agregar Usuario</button>
 
                     
                             
                         <h4 class="mb-4">USUARIOS DEL SISTEMA</h4>
 
-                        <table  class="table table-hover m-0 table-centered dt-responsive nowrap w-100 tablas" id="tablas">   <!--id="tickets-table" data-toggle="modal" data-target="#con-close-modal"-->
+                        <table  class="table table-hover m-0 table-centered dt-responsive nowrap w-100 tablas" id="tablas">   <!--id="tickets-table" -->
                             <thead class="thead-dark">
                             <tr>
                                 <th>
@@ -108,7 +108,7 @@
                                         <div class="btn-group dropdown">
                                             <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-secondary btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <button class="dropdown-item" data-toggle="modal" data-target="#con-close-modal" onClick="editUser('.$value["colaborador_id"].')"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Editar</button>';
+                                                <button class="dropdown-item" onClick="editUser('.$value["colaborador_id"].')"  data-toggle="modal" data-target="#modalEditarUsuario" ><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Editar</button>';
                                                 if ($value['estado']==1) {
                                                   echo'<button class="dropdown-item btn-activar" idUsuario="'.$value["colaborador_id"].'" estadoUsuario="0" ><i class="mdi mdi-block-helper mr-2 text-muted font-18 vertical-middle"></i>Desactivar</button>';
                                                 }else{
@@ -156,7 +156,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
 
-                                    <form role="form" method="post" id="formulario" enctype="multipart/form-data">
+                                    <form role="form" method="post" enctype="multipart/form-data">
                                     <div class="modal-header bg-dark">
                                         <h4 class="modal-title text-light ">Agregar Nuevo Usuario</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -166,7 +166,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="field-3" class="control-label">Nombres</label>
-                                                    <input type="text" class="form-control" name="txtNombres" id="txtNombres" placeholder="Nombres Completos">
+                                                    <input type="text" class="form-control" name="txtNombres" placeholder="Nombres Completos">
                                                 </div>
                                             </div>
                                         </div>
@@ -174,13 +174,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="field-1" class="control-label">Apellido Paterno</label>
-                                                    <input type="text" class="form-control" name="txtApaterno" id="txtApaterno" placeholder="Apellido Paterno">
+                                                    <input type="text" class="form-control" name="txtApaterno" placeholder="Apellido Paterno">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="field-2" class="control-label">Apellido Materno</label>
-                                                    <input type="text" class="form-control" name="txtAmaterno" id="txtAmaterno" placeholder="Apellido Materno">
+                                                    <input type="text" class="form-control" name="txtAmaterno" placeholder="Apellido Materno">
                                                 </div>
                                             </div>
                                         </div>
@@ -188,7 +188,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="field-3" class="control-label">Direccion</label>
-                                                    <input type="text" class="form-control"name="txtDireccion" id="txtDireccion" placeholder="Direccion">
+                                                    <input type="text" class="form-control"name="txtDireccion" placeholder="Direccion">
                                                 </div>
                                             </div>
                                         </div>
@@ -196,19 +196,19 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="field-4" class="control-label">Dni</label>
-                                                    <input type="text" class="form-control" name="txtDni" id="txtDni" placeholder="Dni">
+                                                    <input type="text" class="form-control" name="txtDni" placeholder="Dni">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="field-5" class="control-label">Celular</label>
-                                                    <input type="text" class="form-control" name="txtCelular" id="txtCelular" placeholder="Celular">
+                                                    <input type="text" class="form-control" name="txtCelular" placeholder="Celular">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="field-6" class="control-label">Fecha Ingreso</label>
-                                                    <input type="date" class="form-control" name="txtFecha" id="txtFecha" placeholder="fecha">
+                                                    <input type="date" class="form-control" name="txtFecha" placeholder="fecha">
                                                 </div>
                                             </div>
                                         </div>
@@ -223,7 +223,6 @@
                                                 <div class="form-group">
                                                     <label for="field-2" class="control-label">Password</label>
                                                     <input type="password" class="form-control" name="txtPass" placeholder="Clave">
-                                                    <input type="hidden" name="passwordActual" id="passwordActual">
                                                 </div>
                                             </div>
                                         </div>
@@ -231,7 +230,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="field-3" class="control-label">Correo</label>
-                                                    <input type="email" class="form-control" name="txtCorreo" id="txtCorreo" placeholder="Direccion de email">
+                                                    <input type="email" class="form-control" name="txtCorreo" placeholder="Direccion de email">
                                                 </div>
                                             </div>
                                         </div>
@@ -240,7 +239,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group"> 
                                                 <label for="field-3" class="control-label">Tipo Usuario</label>                                                       
-                                                <select class="form-control" name="txtTipo" id="selecTCargo"  data-toggle="select2">
+                                                <select class="form-control" name="txtTipo" data-toggle="select2">
                                                 <option>Seleciona</option>  
                                                 <?php
                                                 $cargos = ControladorUsuarios::crtMostrarCargos($item,$valor);
@@ -259,12 +258,11 @@
                                                 
                                                 <div class="form-group">
                                                     <label for="field-1" class="control-label">Foto de Perfil</label>
-                                                    <input type="hidden" name="fotoSinEditar" id="fotoSinEditar" >
                                                     <input type="file" name="nuevaFoto" class="nuevaFoto" >
                                                     <p class="text-muted font-13 m-b-30">
                                                         Peso Maximo de la foto 2MB
                                                     </p>
-                                                    <img src="vistas/public/assets/images/users/user-anonimo.png" alt="" id="previsualizar" class="img-thumbnail avatar-xl previsualizar">
+                                                    <img src="vistas/public/assets/images/users/user-anonimo.png" alt="" class="img-thumbnail avatar-xl previsualizar">
                                                 </div>                                                
                                     
                                             </div>

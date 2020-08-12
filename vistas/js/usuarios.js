@@ -43,20 +43,20 @@ $(".nuevaFoto").change(function() {
 /* ------------------------- */
 
 function cargarDatos(datos) {
-    document.getElementById("txtNombresEdit").value = datos["nombre"];
-    document.getElementById("txtApaternoEdit").value = datos["aPaterno"];
-    document.getElementById("txtAmaternoEdit").value = datos["aMaterno"];
-    document.getElementById("txtDireccionEdit").value = datos["direccion"];
-    document.getElementById("txtDniEdit").value = datos["dni"];
-    document.getElementById("txtCelularEdit").value = datos["nCelular"];
-    document.getElementById("txtFechaEdit").value = datos["fIngreso"];
-    document.getElementById("txtUsuariosEdit").value = datos["user"];
+    document.getElementById("txtNombres").value = datos["nombre"];
+    document.getElementById("txtApaterno").value = datos["aPaterno"];
+    document.getElementById("txtAmaterno").value = datos["aMaterno"];
+    document.getElementById("txtDireccion").value = datos["direccion"];
+    document.getElementById("txtDni").value = datos["dni"];
+    document.getElementById("txtCelular").value = datos["nCelular"];
+    document.getElementById("txtFecha").value = datos["fIngreso"];
+    document.getElementById("txtUsuario").value = datos["user"];
     document.getElementById("passwordActual").value = datos["pass"];
     document.getElementById("fotoSinEditar").value = datos["avatar"];
-    document.getElementById("txtCorreoEdit").value = datos["email"]; 
+    document.getElementById("txtCorreo").value = datos["email"]; 
     document.getElementById("selecTCargo").selectedIndex = datos["cargo_id"];
     if (datos["avatar"] != "") {
-        document.getElementById("previsualizarEdit").setAttribute("src",datos["avatar"]);   
+        document.getElementById("previsualizar").setAttribute("src",datos["avatar"]);   
     } 
      
 }
@@ -116,6 +116,14 @@ function estadoUser(idUser,estadoUsuario) {
 /* ====================================== 
 ACTIVAR USUSARIO
 ====================================== */
+function abrirModal() {
+    document.getElementById("formulario").reset();
+    document.getElementById("previsualizar").setAttribute("src","vistas/public/assets/images/users/user-anonimo.png"); 
+    $("#con-close-modal").modal("show");
+    
+}
+
+ 
  
 
 $(document).on("click",".btn-activar", function(){ 
