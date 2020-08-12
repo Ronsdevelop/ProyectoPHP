@@ -118,7 +118,7 @@ ACTIVAR USUSARIO
 ====================================== */
  
 
-$(document).on("clik",".btn-activar", function(){ 
+$(document).on("click",".btn-activar", function(){ 
     
     let idUsuario = $(this).attr("idUsuario");
     let estadoUsuario = $(this).attr("estadoUsuario");
@@ -218,7 +218,9 @@ function confirmarEliminacion(respuesta){
 } 
  
 
-$(".btn-eliminar").click(function() { 
+    
+ 
+$(document).on("click",".btn-eliminar", function () {
     let codUsuario = $(this).attr("idUsuario");
     let usuario = $(this).attr("usuario");
     let userfoto = $(this).attr("fotoUser");
