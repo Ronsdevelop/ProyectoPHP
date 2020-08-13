@@ -60,8 +60,7 @@
             /* ------------------------- */
             /* REGISTRO DE USUARIO */
             /* ------------------------- */
-            static public function ctrCrearUsuario(){
-
+            static public function ctrCrearUsuario(){             
         
             
 

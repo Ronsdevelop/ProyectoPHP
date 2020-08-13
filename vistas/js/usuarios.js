@@ -66,22 +66,28 @@ function cargarDatos(datos) {
 
  
  function editUser(codUser) {
+    let opcion = 2;
      let cabeceraModal = document.getElementById("cabeceraM");
      cabeceraModal.classList.remove("bg-dark");
      cabeceraModal.classList.add("bg-success");
     document.getElementById("tituloModal").innerText = "Editar Usuario";
+    document.getElementById("txtUsuario").readOnly = true;
     document.getElementById("btnEditar").innerText = "Actualizar Usuario";
+    const dataAgregar = new FormData();
+  
+    dataAgregar.append("txtNombres",'hola peru')
      const data = new FormData();
-     data.append('codigUser',codUser)
+     data.append('codigUser',codUser);
+     console.log(data['codigUser']);
  
-  let url = "ajax/usuarios.ajax.php";
+  let url = "controladores/prueba.php";
  
   fetch(url,{
       method:'POST',
-      body: data
+      body: dataAgregar
 
-  }).then(resp=> resp.json())
-  .then(response =>cargarDatos(response));
+  }).then(resp=> resp.text())
+  .then(response =>console.log(response));
  }
 /* ------------------------- */
 /* CAMBIANDO EL ESTADO DE LOS USUARIOS */
@@ -122,13 +128,40 @@ function estadoUser(idUser,estadoUsuario) {
 ACTIVAR USUSARIO
 ====================================== */
 function abrirModal() {
+    let opcion = 1;
     let cabeceraModal = document.getElementById("cabeceraM");
      cabeceraModal.classList.remove("bg-success");
      cabeceraModal.classList.add("bg-dark");
      document.getElementById("tituloModal").innerText = "Agregar Nuevo Usuario";
+     document.getElementById("txtUsuario").readOnly = false;
      document.getElementById("btnEditar").innerText = "Guardar Usuario";
     document.getElementById("formulario").reset();   
-    document.getElementById("previsualizar").setAttribute("src","vistas/public/assets/images/users/user-anonimo.png"); 
+    document.getElementById("previsualizar").setAttribute("src","vistas/public/assets/images/users/user-anonimo.png");
+    
+    const dataAgregar = new FormData(document.getElementById("formulario"));
+    console.log(dataAgregar);
+      /*let ulr = 'controladores/prueba.php';
+    fetch(url,{
+        method:'POST',
+        data: dataAgregar,
+    }).then(resp=> resp.text())
+    .then(response =>
+  
+      "nombre"=>$_POST["txtNombres"],
+                    "aPaterno"=>$_POST["txtApaterno"],
+                    "aMaterno"=>$_POST["txtAmaterno"],
+                    "dni"=>$_POST["txtDni"],
+                    "direccion"=>$_POST["txtDireccion"],
+                    "avatar"=>$ruta,
+                    "nCelular"=>$_POST["txtCelular"],
+                    "fIngreso"=>$_POST["txtFecha"],
+                    "user"=>$_POST["txtUsuario"],
+                    "pass"=>$conEncriptada,
+                    "email"=>$_POST["txtCorreo"],
+                    "cargo_id"=>$_POST["txtTipo"],
+
+    */
+    
     
     $("#con-close-modal").modal("show");
     
