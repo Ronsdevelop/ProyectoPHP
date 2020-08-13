@@ -66,6 +66,11 @@ function cargarDatos(datos) {
 
  
  function editUser(codUser) {
+     let cabeceraModal = document.getElementById("cabeceraM");
+     cabeceraModal.classList.remove("bg-dark");
+     cabeceraModal.classList.add("bg-success");
+    document.getElementById("tituloModal").innerText = "Editar Usuario";
+    document.getElementById("btnEditar").innerText = "Actualizar Usuario";
      const data = new FormData();
      data.append('codigUser',codUser)
  
@@ -117,8 +122,14 @@ function estadoUser(idUser,estadoUsuario) {
 ACTIVAR USUSARIO
 ====================================== */
 function abrirModal() {
-    document.getElementById("formulario").reset();
+    let cabeceraModal = document.getElementById("cabeceraM");
+     cabeceraModal.classList.remove("bg-success");
+     cabeceraModal.classList.add("bg-dark");
+     document.getElementById("tituloModal").innerText = "Agregar Nuevo Usuario";
+     document.getElementById("btnEditar").innerText = "Guardar Usuario";
+    document.getElementById("formulario").reset();   
     document.getElementById("previsualizar").setAttribute("src","vistas/public/assets/images/users/user-anonimo.png"); 
+    
     $("#con-close-modal").modal("show");
     
 }

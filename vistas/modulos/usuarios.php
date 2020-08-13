@@ -121,7 +121,7 @@
                                         </div>
                                     </td>
                                 </tr>                           
-                    ';
+                                ';
                                
                                 }
                             ?>
@@ -157,8 +157,8 @@
                                 <div class="modal-content">
 
                                     <form role="form" method="post" id="formulario" enctype="multipart/form-data">
-                                    <div class="modal-header bg-dark">
-                                        <h4 class="modal-title text-light ">Agregar Nuevo Usuario</h4>
+                                    <div id="cabeceraM" class="modal-header bg-dark">
+                                        <h4 class="modal-title text-light" id="tituloModal">Agregar Nuevo Usuario</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
                                     <div class="modal-body p-4">
@@ -273,7 +273,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-success waves-effect waves-light">Guardar</button>
+                                        <button type="submit" class="btn btn-success waves-effect waves-light" id="btnEditar">Guardar</button>
                                     </div>
 
                                     <?php
