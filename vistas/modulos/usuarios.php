@@ -46,8 +46,9 @@
                                 <th>Nombre</th>
                                 <th>Foto</th>
                                 <th>Dni</th>
-                                <th>Foto</th>
-                                <th>Dni</th>
+                                <th>Direccion</th>
+                                <th>Usuario</th>
+                                <th>Estado</th>                                
                                                                
                             </tr>
                             </thead>
@@ -134,8 +135,9 @@
                                 <th>Nombre</th>
                                 <th>Foto</th>
                                 <th>Dni</th>
-                                <th>Foto</th>
-                                <th>Dni</th>
+                                <th>Direccion</th>
+                                <th>Usuario</th>
+                                <th>Estado</th>
                                                     
                             </tr>
                             </tfoot> 

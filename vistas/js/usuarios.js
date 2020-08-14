@@ -9,16 +9,24 @@ function listarUsuario() {
     fetch(url).then(respuesta=>respuesta.json())
               .then(respuesta=>{
 
+              
+
                 let datosUser =[];
 
                 respuesta.forEach(user => {
+
+                    let estado = `<span class="badge ${(user.estado!=0)?'badge-success':'badge-danger'} classEstado" idUsuario="${user.colaborador_id}">${(user.estado!=0)?'Activo':'Inactivo'}</span>`;
+
+                  
                     datosUser.push({
                        "ID": "<b>"+user.colaborador_id+"</b>",
                        "Nombre": "<span class='ml-2'>"+user.nombre+' '+user.aPaterno+' '+user.aMaterno+"</span>",
                        "Foto":"<a href='javascript: void(0);'><img src="+user.avatar+" alt='contact-img' title='contact-img' class='rounded-circle avatar-xs' /></a>",
                        "Dni": user.dni,
                        "Direccion":user.direccion,
-                       "Usuario":user.user
+                       "Usuario":user.user,
+                       "ULogeo":user.ultimoLogueo,
+                       "Estado":estado
 
                     })
                     
@@ -66,7 +74,8 @@ function listarUsuario() {
                        {data: "Foto"},
                        {data: "Dni"},
                        {data: "Direccion"},
-                       {data: "Usuario"}
+                       {data: "Usuario"},
+                       {data: "Estado"}
                     
                     ]});
 
