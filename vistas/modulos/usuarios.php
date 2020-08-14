@@ -37,8 +37,8 @@
                             
                         <h4 class="mb-4">USUARIOS DEL SISTEMA</h4>
 
-                        <table  class="table table-hover m-0 table-centered dt-responsive nowrap w-100 tablas" id="tablas">   <!--id="tickets-table" data-toggle="modal" data-target="#con-close-modal"-->
-                            <thead class="thead-dark">
+                        <table  class="table table-hover m-0 table-centered dt-responsive nowrap w-100 table-sm tablas" id="tablas">   <!--id="tickets-table" data-toggle="modal" data-target="#con-close-modal"-->
+                   <thead class="thead-dark">
                             <tr>
                                 <th>
                                     ID
@@ -46,16 +46,14 @@
                                 <th>Nombre</th>
                                 <th>Foto</th>
                                 <th>Dni</th>
-                                <th>Dirección</th>
-                                <th>Usuario</th> 
-                                <th>Ultimo Acceso</th> 
-                                <th>Estado</th>
-                                <th>Celular</th>  
-                                <th>Acciones</th>                                    
+                                <th>Foto</th>
+                                <th>Dni</th>
+                                                               
                             </tr>
                             </thead>
 
-                            <tbody id="tabla">    
+                            <tbody  >   
+                               
                             <?php /*
                                 $item = null;
                                 $valor = null;
@@ -136,14 +134,11 @@
                                 <th>Nombre</th>
                                 <th>Foto</th>
                                 <th>Dni</th>
-                                <th>Dirección</th>
-                                <th>Usuario</th> 
-                                <th>Ultimo Acceso</th> 
-                                <th>Estado</th>
-                                <th>Celular</th>  
-                                <th>Acciones</th>                                    
+                                <th>Foto</th>
+                                <th>Dni</th>
+                                                    
                             </tr>
-                            </tfoot>
+                            </tfoot> 
                         </table>
                     </div>
                 </div><!-- end col -->

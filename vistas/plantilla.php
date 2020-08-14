@@ -16,10 +16,11 @@
 
          <!-- Datatables css -->
         <link href="vistas/public/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
-     <link href="vistas/public/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="vistas/public/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
 
-     <!-- SweeAlert2 -->
-     <script src="vistas/public/plugins/sweetAlert2/sweetalert2.all.min.js"></script>
+        <!-- SweeAlert2 -->
+        <script src="vistas/public/plugins/sweetAlert2/sweetalert2.all.min.js"></script>
+      
       
 
         <!-- App css -->
@@ -36,7 +37,7 @@
         /* ----- Incio de la pagina o wrapper----- */
 
         echo '
-        <body>
+        <body ">
         <div id="wrapper">';
 
         /* ----- ----- CABEZOTE ----- ----- */
@@ -93,7 +94,7 @@
  
     <!-- Datatables init -->
     <script src="vistas/js/usuarios.js"></script>
-    <script src="vistas/js/plantilla.js"></script>
+  
     
 
      
