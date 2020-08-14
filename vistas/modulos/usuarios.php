@@ -55,8 +55,8 @@
                             </tr>
                             </thead>
 
-                            <tbody>    
-                            <?php
+                            <tbody id="tabla">    
+                            <?php /*
                                 $item = null;
                                 $valor = null;
                                 $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
@@ -123,7 +123,7 @@
                                 </tr>                           
                                 ';
                                
-                                }
+                                } */
                             ?>
                             
 
@@ -156,7 +156,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
 
-                                    <form role="form" method="post" id="formulario" enctype="multipart/form-data">
+                                    <form role="form" id="formulario" enctype="multipart/form-data">
                                     <div id="cabeceraM" class="modal-header bg-dark">
                                         <h4 class="modal-title text-light" id="tituloModal">Agregar Nuevo Usuario</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -275,12 +275,7 @@
                                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Cancelar</button>
                                         <button type="submit" class="btn btn-success waves-effect waves-light" id="btnEditar">Guardar</button>
                                     </div>
-
-                                    <?php
-                                        $crearUsuario = new ControladorUsuarios();
-                                        $crearUsuario -> ctrCrearUsuario();
-                                    ?>
-
+ 
                                     </form>
                                     
                                 </div>
