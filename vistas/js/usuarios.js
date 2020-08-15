@@ -1,21 +1,25 @@
+function cargarArreglo() {  
+    var datosUser =[];
 
-document.addEventListener('DOMContentLoaded',function(){   
-    listarUsuario();  
-
-})
-
-function listarUsuario() {
-    let url = 'controladores/prueba.php';
+      let url = 'controladores/prueba.php';
     fetch(url).then(respuesta=>respuesta.json())
-              .then(respuesta=>{
+              .then(respuesta=>{        
 
-              
+                
 
-                let datosUser =[];
-
-                respuesta.forEach(user => {
+                respuesta.forEach(user => {                 
 
                     let estado = `<span class="badge ${(user.estado!=0)?'badge-success':'badge-danger'} classEstado" idUsuario="${user.colaborador_id}">${(user.estado!=0)?'Activo':'Inactivo'}</span>`;
+                    let accion =` 
+                    <div class="btn-group dropdown">
+                    <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-secondary btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <button class="dropdown-item"  onClick="editUser(${user.colaborador_id})"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Editar</button>
+                        <button class="dropdown-item btn-activar" idUsuario="${user.colaborador_id}" estadoUsuario="${(user.estado!=0)?0:1}" ><i class="mdi  ${(user.estado!=0)?'mdi-block-helper':'mdi-check-all '} mr-2 text-muted font-18 vertical-middle"></i>${(user.estado!=0)?'Desactivar':'Activar'}</button>
+                        <button class="dropdown-item btn-eliminar" idUsuario="${user.colaborador_id}" usuario="${user.user}" fotoUser="${user.avatar}"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Eliminar</button>
+                        
+                    </div>
+                    </div>`;
 
                   
                     datosUser.push({
@@ -25,14 +29,29 @@ function listarUsuario() {
                        "Dni": user.dni,
                        "Direccion":user.direccion,
                        "Usuario":user.user,
-                       "ULogeo":user.ultimoLogueo,
-                       "Estado":estado
+                       "ULogeo":user.ultimoLogeo,
+                       "Estado":estado,
+                       "Telefono":user.nCelular,
+                       "Accion":accion
 
                     })
                     
                 });
+                
+                
+            
+})
+return datosUser;
 
-                $('#tablas').DataTable({
+};
+ 
+$(document).ready(function() {
+
+ var datosUseres = cargarArreglo();
+
+ console.log(datosUseres);
+
+tblUser =  $('#tablas').DataTable({
                     language: {
                         "sProcessing":     "Procesando...",
                         "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -67,7 +86,7 @@ function listarUsuario() {
                         $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
                     },
                      
-                    data: datosUser,
+                    data: datosUseres,
                     columns: [
                       {data: "ID" },
                       {data: "Nombre"},
@@ -75,7 +94,10 @@ function listarUsuario() {
                        {data: "Dni"},
                        {data: "Direccion"},
                        {data: "Usuario"},
-                       {data: "Estado"}
+                       {data: "ULogeo"},
+                       {data: "Estado"},
+                       {data: "Telefono"},
+                       {data: "Accion"}
                     
                     ]});
 
@@ -137,6 +159,178 @@ function listarUsuario() {
               })
     
 
+ 
+
+
+/* ====================================== 
+ACTIVAR USUSARIO
+====================================== */
+function abrirModal() {
+    let opcion = 1;
+    let cabeceraModal = document.getElementById("cabeceraM");
+     cabeceraModal.classList.remove("bg-success");
+     cabeceraModal.classList.add("bg-dark");
+     document.getElementById("tituloModal").innerText = "Agregar Nuevo Usuario";
+     document.getElementById("txtUsuario").readOnly = false;
+     document.getElementById("btnEditar").innerText = "Guardar Usuario";
+    document.getElementById("formulario").reset();   
+    document.getElementById("previsualizar").setAttribute("src","vistas/public/assets/images/users/user-anonimo.png");
+    
+    const dataAgregar = new FormData(document.getElementById("formulario"));
+    console.log(dataAgregar);
+      /*let ulr = 'controladores/prueba.php';
+    fetch(url,{
+        method:'POST',
+        data: dataAgregar,
+    }).then(resp=> resp.text())
+    .then(response =>
+  
+      "nombre"=>$_POST["txtNombres"],
+                    "aPaterno"=>$_POST["txtApaterno"],
+                    "aMaterno"=>$_POST["txtAmaterno"],
+                    "dni"=>$_POST["txtDni"],
+                    "direccion"=>$_POST["txtDireccion"],
+                    "avatar"=>$ruta,
+                    "nCelular"=>$_POST["txtCelular"],
+                    "fIngreso"=>$_POST["txtFecha"],
+                    "user"=>$_POST["txtUsuario"],
+                    "pass"=>$conEncriptada,
+                    "email"=>$_POST["txtCorreo"],
+                    "cargo_id"=>$_POST["txtTipo"],
+
+    */
+    
+    
+    $("#con-close-modal").modal("show");
+    
 }
 
 
+/* ------------------------- */
+/* SUBIENDO FOTO DEL USUARIO */
+/* ------------------------- */
+
+$(".nuevaFoto").change(function() {
+    let imagen = this.files[0];
+    /* ------------------------- */
+    /* VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG */
+    /* ------------------------- */
+
+    if (imagen["type"] !== "image/jpeg" && imagen["type"] !== "image/png" && imagen["type"] !== "image/jpg") {
+        $(".nuevaFoto").val("");
+        Swal.fire({
+            title:"Error al subir la imagen",
+            text:"!La imagen debe estar en formato JPG o PNG!",
+            icon:"error",
+            confirmButtonText:"!Cerrar¡"
+        });
+        
+    }else if (imagen["size"]>2000000) { 
+       $(".nuevaFoto").val("");
+       Swal.fire({
+           title:"Error al subir la imagen",
+           text:"!La imagen no debe pesar mas de 2MB!",
+           icon:"error",
+           confirmButtonText:"!Cerrar¡"
+       });
+        
+    }else{
+        let datosImagen = new FileReader;
+        datosImagen.readAsDataURL(imagen);
+        $(datosImagen).on("load",function(event){
+            var rutaImagen = event.target.result;
+            $(".previsualizar").attr("src",rutaImagen);
+        })
+    }
+
+   
+})
+
+/* ------------------------- */
+/* FUNCION PARA ASIGNAR LOS DATOS A CADA ELEMENTO DEL MODAL EDITAR USURAIO*/
+/* ------------------------- */
+
+function cargarDatos(datos) {
+    document.getElementById("txtNombres").value = datos["nombre"];
+    document.getElementById("txtApaterno").value = datos["aPaterno"];
+    document.getElementById("txtAmaterno").value = datos["aMaterno"];
+    document.getElementById("txtDireccion").value = datos["direccion"];
+    document.getElementById("txtDni").value = datos["dni"];
+    document.getElementById("txtCelular").value = datos["nCelular"];
+    document.getElementById("txtFecha").value = datos["fIngreso"];
+    document.getElementById("txtUsuario").value = datos["user"];
+    document.getElementById("passwordActual").value = datos["pass"];
+    document.getElementById("fotoSinEditar").value = datos["avatar"];
+    document.getElementById("txtCorreo").value = datos["email"]; 
+    document.getElementById("selecTCargo").selectedIndex = datos["cargo_id"];
+    if (datos["avatar"] != "") {
+        document.getElementById("previsualizar").setAttribute("src",datos["avatar"]);   
+    } 
+     
+ }
+ /* ------------------------- */
+ /* TRAENDO DATOS MEDIANTE FETCH */
+ /* ------------------------- */
+ 
+ 
+ function editUser(codUser) {
+    let cabeceraModal = document.getElementById("cabeceraM");
+    cabeceraModal.classList.remove("bg-dark");
+    cabeceraModal.classList.add("bg-success");
+   document.getElementById("tituloModal").innerText = "Editar Usuario";
+   document.getElementById("txtUsuario").readOnly = true;
+   document.getElementById("btnEditar").innerText = "Actualizar Usuario";
+     const data = new FormData();
+     data.append('codigUser',codUser);
+     $("#con-close-modal").modal("show");
+ 
+  let url = "ajax/usuarios.ajax.php";
+ 
+  fetch(url,{
+      method:'POST',
+      body: data
+ 
+  }).then(resp=> resp.json())
+  .then(response =>cargarDatos(response));
+ }
+
+
+
+ $(document).on("click",".btn-activar", function(){ 
+    
+    let idUsuario = $(this).attr("idUsuario");
+    let estadoUsuario = $(this).attr("estadoUsuario");
+     
+    console.log(estadoUsuario);
+    
+    const datos = new FormData();
+    datos.append('activarId',idUsuario);
+    datos.append('activarUsuario',estadoUsuario);
+    let url = "ajax/usuarios.ajax.php";
+ 
+  fetch(url,{
+      method:'POST',
+      body: datos
+
+  }).then(resp=> resp.text())
+  .then(response =>  
+    Swal.fire({
+        icon:"success",
+        title:"!El Usuario se Cambio de Estado",
+        showConfirmButton: true,
+        confirmButtonText: "Cerrar"
+    }).then(function(result){
+
+        if(result.value){
+        
+            tblUser.ajax.reload();
+
+        }
+
+    })
+    
+    );
+   
+});
+
+ 

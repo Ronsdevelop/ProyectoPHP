@@ -48,7 +48,10 @@
                                 <th>Dni</th>
                                 <th>Direccion</th>
                                 <th>Usuario</th>
-                                <th>Estado</th>                                
+                                <th>Ultimo Logueo</th> 
+                                <th>Estado</th>
+                                <th>Telefono</th>
+                                <th>Accion</th>                                
                                                                
                             </tr>
                             </thead>
@@ -137,7 +140,10 @@
                                 <th>Dni</th>
                                 <th>Direccion</th>
                                 <th>Usuario</th>
+                                <th>Ultimo Logueo</th> 
                                 <th>Estado</th>
+                                <th>Telefono</th>
+                                <th>Accion</th> 
                                                     
                             </tr>
                             </tfoot> 
