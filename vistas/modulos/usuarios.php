@@ -164,6 +164,7 @@
                                         <h4 class="modal-title text-light" id="tituloModal">Agregar Nuevo Usuario</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
+                                    <input type="hidden" id="txtOpcion" name="txtOpcion">
                                     <div class="modal-body p-4">
                                         <div class="row">
                                             <div class="col-md-12">

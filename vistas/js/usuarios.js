@@ -1,4 +1,4 @@
-function cargarArreglo() {  
+/*function cargarArreglo() {  
     var datosUser =[];
 
       let url = 'controladores/prueba.php';
@@ -43,14 +43,9 @@ function cargarArreglo() {
 })
 return datosUser;
 
-};
+};*/
  
 $(document).ready(function() {
-
- var datosUseres = cargarArreglo();
-
- console.log(datosUseres);
-
 tblUser =  $('#tablas').DataTable({
                     language: {
                         "sProcessing":     "Procesando...",
@@ -85,8 +80,12 @@ tblUser =  $('#tablas').DataTable({
                     drawCallback: function() {
                         $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
                     },
-                     
-                    data: datosUseres,
+                    ajax:{            
+                        "url": "controladores/prueba.php",   
+                        "method": 'POST', //usamos el metodo POST
+                        "data":{"txtOpcion":1}, //enviamos opcion 4 para que haga un SELECT                   
+                        "dataSrc":""
+                    },                
                     columns: [
                       {data: "ID" },
                       {data: "Nombre"},
@@ -156,59 +155,29 @@ tblUser =  $('#tablas').DataTable({
 
             
                   
-              })
+
     
 
  
+/* ====================================== 
+AGREGAR USUARIO
+====================================== */
+
+const form = document.getElementById('formulario');
+form.addEventListener('submit',function(e){
+    e.preventDefault();
+    let data = new FormData(form);  
+    fetch("controladores/prueba.php",{method:"POST",body:data}).then(response => response.text())
+    .then(response => console.log(response))
+
+
+
+})
 
 
 /* ====================================== 
 ACTIVAR USUSARIO
 ====================================== */
-function abrirModal() {
-    let opcion = 1;
-    let cabeceraModal = document.getElementById("cabeceraM");
-     cabeceraModal.classList.remove("bg-success");
-     cabeceraModal.classList.add("bg-dark");
-     document.getElementById("tituloModal").innerText = "Agregar Nuevo Usuario";
-     document.getElementById("txtUsuario").readOnly = false;
-     document.getElementById("btnEditar").innerText = "Guardar Usuario";
-    document.getElementById("formulario").reset();   
-    document.getElementById("previsualizar").setAttribute("src","vistas/public/assets/images/users/user-anonimo.png");
-    
-    const dataAgregar = new FormData(document.getElementById("formulario"));
-    console.log(dataAgregar);
-      /*let ulr = 'controladores/prueba.php';
-    fetch(url,{
-        method:'POST',
-        data: dataAgregar,
-    }).then(resp=> resp.text())
-    .then(response =>
-  
-      "nombre"=>$_POST["txtNombres"],
-                    "aPaterno"=>$_POST["txtApaterno"],
-                    "aMaterno"=>$_POST["txtAmaterno"],
-                    "dni"=>$_POST["txtDni"],
-                    "direccion"=>$_POST["txtDireccion"],
-                    "avatar"=>$ruta,
-                    "nCelular"=>$_POST["txtCelular"],
-                    "fIngreso"=>$_POST["txtFecha"],
-                    "user"=>$_POST["txtUsuario"],
-                    "pass"=>$conEncriptada,
-                    "email"=>$_POST["txtCorreo"],
-                    "cargo_id"=>$_POST["txtTipo"],
-
-    */
-    
-    
-    $("#con-close-modal").modal("show");
-    
-}
-
-
-/* ------------------------- */
-/* SUBIENDO FOTO DEL USUARIO */
-/* ------------------------- */
 
 $(".nuevaFoto").change(function() {
     let imagen = this.files[0];
@@ -245,6 +214,192 @@ $(".nuevaFoto").change(function() {
 
    
 })
+
+
+
+ $(document).on("click",".btn-activar", function(){ 
+    
+    let idUsuario = $(this).attr("idUsuario");
+    let estadoUsuario = $(this).attr("estadoUsuario");
+     
+    console.log(estadoUsuario);
+    
+    const datos = new FormData();
+    datos.append('activarId',idUsuario);
+    datos.append('activarUsuario',estadoUsuario);
+    let url = "ajax/usuarios.ajax.php";
+ 
+  fetch(url,{
+      method:'POST',
+      body: datos
+
+  }).then(resp=> resp.text())
+  .then(response =>  
+    Swal.fire({
+        icon:"success",
+        title:"!El Usuario se Cambio de Estado",
+        showConfirmButton: true,
+        confirmButtonText: "Cerrar"
+    }).then(function(result){
+
+        if(result.value){
+        
+            tblUser.ajax.reload();
+
+        }
+
+    })
+    
+    );
+   
+});
+
+
+
+/*=====================
+COMPROBAR SI NO ESTA REPETIDO EL USUARIO
+======================*/
+
+function comprobarDatosUser(resp) {
+    if (resp) {
+        $("#txtUsuario").parent().after('<div class="alert alert-danger" role="alert" ><i class="mdi mdi-block-helper mr-2"></i>El usuario ya esta registrado en la base de datos!!</div>');
+        $("#txtUsuario").val("");
+        
+    }
+    
+}
+
+$("#txtUsuario").change(function(){ 
+    $(".alert").remove();
+   let usuario = $(this).val();
+   
+   const datos = new FormData();
+   datos.append('validarUsuario',usuario); 
+   let url = "ajax/usuarios.ajax.php";
+ 
+  fetch(url,{
+      method:'POST',
+      body: datos
+
+  }).then(resp=> resp.json())
+  .then(response => comprobarDatosUser(response));
+    
+    
+});
+
+ 
+
+function confirmarEliminacion(respuesta){ 
+    console.log(respuesta);
+   
+    if (respuesta == "ok"){        
+        Swal.fire({
+            icon:"success",
+            title:"Se Elimino correctamente",
+            showConfirmButton: true,
+            confirmButtonText: "Cerrar"
+        }).then(function(result){
+
+            if(result.value){
+            
+                tblUser.ajax.reload();
+
+            }
+
+        });
+         
+        
+    }else{
+        Swal.fire(
+            'No se pudo Eliminar!',
+            'El usuario no se a eliminado de la base de datos.',
+            'error'
+          )
+      }
+} 
+    
+ 
+$(document).on("click",".btn-eliminar", function () {
+    let codUsuario = $(this).attr("idUsuario");
+    let usuario = $(this).attr("usuario");
+    let userfoto = $(this).attr("fotoUser");
+
+ 
+    const datos = new FormData();
+    datos.append('codUsuario',codUsuario); 
+    datos.append('user',usuario);
+    datos.append('fotoUser',userfoto);
+    const url = "ajax/usuarios.ajax.php";
+
+    Swal.fire({
+        title: 'Seguro que deseas elimar el usuario?',
+        text: "Se eliminara totalmente de la base de datos!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, eliminar!'
+      }).then((result) => { 
+          if (result.value) {
+                fetch(url,{
+                    method:'POST',
+                    body: datos
+        
+                }).then(resp => resp.json())
+                .then(response => confirmarEliminacion(response))
+          }      
+        
+        
+        });
+});
+
+})
+
+function abrirModal() {
+    let opcion = 2;
+    let cabeceraModal = document.getElementById("cabeceraM");
+     cabeceraModal.classList.remove("bg-success");
+     cabeceraModal.classList.add("bg-dark");
+     document.getElementById("tituloModal").innerText = "Agregar Nuevo Usuario";
+     document.getElementById("txtUsuario").readOnly = false;
+     document.getElementById("btnEditar").innerText = "Guardar Usuario";
+    document.getElementById("formulario").reset();   
+    document.getElementById("previsualizar").setAttribute("src","vistas/public/assets/images/users/user-anonimo.png");
+    document.getElementById("txtOpcion").value = opcion;
+      /*let ulr = 'controladores/prueba.php';
+    fetch(url,{
+        method:'POST',
+        data: dataAgregar,
+    }).then(resp=> resp.text())
+    .then(response =>
+  
+      "nombre"=>$_POST["txtNombres"],
+                    "aPaterno"=>$_POST["txtApaterno"],
+                    "aMaterno"=>$_POST["txtAmaterno"],
+                    "dni"=>$_POST["txtDni"],
+                    "direccion"=>$_POST["txtDireccion"],
+                    "avatar"=>$ruta,
+                    "nCelular"=>$_POST["txtCelular"],
+                    "fIngreso"=>$_POST["txtFecha"],
+                    "user"=>$_POST["txtUsuario"],
+                    "pass"=>$conEncriptada,
+                    "email"=>$_POST["txtCorreo"],
+                    "cargo_id"=>$_POST["txtTipo"],
+
+    */
+    
+    
+    $("#con-close-modal").modal("show");
+    
+}
+
+
+/* ------------------------- */
+/* SUBIENDO FOTO DEL USUARIO */
+/* ------------------------- */
+
+
 
 /* ------------------------- */
 /* FUNCION PARA ASIGNAR LOS DATOS A CADA ELEMENTO DEL MODAL EDITAR USURAIO*/
@@ -295,42 +450,3 @@ function cargarDatos(datos) {
  }
 
 
-
- $(document).on("click",".btn-activar", function(){ 
-    
-    let idUsuario = $(this).attr("idUsuario");
-    let estadoUsuario = $(this).attr("estadoUsuario");
-     
-    console.log(estadoUsuario);
-    
-    const datos = new FormData();
-    datos.append('activarId',idUsuario);
-    datos.append('activarUsuario',estadoUsuario);
-    let url = "ajax/usuarios.ajax.php";
- 
-  fetch(url,{
-      method:'POST',
-      body: datos
-
-  }).then(resp=> resp.text())
-  .then(response =>  
-    Swal.fire({
-        icon:"success",
-        title:"!El Usuario se Cambio de Estado",
-        showConfirmButton: true,
-        confirmButtonText: "Cerrar"
-    }).then(function(result){
-
-        if(result.value){
-        
-            tblUser.ajax.reload();
-
-        }
-
-    })
-    
-    );
-   
-});
-
- 
