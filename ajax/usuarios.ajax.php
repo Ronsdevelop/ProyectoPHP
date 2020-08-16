@@ -5,11 +5,13 @@
   class AjaxUsuarios{
 
     public $idUsuario;
+
     public function ajaxEditarUsuario(){
 
         $item = "colaborador_id";
+        $tabla = "colaborador";
         $valor = $this-> idUsuario;
-        $respuesta = ControladorUsuarios::ctrMostrarUsuarios($item,$valor);
+        $respuesta = ModeloUsuario::MdlMostrarUsuarios($tabla,$item,$valor);
         echo json_encode($respuesta);
 
 
@@ -20,7 +22,9 @@
     ====================================== */
     public $codigUser;
     public $estadoUser;
+
     public function ajaxActivarUsuario(){
+
       $tabla="colaborador";
       $item1="estado";
       $valor1 = $this->estadoUser;
@@ -36,8 +40,9 @@
       public $validarUsuario;
       public function ajaxValidarUsuario(){
         $item = "user";
+        $tabla = "colaborador";
         $valor = $this-> validarUsuario;
-        $respuesta = ControladorUsuarios::ctrMostrarUsuarios($item,$valor);
+        $respuesta = ModeloUsuario::MdlMostrarUsuarios($tabla,$item,$valor);
         echo json_encode($respuesta);
       }
 
@@ -46,14 +51,21 @@
       public $codigoEliminar;
       public $fotoUser;
       public $user;
+
       public function ajaxEliminarUsuario(){
+        
         $tabla = "colaborador";
         $item = "colaborador_id";
         $valor = $this->codigoEliminar;
         $usuario = $this->user;
         $fotousario = $this->fotoUser;
  
-        $respuesta = ControladorUsuarios::ctrEliminarUsuario($tabla,$item,$valor,$fotousario,$usuario);
+        $respuesta = ModeloUsuario::MdlEliminaUsuario($tabla,$item,$valor);
+        if ($respuesta != "error") {                  
+          unlink('../'.$fotousario);
+          rmdir('../vistas/img/usuarios/'.$usuario);                
+        }
+  
         echo  json_encode($respuesta);
       }
  

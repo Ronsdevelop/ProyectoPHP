@@ -73,8 +73,21 @@
         $stmt->bindParam(":email",$datos["email"],PDO::PARAM_STR);
         $stmt->bindParam(":cargo_id",$datos["cargo_id"],PDO::PARAM_STR);
 
+/*
+
+        if ($datos["user"]==$_SESSION["user"]) {
+           $datorespuesa = array(
+               "user"=>"ok",
+               "avatar" => $datos["avatar"]);
+        }else {
+            $datorespuesa = "ok";
+        }
+
+*/
+         
+
         if ($stmt->execute()) {
-            return"ok";
+            'ok';
          }else{
              return "error";
          }

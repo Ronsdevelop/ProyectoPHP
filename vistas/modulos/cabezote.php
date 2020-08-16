@@ -98,11 +98,16 @@
 
       <li class="dropdown notification-list">
           <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+         
           <?php
-           if ($_SESSION['avatar'] != "") {
-              echo '<img src="'.$_SESSION['avatar'].'" alt="user-image" class="rounded-circle">';
+           if ($_SESSION['idUser'] != "") {
+               $datos = ControladorUsuarios::ctrMostrarDatosPerfil();
+
+              echo '<img src="'.$datos['avatar'].'" id="imgPerfil" alt="user-image" class="rounded-circle">';
            } 
           ?>
+         
+         
               
               <span class="pro-user-name ml-1">
                   <?php echo $_SESSION["nombre"];?> <i class="mdi mdi-chevron-down"></i>                  
@@ -153,12 +158,12 @@
   <div class="logo-box">
       <a href="index.html" class="logo text-center">
           <span class="logo-lg">
-              <img src="logo/logo_sistema.png" alt="" height="45">
+              <img src="vistas/img/sistema/logo_sistema.png" alt="" height="45">
               <!-- <span class="logo-lg-text-light">Xeria</span> -->
           </span>
           <span class="logo-sm">
               <!-- <span class="logo-sm-text-dark">X</span> -->
-              <img src="logo/logo_sistema_sm.png" alt="" height="45">
+              <img src="vistas/img/sistema/logo_sistema_sm.png" alt="" height="45">
           </span>
       </a>
   </div>

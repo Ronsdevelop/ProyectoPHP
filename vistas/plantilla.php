@@ -12,7 +12,7 @@
         <meta content="Ronsdevelop" name="Autor" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
-        <link rel="icon" href="logo/logo_sistema_sm.png">
+        <link rel="icon" href="vistas/img/sistema/logo_sistema_sm.png">
 
          <!-- Datatables css -->
         <link href="vistas/public/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
@@ -93,7 +93,7 @@
     <script src="vistas/public/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
  
     <!-- Datatables init -->
-    <script src="vistas/js/usuarios.js"></script>
+    <script src="vistas/js/app/usuarios.js"></script>
   
     
 
