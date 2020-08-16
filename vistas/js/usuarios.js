@@ -166,9 +166,13 @@ AGREGAR USUARIO
 const form = document.getElementById('formulario');
 form.addEventListener('submit',function(e){
     e.preventDefault();
-    let data = new FormData(form);  
-    fetch("controladores/prueba.php",{method:"POST",body:data}).then(response => response.text())
-    .then(response => console.log(response))
+    let data = new FormData(form); 
+    $("#con-close-modal").modal('hide');
+    fetch("controladores/prueba.php",
+        {method:"POST",
+        body:data}).then(response => response.json())
+                   .then(response =>                  
+                    tblUser.ajax.reload())
 
 
 
@@ -220,10 +224,7 @@ $(".nuevaFoto").change(function() {
  $(document).on("click",".btn-activar", function(){ 
     
     let idUsuario = $(this).attr("idUsuario");
-    let estadoUsuario = $(this).attr("estadoUsuario");
-     
-    console.log(estadoUsuario);
-    
+    let estadoUsuario = $(this).attr("estadoUsuario");   
     const datos = new FormData();
     datos.append('activarId',idUsuario);
     datos.append('activarUsuario',estadoUsuario);
@@ -235,20 +236,9 @@ $(".nuevaFoto").change(function() {
 
   }).then(resp=> resp.text())
   .then(response =>  
-    Swal.fire({
-        icon:"success",
-        title:"!El Usuario se Cambio de Estado",
-        showConfirmButton: true,
-        confirmButtonText: "Cerrar"
-    }).then(function(result){
+    tblUser.ajax.reload(),
+    confirmarAccion(estadoUsuario)
 
-        if(result.value){
-        
-            tblUser.ajax.reload();
-
-        }
-
-    })
     
     );
    
@@ -287,7 +277,26 @@ $("#txtUsuario").change(function(){
     
 });
 
- 
+ function confirmarAccion(estado) {
+     if (estado == 0) {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Usuario Desacivado',
+            showConfirmButton: false,
+            timer: 1500
+        })
+        
+     } else if(estado == 1) {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Usuario Activado',
+            showConfirmButton: false,
+            timer: 1500
+        })
+     }
+ }
 
 function confirmarEliminacion(respuesta){ 
     console.log(respuesta);
@@ -310,6 +319,7 @@ function confirmarEliminacion(respuesta){
          
         
     }else{
+        tblUser.ajax.reload();
         Swal.fire(
             'No se pudo Eliminar!',
             'El usuario no se a eliminado de la base de datos.',
@@ -429,12 +439,14 @@ function cargarDatos(datos) {
  
  
  function editUser(codUser) {
+     let opcion = 3;
     let cabeceraModal = document.getElementById("cabeceraM");
     cabeceraModal.classList.remove("bg-dark");
     cabeceraModal.classList.add("bg-success");
    document.getElementById("tituloModal").innerText = "Editar Usuario";
    document.getElementById("txtUsuario").readOnly = true;
    document.getElementById("btnEditar").innerText = "Actualizar Usuario";
+   document.getElementById("txtOpcion").value = opcion;
      const data = new FormData();
      data.append('codigUser',codUser);
      $("#con-close-modal").modal("show");
