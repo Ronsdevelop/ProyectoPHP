@@ -50,6 +50,7 @@
         if (isset($_GET["ruta"])) {
             if ($_GET["ruta"]== "inicio" ||
                 $_GET["ruta"]== "usuarios"||
+                $_GET["ruta"]== "proveedores"||
                 $_GET["ruta"]=="salir") {
                 include "modulos/".$_GET["ruta"].".php";  
             }else{
@@ -92,8 +93,9 @@
     <script src="vistas/public/assets/libs/datatables/dataTables.responsive.min.js"></script>
     <script src="vistas/public/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
  
-    <!-- Datatables init -->
+    <!-- JS Funcionalidad de Sistema -->
     <script src="vistas/js/app/usuarios.js"></script>
+    <script src="vistas/js/app/proveedores.js"></script>
   
     
 

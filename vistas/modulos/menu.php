@@ -210,25 +210,14 @@
         <li>
             <a href="javascript: void(0);">
                 <i class="la la-bullseye"></i>
-                <span> Icons </span>
+                <span> Almacen </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="icons-feather.html">Feather Icons</a>
+                    <a href="proveedores">Proveedores</a>
                 </li>
-                <li>
-                    <a href="icons-lineawesome.html">Line Awesome</a>
-                </li>
-                <li>
-                    <a href="icons-mdi.html">Material Design Icons</a>
-                </li>
-                <li>
-                    <a href="icons-font-awesome.html">Font Awesome</a>
-                </li>
-                <li>
-                    <a href="icons-simple-line.html">Simple Line</a>
-                </li>
+                 
             </ul>
         </li>
 
