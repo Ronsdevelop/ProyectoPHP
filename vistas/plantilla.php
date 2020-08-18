@@ -6,7 +6,7 @@
 <html lang="es">
     <head>
         <meta charset="utf-8" />
-        <title>Panaderia Leos</title>
+        <title>Panaderia Leos - <?php echo ucwords($_GET["ruta"])?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Sistema de Gestion para la Panaderia Leos" name="Descripcion" />
         <meta content="Ronsdevelop" name="Autor" />
@@ -94,8 +94,8 @@
     <script src="vistas/public/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
  
     <!-- JS Funcionalidad de Sistema -->
-    <script src="vistas/js/app/usuarios.js"></script>
-    <script src="vistas/js/app/proveedores.js"></script>
+    <script src="vistas/js/app/<?php echo$_GET["ruta"]?>.js"></script>
+   <!-- <script src="vistas/js/app/proveedores.js"></script> -->
   
     
 

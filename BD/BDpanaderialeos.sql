@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.1.37-MariaDB : Database - bdpanaderialeos
+MySQL - 5.5.5-10.1.32-MariaDB : Database - bdpanaderialeos
 *********************************************************************
 */
 
@@ -89,7 +89,7 @@ insert  into `categoria`(`categoria_id`,`categoria`,`descripcion`,`seccion_id`) 
 DROP TABLE IF EXISTS `cliente`;
 
 CREATE TABLE `cliente` (
-  `cliente_id` char(15) NOT NULL,
+  `cliente_id` char(10) NOT NULL,
   `nombre_razon` varchar(150) NOT NULL,
   `direccion` varchar(100) NOT NULL,
   `documento_identi` char(11) NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE `cliente` (
   KEY `fk_CLIENTE_SUCURSAL1_idx` (`sucursal_id`),
   KEY `fk_CLIENTE_COLABORADOR1_idx` (`colaborador_id`),
   CONSTRAINT `fk_CLIENTE_COLABORADOR1` FOREIGN KEY (`colaborador_id`) REFERENCES `colaborador` (`colaborador_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_CLIENTE_IDENTIFICACION_CLIENTE1` FOREIGN KEY (`identificacion_id`) REFERENCES `identificacion_cliente` (`identificacion_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_CLIENTE_IDENTIFICACION1` FOREIGN KEY (`identificacion_id`) REFERENCES `identificacion_cliente` (`identificacion_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_CLIENTE_SUCURSAL1` FOREIGN KEY (`sucursal_id`) REFERENCES `sucursal` (`sucursal_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_CLIENTE_TIPO_CLIENTE1` FOREIGN KEY (`tipoCliente_id`) REFERENCES `tipo_cliente` (`tipoCliente_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -144,7 +144,7 @@ CREATE TABLE `colaborador` (
 
 /*Data for the table `colaborador` */
 
-insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15','vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-17 18:47:09',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11','vistas/img/usuarios/Jess/705.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
+insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15','vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-18 09:46:16',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11','vistas/img/usuarios/Jess/458.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
 
 /*Table structure for table `compras_ingresos` */
 
@@ -287,14 +287,15 @@ CREATE TABLE `ficha_produccion` (
 DROP TABLE IF EXISTS `identificacion_cliente`;
 
 CREATE TABLE `identificacion_cliente` (
-  `identificacion_id` int(11) NOT NULL,
+  `identificacion_id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo_identificacion` varchar(50) NOT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
-  `fRegistro` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`identificacion_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `identificacion_cliente` */
+
+insert  into `identificacion_cliente`(`identificacion_id`,`tipo_identificacion`,`descripcion`) values (1,'RUC','CLIENTE CON RUC '),(2,'DNI','CLIENTE CON DNI'),(3,'PASAPORTE',NULL);
 
 /*Table structure for table `maquina` */
 
@@ -478,7 +479,7 @@ CREATE TABLE `proveedor` (
 
 /*Data for the table `proveedor` */
 
-insert  into `proveedor`(`proveedor_id`,`rason`,`ruc`,`direccion`,`contacto`,`email`,`nCelular`,`nFono`,`referencia`) values ('PV001','GRUPO FUMINSUMOS SAC','20600149645','CALLE LOS FICUS MZ Q LT 23 CASTILLA','JUAN MARTINEZ','grupo@hotmail.com','123456789','383883','A ESPALDAS DEL ESTADIO'),('PV002','rony','4455','dhdhdhd','hhhddd','hdhdhd@hooll.com','33455','65566','hfhfhfh'),('PV003','iuytre','87654','uytre','ytre','d@nlddl.com','8765','765','gfds');
+insert  into `proveedor`(`proveedor_id`,`rason`,`ruc`,`direccion`,`contacto`,`email`,`nCelular`,`nFono`,`referencia`) values ('PV001','GRUPO FUMINSUMOS SAC','20600149645','CALLE LOS FICUS MZ Q LT 23 CASTILLA','JUAN MARTINEZ','grupo@hotmail.com','123456789','383883','A ESPALDAS DEL ESTADIO');
 
 /*Table structure for table `seccion` */
 
@@ -504,12 +505,14 @@ CREATE TABLE `sucursal` (
   `sucursal_id` int(11) NOT NULL AUTO_INCREMENT,
   `direccion` varchar(100) NOT NULL,
   `nFono` char(9) DEFAULT NULL,
-  `estado` varchar(45) NOT NULL,
+  `estado` int(1) NOT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`sucursal_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sucursal` */
+
+insert  into `sucursal`(`sucursal_id`,`direccion`,`nFono`,`estado`,`descripcion`) values (1,'CALLE LOS PINOS','927665554',1,'LOCAL PRINCIPAL DE PRODUCCION');
 
 /*Table structure for table `tipo_cliente` */
 
@@ -520,9 +523,11 @@ CREATE TABLE `tipo_cliente` (
   `tipo` varchar(50) NOT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`tipoCliente_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tipo_cliente` */
+
+insert  into `tipo_cliente`(`tipoCliente_id`,`tipo`,`descripcion`) values (1,'DISTRIBUIDOR','CLIENTES QUE SE ENTREGA PAN PARA VENDER'),(2,'CONSUMIDOR','CLIENTE QUE COMPRA EN TIENDA');
 
 /*Table structure for table `tipo_comprobante` */
 

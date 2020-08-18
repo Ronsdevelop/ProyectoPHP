@@ -75,6 +75,123 @@ form.addEventListener('submit',function(e){
 })
 
 
+/* ====================================== 
+FUNCION PARA ELIMINAR PROVEEDOR
+====================================== */
+ 
+$(document).on("click",".btn-eliminarPro", function () {
+    let codProveedor = $(this).attr("idProveedor");
+    const datos = new FormData();
+    datos.append('codProveedor',codProveedor); 
+  
+    const url = "ajax/proveedores.ajax.php";
+
+    Swal.fire({
+        title: 'Seguro que deseas elimar el Proveedor?',
+        text: "Se eliminara totalmente de la base de datos!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, eliminar!'
+      }).then((result) => { 
+          if (result.value) {
+                fetch(url,{
+                    method:'POST',
+                    body: datos
+        
+                }).then(resp => resp.json())
+                .then(response => confirmarEliminacionProveedor(response))
+          }      
+        
+        
+        });
+});
+
+
+function confirmarEliminacionProveedor(respuesta){ 
+    console.log(respuesta);
+   
+    if (respuesta == "ok"){        
+        Swal.fire({
+            icon:"success",
+            title:"Se Elimino correctamente",
+            showConfirmButton: true,
+            confirmButtonText: "Cerrar"
+        }).then(function(result){
+
+            if(result.value){            
+                tblproveedor.ajax.reload();
+
+            }
+
+        });
+         
+        
+    }else{
+        tblproveedor.ajax.reload();
+        Swal.fire(
+            'No se pudo Eliminar!',
+            'El Proveedor no se a eliminado de la base de datos.',
+            'error'
+          )
+      }
+} 
+
+
+
+
+$("#txtRazon").change(function(){ 
+    $(".alert").remove();
+   let razon = $(this).val();
+   let etiqueta = "#txtRazon";
+   const datos = new FormData();
+   datos.append('valorValidar',razon);
+   datos.append('itemValidar','rason');
+   let url = "ajax/proveedores.ajax.php";
+ 
+  fetch(url,{
+      method:'POST',
+      body: datos
+
+  }).then(resp=> resp.json())
+  .then(response => comprobarDatosProveedor(response,etiqueta));
+    
+    
+});
+
+$("#txtIndetificacion").change(function(){ 
+    $(".alert").remove();
+   let ruc = $(this).val();
+   let etiqueta ="#txtIndetificacion";
+   const datos = new FormData();
+   datos.append('valorValidar',ruc);
+   datos.append('itemValidar','ruc');
+   let url = "ajax/proveedores.ajax.php";
+ 
+  fetch(url,{
+      method:'POST',
+      body: datos
+
+  }).then(resp=> resp.json())
+  .then(response => comprobarDatosProveedor(response,etiqueta));
+    
+    
+});
+
+function comprobarDatosProveedor(resp,etiqueta) {
+    if (resp) {
+        $(etiqueta).parent().after('<div class="alert alert-danger" role="alert" ><i class="mdi mdi-block-helper mr-2"></i>El Proveedor ya esta registrado en la base de datos!!</div>');
+        $(etiqueta).val("");
+        
+    }
+    
+}
+
+ 
+
+
 
 
 
@@ -129,82 +246,17 @@ $(document).on("click",".btn-editarPro", function () {
       body: data
  
   }).then(resp=> resp.json())
-  .then(response =>cargarDatos(response));
+  .then(response =>cargarDatosProveedor(response));
     
 });
 
 
-/* ====================================== 
-FUNCION PARA ELIMINAR PROVEEDOR
-====================================== */
- 
-$(document).on("click",".btn-eliminarPro", function () {
-    let codProveedor = $(this).attr("idProveedor");
-    const datos = new FormData();
-    datos.append('codProveedor',codProveedor); 
-  
-    const url = "ajax/proveedores.ajax.php";
-
-    Swal.fire({
-        title: 'Seguro que deseas elimar el Proveedor?',
-        text: "Se eliminara totalmente de la base de datos!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, eliminar!'
-      }).then((result) => { 
-          if (result.value) {
-                fetch(url,{
-                    method:'POST',
-                    body: datos
-        
-                }).then(resp => resp.json())
-                .then(response => confirmarEliminacionProveedor(response))
-          }      
-        
-        
-        });
-});
-
-
-function confirmarEliminacionProveedor(respuesta){ 
-    console.log(respuesta);
-   
-    if (respuesta == "ok"){        
-        Swal.fire({
-            icon:"success",
-            title:"Se Elimino correctamente",
-            showConfirmButton: true,
-            confirmButtonText: "Cerrar"
-        }).then(function(result){
-
-            if(result.value){
-            
-                tblUser.ajax.reload();
-
-            }
-
-        });
-         
-        
-    }else{
-        tblUser.ajax.reload();
-        Swal.fire(
-            'No se pudo Eliminar!',
-            'El Proveedor no se a eliminado de la base de datos.',
-            'error'
-          )
-      }
-} 
- 
 
  /* ------------------------- */
 /* FUNCION PARA ASIGNAR LOS DATOS A CADA ELEMENTO DEL MODAL EDITAR USURAIO*/
 /* ------------------------- */
 
-function cargarDatos(datos) {
+function cargarDatosProveedor(datos) {
     document.getElementById("txtRazon").value = datos["rason"];
     document.getElementById("txtDireccion").value = datos["direccion"];
     document.getElementById("txtContacto").value = datos["contacto"];
@@ -216,3 +268,10 @@ function cargarDatos(datos) {
     document.getElementById("txtId").value = datos["proveedor_id"];
      
 }
+
+
+
+/*=====================
+COMPROBAR SI LA RAZON SOCIAL ESTA REPETIDA
+======================*/
+

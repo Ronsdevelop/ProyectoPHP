@@ -25,6 +25,18 @@
       
             
         }
+
+        public $valorValidar;
+        public $itemValidar;
+        public function ajaxValidarProveedor(){
+            $tabla = "proveedor";
+            $item = $this->itemValidar;;
+            $valor = $this->valorValidar;
+            $respuesta = ModeloProveedor::MdlMostrarProveedores($tabla,$item,$valor);
+            echo json_encode($respuesta);
+       
+          
+        }
     }
 
 
@@ -38,6 +50,13 @@
         $pEliminar = new AjaxProveedores();
         $pEliminar -> proveedorEliminar = $_POST["codProveedor"];
         $pEliminar -> ajaxEliminarProveedor();
+    }
+
+    if (isset($_POST["valorValidar"])) {
+        $validarProv = new AjaxProveedores();
+        $validarProv -> valorValidar=$_POST["valorValidar"];
+        $validarProv -> itemValidar=$_POST["itemValidar"];
+        $validarProv -> ajaxValidarProveedor();
     }
 
 
