@@ -42,8 +42,8 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
                 "Accion" => "<div class='btn-group dropdown'>
                                 <a href='javascript: void(0);' class='table-action-btn dropdown-toggle arrow-none btn btn-secondary btn-sm' data-toggle='dropdown' aria-expanded='false'><i class='mdi mdi-dots-horizontal'></i></a>
                                 <div class='dropdown-menu dropdown-menu-right'>
-                                <button class='dropdown-item btn-editar' idProveedor='".$value['proveedor_id']."'><i class='mdi mdi-pencil mr-2 text-muted font-18 vertical-middle'></i>Editar</button>                                
-                                <button class='dropdown-item btn-eliminar' idProveedor='".$value['proveedor_id']."'><i class='mdi mdi-delete mr-2 text-muted font-18 vertical-middle'></i>Eliminar</button>
+                                <button class='dropdown-item btn-editarPro' idProveedor='".$value['proveedor_id']."'><i class='mdi mdi-pencil mr-2 text-muted font-18 vertical-middle'></i>Editar</button>                                
+                                <button class='dropdown-item btn-eliminarPro' idProveedor='".$value['proveedor_id']."'><i class='mdi mdi-delete mr-2 text-muted font-18 vertical-middle'></i>Eliminar</button>
                                 </div>
                             </div>"
             ];
@@ -87,7 +87,7 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
     }
 
  /* ====================================== 
- EDITAR USUARIOS
+ EDITAR PROVEEDOR
  ====================================== */
 }elseif (isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==3){
 
@@ -105,7 +105,8 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
                 "email" => $_POST["txtCorreo"],
                 "nCelular" => $_POST["txtCelular"],
                 "nFono" => $_POST["txtFijo"],
-                "referencia" => $_POST["txtReferencia"]
+                "referencia" => $_POST["txtReferencia"],
+                "proveedor_id" => $_POST["txtId"]
             );
 
             $respuesta = ModeloProveedor::MdlEditarProveedor($tabla,$datos);

@@ -88,6 +88,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
                                     <input type="hidden" id="txtOpcion" name="txtOpcion">
+                                    <input type="hidden" name="txtId" id="txtId">
                                     <div class="modal-body p-4">
                                         <div class="row">
                                             <div class="col-md-12">

@@ -107,7 +107,7 @@ function abrirModalProveedor() {
  /* EDITAR PROVEEDOR  */
  /* ------------------------- */ 
  
-$(document).on("click",".btn-editar", function () {
+$(document).on("click",".btn-editarPro", function () {
     let codProveedor = $(this).attr("idProveedor");
     let opcion = 3;
     let cabeceraModal = document.getElementById("cabeceraM");
@@ -132,6 +132,72 @@ $(document).on("click",".btn-editar", function () {
   .then(response =>cargarDatos(response));
     
 });
+
+
+/* ====================================== 
+FUNCION PARA ELIMINAR PROVEEDOR
+====================================== */
+ 
+$(document).on("click",".btn-eliminarPro", function () {
+    let codProveedor = $(this).attr("idProveedor");
+    const datos = new FormData();
+    datos.append('codProveedor',codProveedor); 
+  
+    const url = "ajax/proveedores.ajax.php";
+
+    Swal.fire({
+        title: 'Seguro que deseas elimar el Proveedor?',
+        text: "Se eliminara totalmente de la base de datos!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, eliminar!'
+      }).then((result) => { 
+          if (result.value) {
+                fetch(url,{
+                    method:'POST',
+                    body: datos
+        
+                }).then(resp => resp.json())
+                .then(response => confirmarEliminacionProveedor(response))
+          }      
+        
+        
+        });
+});
+
+
+function confirmarEliminacionProveedor(respuesta){ 
+    console.log(respuesta);
+   
+    if (respuesta == "ok"){        
+        Swal.fire({
+            icon:"success",
+            title:"Se Elimino correctamente",
+            showConfirmButton: true,
+            confirmButtonText: "Cerrar"
+        }).then(function(result){
+
+            if(result.value){
+            
+                tblUser.ajax.reload();
+
+            }
+
+        });
+         
+        
+    }else{
+        tblUser.ajax.reload();
+        Swal.fire(
+            'No se pudo Eliminar!',
+            'El Proveedor no se a eliminado de la base de datos.',
+            'error'
+          )
+      }
+} 
  
 
  /* ------------------------- */
@@ -147,5 +213,6 @@ function cargarDatos(datos) {
     document.getElementById("txtFijo").value = datos["nFono"];
     document.getElementById("txtCorreo").value = datos["email"];
     document.getElementById("txtReferencia").value = datos["referencia"];
+    document.getElementById("txtId").value = datos["proveedor_id"];
      
 }

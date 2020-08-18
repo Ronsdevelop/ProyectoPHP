@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.1.32-MariaDB : Database - bdpanaderialeos
+MySQL - 5.5.5-10.1.37-MariaDB : Database - bdpanaderialeos
 *********************************************************************
 */
 
@@ -140,11 +140,11 @@ CREATE TABLE `colaborador` (
   PRIMARY KEY (`colaborador_id`),
   KEY `fk_COLABORADOR_CARGO1_idx` (`cargo_id`),
   CONSTRAINT `fk_COLABORADOR_CARGO1` FOREIGN KEY (`cargo_id`) REFERENCES `cargo` (`cargo_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `colaborador` */
 
-insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15','vistas/public/img/usuarios/Rony/rony.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-11 14:58:28',1),(36,'JESÃšS','RAMOS','GARCIA','48585858','CASTILLA - PIURA','983763737','2020-08-11','vistas/public/img/usuarios/Jess/211.jpeg','Jess','$2y$10$/Qnkc.8hRpoy62RvpERorOueGXK2/ZN1nbMOM1yoNoJFqWGlDikom','jesus@panaderialeos.com',2,NULL,1);
+insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15','vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-17 18:47:09',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11','vistas/img/usuarios/Jess/705.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
 
 /*Table structure for table `compras_ingresos` */
 
@@ -152,7 +152,7 @@ DROP TABLE IF EXISTS `compras_ingresos`;
 
 CREATE TABLE `compras_ingresos` (
   `ingresos_id` char(15) NOT NULL,
-  `proveedor_id` char(10) NOT NULL,
+  `proveedor_id` char(5) NOT NULL,
   `nroComprobante` char(11) NOT NULL,
   `fecha` date NOT NULL,
   `montoCompra` decimal(10,2) NOT NULL,
@@ -165,7 +165,7 @@ CREATE TABLE `compras_ingresos` (
   KEY `fk_COMPRAS_INGRESOS_TIPO_COMPROBANTE1_idx` (`tipoComprobante_id`),
   KEY `fk_COMPRAS_INGRESOS_COLABORADOR1_idx` (`colaborador_id`),
   CONSTRAINT `fk_COMPRAS_INGRESOS_COLABORADOR1` FOREIGN KEY (`colaborador_id`) REFERENCES `colaborador` (`colaborador_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_COMPRAS_INGRESOS_PROVEEDOR1` FOREIGN KEY (`proveedor_id`) REFERENCES `proveedor` (`proveedor_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_COMPRAS_INGRESOS_PROVEEDOR` FOREIGN KEY (`proveedor_id`) REFERENCES `proveedor` (`proveedor_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_COMPRAS_INGRESOS_TIPO_COMPROBANTE1` FOREIGN KEY (`tipoComprobante_id`) REFERENCES `tipo_comprobante` (`tipoComprobante_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -464,7 +464,7 @@ CREATE TABLE `producto` (
 DROP TABLE IF EXISTS `proveedor`;
 
 CREATE TABLE `proveedor` (
-  `proveedor_id` char(10) NOT NULL,
+  `proveedor_id` char(5) NOT NULL,
   `rason` varchar(100) NOT NULL,
   `ruc` char(11) NOT NULL,
   `direccion` varchar(100) NOT NULL,
@@ -472,11 +472,13 @@ CREATE TABLE `proveedor` (
   `email` varchar(100) DEFAULT NULL,
   `nCelular` char(9) NOT NULL,
   `nFono` char(9) DEFAULT NULL,
-  `referencia` varchar(45) DEFAULT NULL,
+  `referencia` text,
   PRIMARY KEY (`proveedor_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `proveedor` */
+
+insert  into `proveedor`(`proveedor_id`,`rason`,`ruc`,`direccion`,`contacto`,`email`,`nCelular`,`nFono`,`referencia`) values ('PV001','GRUPO FUMINSUMOS SAC','20600149645','CALLE LOS FICUS MZ Q LT 23 CASTILLA','JUAN MARTINEZ','grupo@hotmail.com','123456789','383883','A ESPALDAS DEL ESTADIO'),('PV002','rony','4455','dhdhdhd','hhhddd','hdhdhd@hooll.com','33455','65566','hfhfhfh'),('PV003','iuytre','87654','uytre','ytre','d@nlddl.com','8765','765','gfds');
 
 /*Table structure for table `seccion` */
 
@@ -659,6 +661,28 @@ BEGIN
 		INSERT INTO `categoria` (`categoria_id`,`categoria`,`descripcion`,`estado`,`seccion_id`)
 		VALUES (id,cat,des,est,secc);
     
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `sp_ingresaProveedor` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `sp_ingresaProveedor` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ingresaProveedor`(ras varchar(100),rucs char(11),direc varchar(100),contac varchar(100),emails varchar(100),nCel char(9),nFon char(9),refere text)
+BEGIN 
+		DECLARE id CHAR(5);
+   
+		SET id=(SELECT CONCAT("PV",RIGHT(CONCAT("000",
+		MAX(SUBSTRING(`proveedor_id`,3)+1)),3)) FROM `proveedor`);
+			BEGIN 
+				IF ISNULL(id) THEN 
+					SET id='PV001';
+				END IF;
+			END;
+		INSERT INTO `proveedor` (`proveedor_id`,`rason`,`ruc`,`direccion`,`contacto`,`email`,`nCelular`,`nFono`,`referencia`)
+		VALUES (id,ras,rucs,direc,contac,emails,nCel,nFon,refere);
     END */$$
 DELIMITER ;
 

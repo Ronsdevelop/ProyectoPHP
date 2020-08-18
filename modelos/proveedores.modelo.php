@@ -30,7 +30,7 @@ class ModeloProveedor{
 /* ----- REGISTRO DE USUARIO ----- */
 static public function MdlIngresarProveedor($tabla, $datos){
 
-    $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(rason,ruc,direccion,contacto,email,nCelular,nFono,referencia)values(:rason,:ruc,:direccion,:contacto,:email,:nCelular,:nFono,:referencia)");
+    $stmt = Conexion::conectar()->prepare("CALL sp_ingresaProveedor(:rason,:ruc,:direccion,:contacto,:email,:nCelular,:nFono,:referencia)");
     $stmt->bindParam(":rason",$datos["rason"],PDO::PARAM_STR);
     $stmt->bindParam(":ruc",$datos["ruc"],PDO::PARAM_STR);
     $stmt->bindParam(":direccion",$datos["direccion"],PDO::PARAM_STR);
@@ -53,7 +53,7 @@ static public function MdlIngresarProveedor($tabla, $datos){
 
 static public function MdlEditarProveedor($tabla,$datos){
 
-    $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET rason = :rason, ruc = :ruc, direccion = :direccion, contacto = :contacto, email = :email, nCelular = :nCelular, nFono = :nFono, referencia = :referencia  WHERE ruc = :ruc");       
+    $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET rason = :rason, ruc = :ruc, direccion = :direccion, contacto = :contacto, email = :email, nCelular = :nCelular, nFono = :nFono, referencia = :referencia  WHERE proveedor_id = :codigo");       
 
     $stmt->bindParam(":rason",$datos["rason"],PDO::PARAM_STR);
     $stmt->bindParam(":ruc",$datos["ruc"],PDO::PARAM_STR);
@@ -63,17 +63,18 @@ static public function MdlEditarProveedor($tabla,$datos){
     $stmt->bindParam(":nCelular",$datos["nCelular"],PDO::PARAM_STR);
     $stmt->bindParam(":nFono",$datos["nFono"],PDO::PARAM_STR);
     $stmt->bindParam(":referencia",$datos["referencia"],PDO::PARAM_STR); 
+    $stmt->bindParam(":codigo",$datos["proveedor_id"],PDO::PARAM_STR); 
 
 
      
 
     if ($stmt->execute()) {
-        'ok';
+        return 'ok';
      }else{
          return "error";
      }
-     $stmt -> close();
-     $stmt = null;
+    $stmt -> close();
+    $stmt = null;
 }
 
 static public function MdlActualizarProveedor($tabla,$item1,$valor1,$item2,$valor2){
