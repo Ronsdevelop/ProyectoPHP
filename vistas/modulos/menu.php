@@ -30,7 +30,7 @@
                     <a href="../vistas/productos.php">Productos</a>
                 </li>
                 <li>
-                    <a href="categoria">Categorias</a>
+                    <a href="categorias">Categorias</a>
                 </li>
                 <li>
                     <a href="#">Seccion</a>
@@ -49,7 +49,7 @@
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="#">Small Sidebar</a>
+                    <a href="clientes">clientes</a>
                 </li>
                 <li>
                     <a href="#">Light Sidebar</a>

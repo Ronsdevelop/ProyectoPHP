@@ -60,7 +60,7 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
 
     if (isset($_POST["txtRazon"])) {
 
-        if (preg_match('/^[a-zA-Z0-9ñÑáíóúÁÉÍÓÚ ]+$/',$_POST["txtRazon"]) && preg_match('/^[a-zA-Z0-9]+$/',$_POST["txtIndetificacion"]) ) {
+        if (preg_match('/^[a-zA-Z0-9ñÑáíóúÁÉÍÓÚ&%$# ]+$/',$_POST["txtRazon"]) && preg_match('/^[a-zA-Z0-9]+$/',$_POST["txtIndetificacion"]) ) {
            
 
             $tabla = "proveedor";
