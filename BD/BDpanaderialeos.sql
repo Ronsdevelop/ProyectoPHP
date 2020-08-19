@@ -90,11 +90,11 @@ DROP TABLE IF EXISTS `cliente`;
 
 CREATE TABLE `cliente` (
   `cliente_id` char(10) NOT NULL,
-  `nombre_razon` varchar(150) NOT NULL,
+  `nombre_razon` varchar(100) NOT NULL,
   `direccion` varchar(100) NOT NULL,
   `documento_identi` char(11) NOT NULL,
   `alias` varchar(50) DEFAULT NULL,
-  `referencia` varchar(100) NOT NULL,
+  `referencia` text NOT NULL,
   `representante` varchar(100) NOT NULL,
   `nCelular` char(9) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
@@ -116,6 +116,8 @@ CREATE TABLE `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `cliente` */
+
+insert  into `cliente`(`cliente_id`,`nombre_razon`,`direccion`,`documento_identi`,`alias`,`referencia`,`representante`,`nCelular`,`email`,`fRegistro`,`cumpleaños`,`tipoCliente_id`,`identificacion_id`,`sucursal_id`,`colaborador_id`) values ('CL00000001','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:58:07','2020-11-05',1,1,1,1),('CL00000002','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:58:45','2020-11-05',1,1,1,1),('CL00000003','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:58:58','2020-11-05',1,1,1,1),('CL00000004','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:00','2020-11-05',1,1,1,1),('CL00000005','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:00','2020-11-05',1,1,1,1),('CL00000006','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:01','2020-11-05',1,1,1,1),('CL00000007','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:02','2020-11-05',1,1,1,1),('CL00000008','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:02','2020-11-05',1,1,1,1),('CL00000009','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:03','2020-11-05',1,1,1,1),('CL00000010','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:03','2020-11-05',1,1,1,1),('CL00000011','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:03','2020-11-05',1,1,1,1);
 
 /*Table structure for table `colaborador` */
 
@@ -144,7 +146,7 @@ CREATE TABLE `colaborador` (
 
 /*Data for the table `colaborador` */
 
-insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15','vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-18 09:46:16',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11','vistas/img/usuarios/Jess/458.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
+insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15','vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-19 07:19:39',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11','vistas/img/usuarios/Jess/458.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
 
 /*Table structure for table `compras_ingresos` */
 
@@ -666,6 +668,28 @@ BEGIN
 		INSERT INTO `categoria` (`categoria_id`,`categoria`,`descripcion`,`estado`,`seccion_id`)
 		VALUES (id,cat,des,est,secc);
     
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `sp_ingresaCliente` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `sp_ingresaCliente` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ingresaCliente`(ras VARCHAR(100),direc VARCHAR(100),doc CHAR(11),alis VARCHAR(100),refere TEXT,contac VARCHAR(100),nCel CHAR(9),emails VARCHAR(100), cumple date, tpcli int,tident INT,surco INT,colab INT)
+BEGIN 
+		DECLARE id CHAR(10);
+   
+		SET id=(SELECT CONCAT("CL",RIGHT(CONCAT("00000000",
+		MAX(SUBSTRING(`cliente_id`,8)+1)),8)) FROM `cliente`);
+			BEGIN 
+				IF ISNULL(id) THEN 
+					SET id='CL00000001';
+				END IF;
+			END;
+		INSERT INTO `cliente` (`cliente_id`,`nombre_razon`,`direccion`,`documento_identi`,`alias`,`referencia`,`representante`,`nCelular`,`email`,`cumpleaños`,`tipoCliente_id`,`identificacion_id`,`sucursal_id`,`colaborador_id`)
+		VALUES (id,ras,direc,doc,alis,refere,contac,nCel,emails,cumple,tpcli,tident,surco,colab);
     END */$$
 DELIMITER ;
 
