@@ -45,8 +45,8 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
                 "Accion" => "<div class='btn-group dropdown'>
                                 <a href='javascript: void(0);' class='table-action-btn dropdown-toggle arrow-none btn btn-secondary btn-sm' data-toggle='dropdown' aria-expanded='false'><i class='mdi mdi-dots-horizontal'></i></a>
                                 <div class='dropdown-menu dropdown-menu-right'>
-                                <button class='dropdown-item btn-editarPro' idProveedor='".$value['ID']."'><i class='mdi mdi-pencil mr-2 text-muted font-18 vertical-middle'></i>Editar</button>                                
-                                <button class='dropdown-item btn-eliminarPro' idProveedor='".$value['ID']."'><i class='mdi mdi-delete mr-2 text-muted font-18 vertical-middle'></i>Eliminar</button>
+                                <button class='dropdown-item btn-editar' idCliente='".$value['ID']."'><i class='mdi mdi-pencil mr-2 text-muted font-18 vertical-middle'></i>Editar</button>                                
+                                <button class='dropdown-item btn-eliminar' idCliente='".$value['ID']."'><i class='mdi mdi-delete mr-2 text-muted font-18 vertical-middle'></i>Eliminar</button>
                                 </div>
                             </div>"
             ];
@@ -63,24 +63,32 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
 
     if (isset($_POST["txtRazon"])) {
 
-        if (preg_match('/^[a-zA-Z0-9ñÑáíóúÁÉÍÓÚ&%$# ]+$/',$_POST["txtRazon"]) && preg_match('/^[a-zA-Z0-9]+$/',$_POST["txtIndetificacion"]) ) {
+        if (preg_match('/^[a-zA-Z0-9ñÑáíóúÁÉÍÓÚ&%$# ]+$/',$_POST["txtRazon"]) && preg_match('/^[0-9]+$/',$_POST["txtIndetificacion"]) ) {
            
 
-            $tabla = "proveedor";
+            $tabla = "cliente";
           
 
             $datos = array(
-                "rason" => $_POST["txtRazon"],
-                "ruc" => $_POST["txtIndetificacion"],
+                "rason" => $_POST["txtRazon"],            
                 "direccion" => $_POST["txtDireccion"],
+                "ruc" => $_POST["txtIndetificacion"],
+                "alias" => $_POST["txtAlias"],
+                "referencia" => $_POST["txtReferencia"],
                 "contacto" => $_POST["txtContacto"],
-                "email" => $_POST["txtCorreo"],
                 "nCelular" => $_POST["txtCelular"],
-                "nFono" => $_POST["txtFijo"],
-                "referencia" => $_POST["txtReferencia"]
+                "email" => $_POST["txtCorreo"],
+                "cumpleanos" => $_POST["txtCumpleanos"],
+                "tipoCliente" => $_POST["txtTipoCli"],
+                "tipoIdent" => $_POST["txtTipoDoc"],
+                "sucursal" => 1,
+                "colaborador" => $_POST["txtColaborador"]
+              
+             
+                
             );
 
-            $respuesta = ModeloProveedor::MdlIngresarProveedor($tabla,$datos);
+            $respuesta = ModeloCliente::MdlIngresarCliente($tabla,$datos);
             echo json_encode($respuesta);
         
         }else{

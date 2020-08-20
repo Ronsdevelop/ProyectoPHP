@@ -65,11 +65,12 @@ form.addEventListener('submit',function(e){
     e.preventDefault();
     let data = new FormData(form); 
     $("#con-close-modal").modal('hide');
-    fetch("controladores/proveedor.controlador.php",
+    fetch("controladores/cliente.controlador.php",
         {method:"POST",
-        body:data}).then(response => response.text())
-                   .then(response =>                 
-                    tblproveedor.ajax.reload())
+        body:data}).then(response => response.json())
+                   .then(response =>  
+                               
+                    tblcliente.ajax.reload())
                    
 
 
@@ -81,15 +82,15 @@ form.addEventListener('submit',function(e){
 FUNCION PARA ELIMINAR PROVEEDOR
 ====================================== */
  
-$(document).on("click",".btn-eliminarPro", function () {
-    let codProveedor = $(this).attr("idProveedor");
+$(document).on("click",".btn-eliminar", function () {
+    let codCliente = $(this).attr("idCliente");
     const datos = new FormData();
-    datos.append('codProveedor',codProveedor); 
+    datos.append('codCliente',codCliente); 
   
-    const url = "ajax/proveedores.ajax.php";
+    const url = "ajax/clientes.ajax.php";
 
     Swal.fire({
-        title: 'Seguro que deseas elimar el Proveedor?',
+        title: 'Seguro que deseas elimar el Cliente?',
         text: "Se eliminara totalmente de la base de datos!",
         icon: 'warning',
         showCancelButton: true,
@@ -104,7 +105,7 @@ $(document).on("click",".btn-eliminarPro", function () {
                     body: datos
         
                 }).then(resp => resp.json())
-                .then(response => confirmarEliminacionProveedor(response))
+                .then(response => confirmarEliminacion(response))
           }      
         
         
@@ -112,7 +113,7 @@ $(document).on("click",".btn-eliminarPro", function () {
 });
 
 
-function confirmarEliminacionProveedor(respuesta){ 
+function confirmarEliminacion(respuesta){ 
     console.log(respuesta);
    
     if (respuesta == "ok"){        
@@ -124,7 +125,7 @@ function confirmarEliminacionProveedor(respuesta){
         }).then(function(result){
 
             if(result.value){            
-                tblproveedor.ajax.reload();
+                tblcliente.ajax.reload();
 
             }
 
@@ -132,10 +133,10 @@ function confirmarEliminacionProveedor(respuesta){
          
         
     }else{
-        tblproveedor.ajax.reload();
+        tblcliente.ajax.reload();
         Swal.fire(
             'No se pudo Eliminar!',
-            'El Proveedor no se a eliminado de la base de datos.',
+            'El Cliente no se a eliminado de la base de datos.',
             'error'
           )
       }
@@ -144,47 +145,47 @@ function confirmarEliminacionProveedor(respuesta){
 
 
 
-$("#txtRazon").change(function(){ 
+$("#txtRazonnn").change(function(){ 
     $(".alert").remove();
    let razon = $(this).val();
    let etiqueta = "#txtRazon";
    const datos = new FormData();
    datos.append('valorValidar',razon);
    datos.append('itemValidar','rason');
-   let url = "ajax/proveedores.ajax.php";
+   let url = "ajax/clientes.ajax.php";
  
   fetch(url,{
       method:'POST',
       body: datos
 
   }).then(resp=> resp.json())
-  .then(response => comprobarDatosProveedor(response,etiqueta));
+  .then(response => comprobarDatos(response,etiqueta));
     
     
 });
 
-$("#txtIndetificacion").change(function(){ 
+$("#txtIndetificacionnn").change(function(){ 
     $(".alert").remove();
    let ruc = $(this).val();
    let etiqueta ="#txtIndetificacion";
    const datos = new FormData();
    datos.append('valorValidar',ruc);
    datos.append('itemValidar','ruc');
-   let url = "ajax/proveedores.ajax.php";
+   let url = "ajax/clientes.ajax.php";
  
   fetch(url,{
       method:'POST',
       body: datos
 
   }).then(resp=> resp.json())
-  .then(response => comprobarDatosProveedor(response,etiqueta));
+  .then(response => comprobarDatos(response,etiqueta));
     
     
 });
 
-function comprobarDatosProveedor(resp,etiqueta) {
+function comprobarDatos(resp,etiqueta) {
     if (resp) {
-        $(etiqueta).parent().after('<div class="alert alert-danger" role="alert" ><i class="mdi mdi-block-helper mr-2"></i>El Proveedor ya esta registrado en la base de datos!!</div>');
+        $(etiqueta).parent().after('<div class="alert alert-danger" role="alert" ><i class="mdi mdi-block-helper mr-2"></i>El Cliente ya esta registrado en la base de datos!!</div>');
         $(etiqueta).val("");
         
     }
@@ -203,14 +204,14 @@ function comprobarDatosProveedor(resp,etiqueta) {
 FUNCION PARA ABRIR MODAL PARA REGISTRAR PROVEEDOR
 ====================================== */
 
-function abrirModalProveedor() {    
+function abrirModal() {    
 
     let opcion = 2;
     let cabeceraModal = document.getElementById("cabeceraM");
     cabeceraModal.classList.remove("bg-success");
     cabeceraModal.classList.add("bg-dark");
-    document.getElementById("tituloModal").innerText = "Agregar Nuevo Proveedor"; 
-    document.getElementById("btnEditar").innerText = "Guardar Proveedor";
+    document.getElementById("tituloModal").innerText = "Agregar Nuevo Cliente"; 
+    document.getElementById("btnEditar").innerText = "Guardar Cliente";
     document.getElementById("formulario").reset(); 
   
     document.getElementById("txtOpcion").value = opcion;      
@@ -226,8 +227,8 @@ function abrirModalProveedor() {
  /* EDITAR PROVEEDOR  */
  /* ------------------------- */ 
  
-$(document).on("click",".btn-editarPro", function () {
-    let codProveedor = $(this).attr("idProveedor");
+$(document).on("click",".btn-editar", function () {
+    let codCliente = $(this).attr("idCliente");
     let opcion = 3;
     let cabeceraModal = document.getElementById("cabeceraM");
     cabeceraModal.classList.remove("bg-dark");
@@ -238,17 +239,17 @@ $(document).on("click",".btn-editarPro", function () {
    
    document.getElementById("txtOpcion").value = opcion;
      const data = new FormData();
-     data.append('codigoProv',codProveedor);
+     data.append('codCliente',codCliente);
      $("#con-close-modal").modal("show");
  
-  let url = "ajax/proveedores.ajax.php";
+  let url = "ajax/clientes.ajax.php";
  
   fetch(url,{
       method:'POST',
       body: data
  
   }).then(resp=> resp.json())
-  .then(response =>cargarDatosProveedor(response));
+  .then(response =>cargarDatos(response));
     
 });
 
@@ -258,7 +259,7 @@ $(document).on("click",".btn-editarPro", function () {
 /* FUNCION PARA ASIGNAR LOS DATOS A CADA ELEMENTO DEL MODAL EDITAR USURAIO*/
 /* ------------------------- */
 
-function cargarDatosProveedor(datos) {
+function cargarDatos(datos) {
     document.getElementById("txtRazon").value = datos["rason"];
     document.getElementById("txtDireccion").value = datos["direccion"];
     document.getElementById("txtContacto").value = datos["contacto"];
