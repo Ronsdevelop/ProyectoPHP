@@ -1,6 +1,6 @@
  
 $(document).ready(function() {
-    tblproveedor =  $('#tablaClientes').DataTable({
+    tblcliente =  $('#tablaClientes').DataTable({
                         language: {
                             "sProcessing":     "Procesando...",
                             "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -35,7 +35,7 @@ $(document).ready(function() {
                             $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
                         },
                         ajax:{            
-                            "url": "controladores/proveedor.controlador.php",   
+                            "url": "controladores/cliente.controlador.php",   
                             "method": 'POST', //usamos el metodo POST
                             "data":{"txtOpcion":1}, //enviamos opcion 4 para que haga un SELECT                   
                             "dataSrc":""
@@ -44,15 +44,14 @@ $(document).ready(function() {
                            {data: "ID" },
                            {data: "Rason"},
                            {data: "Direccion"},
-                           {data: "Tipo"},                          
-                           {data: "Doc"},
+                           {data: "Documento"},                          
+                           {data: "Numero"},
                            {data: "Alias"},
                            {data: "Referencia"},
-                           {data: "Contacto"},
                            {data: "Celular"},
-                           {data: "Registro"},
+                           {data: "Contacto"},
                            {data: "Cumpleaños"},
-                           {data: "TipoC"},
+                           {data: "Tipoc"},                           
                            {data: "Accion"}
                         
                         ]});

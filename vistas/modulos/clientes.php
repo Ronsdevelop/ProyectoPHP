@@ -35,7 +35,7 @@
                         <h4 class="mb-4">CLIENTES DE LA PANADERIA</h4>
 
                         <table  class="table table-hover m-0 table-centered dt-responsive nowrap w-100 table-sm tablas" id="tablaClientes">   <!--id="tickets-table" data-toggle="modal" data-target="#con-close-modal"-->
-                   <thead class="thead-dark">
+                            <thead class="thead-dark">
                             <tr>
                                 <th>
                                     ID
@@ -43,14 +43,13 @@
                                 <th>RAZON SOCIAL</th>
                                 <th>DIRECCION</th>
                                 <th>RUC/DNI</th>
-                                <th>DOC</th>
+                                <th>NUMERO</th>
                                 <th>ALIAS</th>
                                 <th>REFERENCIA</th>
-                                <th>CONTACTO</th>                              
-                                <th>CELULAR</th> 
-                                <th>REGISTRO</th>
+                                <th>CELULAR</th>                              
+                                <th>CONTACTO</th> 
                                 <th>CUMPLEAÑOS</th>
-                                <th>TIPO CLIENTE</th>  
+                                <th>TIPO CLIENTE</th>                                
                                 <th>ACCION</th>                        
                             </tr>
                             </thead>
@@ -65,14 +64,13 @@
                                 <th>RAZON SOCIAL</th>
                                 <th>DIRECCION</th>
                                 <th>RUC/DNI</th>
-                                <th>DOC</th>
+                                <th>NUMERO</th>
                                 <th>ALIAS</th>
                                 <th>REFERENCIA</th>
-                                <th>CONTACTO</th>                              
-                                <th>CELULAR</th> 
-                                <th>REGISTRO</th>
+                                <th>CELULAR</th>                              
+                                <th>CONTACTO</th> 
                                 <th>CUMPLEAÑOS</th>
-                                <th>TIPO CLIENTE</th>  
+                                <th>TIPO CLIENTE</th>                                
                                 <th>ACCION</th>                        
                             </tr>
                             </tfoot> 
