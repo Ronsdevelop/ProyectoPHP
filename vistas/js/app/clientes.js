@@ -78,6 +78,64 @@ form.addEventListener('submit',function(e){
 })
 
 
+
+ /* ------------------------- */
+ /* EDITAR PROVEEDOR  */
+ /* ------------------------- */ 
+ 
+ $(document).on("click",".btn-editar", function () {
+    let codCliente = $(this).attr("idCliente");
+    
+    let opcion = 3;
+    let cabeceraModal = document.getElementById("cabeceraM");
+    cabeceraModal.classList.remove("bg-dark");
+    cabeceraModal.classList.add("bg-success");
+   document.getElementById("tituloModal").innerText = "Editar Cliente"; 
+   document.getElementById("btnEditar").innerText = "Actualizar Cliente";   
+   document.getElementById("txtOpcion").value = opcion;
+     const data = new FormData();
+     data.append('codigoCli',codCliente);
+     $("#con-close-modal").modal("show");
+ 
+  let url = "ajax/clientes.ajax.php";
+ 
+  fetch(url,{
+      method:'POST',
+      body: data
+ 
+  }).then(resp=> resp.text())
+  .then(response =>
+   console.log(response))
+   /* cargarDatos(response))*/
+    
+});
+
+
+
+ /* ------------------------- */
+/* FUNCION PARA ASIGNAR LOS DATOS A CADA ELEMENTO DEL MODAL EDITAR USURAIO*/
+/* ------------------------- */
+
+function cargarDatos(datos) {
+   
+    document.getElementById("txtRazon").value = datos["nombre_razon"];
+    document.getElementById("txtDireccion").value = datos["direccion"];
+    document.getElementById("txtContacto").value = datos["representante"];
+    document.getElementById("txtIndetificacion").value = datos["documento_identi"];
+    document.getElementById("txtCelular").value = datos["nCelular"];
+    document.getElementById("txtAlias").value = datos["alias"];
+    document.getElementById("txtCumpleanos").value = datos["cumpleaños"];
+    document.getElementById("txtCorreo").value = datos["email"];
+    document.getElementById("txtReferencia").value = datos["referencia"];
+    document.getElementById("txtId").value = datos["cliente_id"];
+    document.getElementById("txtTipoCli").selectedIndex = datos["tipoCliente_id"];
+    document.getElementById("txtTipoDoc").selectedIndex = datos["identificacion_id"];
+     
+}
+
+
+
+
 /* ====================================== 
 FUNCION PARA ELIMINAR PROVEEDOR
 ====================================== */
@@ -221,60 +279,4 @@ function abrirModal() {
 }
 
 
-
-
- /* ------------------------- */
- /* EDITAR PROVEEDOR  */
- /* ------------------------- */ 
- 
-$(document).on("click",".btn-editar", function () {
-    let codCliente = $(this).attr("idCliente");
-    let opcion = 3;
-    let cabeceraModal = document.getElementById("cabeceraM");
-    cabeceraModal.classList.remove("bg-dark");
-    cabeceraModal.classList.add("bg-success");
-   document.getElementById("tituloModal").innerText = "Editar Usuario";
- 
-   document.getElementById("btnEditar").innerText = "Actualizar Usuario";
-   
-   document.getElementById("txtOpcion").value = opcion;
-     const data = new FormData();
-     data.append('codCliente',codCliente);
-     $("#con-close-modal").modal("show");
- 
-  let url = "ajax/clientes.ajax.php";
- 
-  fetch(url,{
-      method:'POST',
-      body: data
- 
-  }).then(resp=> resp.json())
-  .then(response =>cargarDatos(response));
-    
-});
-
-
-
- /* ------------------------- */
-/* FUNCION PARA ASIGNAR LOS DATOS A CADA ELEMENTO DEL MODAL EDITAR USURAIO*/
-/* ------------------------- */
-
-function cargarDatos(datos) {
-    document.getElementById("txtRazon").value = datos["rason"];
-    document.getElementById("txtDireccion").value = datos["direccion"];
-    document.getElementById("txtContacto").value = datos["contacto"];
-    document.getElementById("txtIndetificacion").value = datos["ruc"];
-    document.getElementById("txtCelular").value = datos["nCelular"];
-    document.getElementById("txtFijo").value = datos["nFono"];
-    document.getElementById("txtCorreo").value = datos["email"];
-    document.getElementById("txtReferencia").value = datos["referencia"];
-    document.getElementById("txtId").value = datos["proveedor_id"];
-     
-}
-
-
-
-/*=====================
-COMPROBAR SI LA RAZON SOCIAL ESTA REPETIDA
-======================*/
 

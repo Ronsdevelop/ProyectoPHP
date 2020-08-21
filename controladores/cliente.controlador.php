@@ -106,7 +106,7 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
 
         if (preg_match('/^[a-zA-Z0-9ñÑáíóúÁÉÍÓÚ ]+$/',$_POST["txtRazon"])) { 
            
-            $tabla = "proveedor";
+            $tabla = "cliente";
 
             $datos = array(
                 "rason" => $_POST["txtRazon"],

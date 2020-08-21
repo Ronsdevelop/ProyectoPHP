@@ -56,7 +56,7 @@ class ModeloCliente{
 
 }
 
-static public function MdlEditarProveedor($tabla,$datos){
+static public function MdlEditarCliente($tabla,$datos){
 
     $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET rason = :rason, ruc = :ruc, direccion = :direccion, contacto = :contacto, email = :email, nCelular = :nCelular, nFono = :nFono, referencia = :referencia  WHERE proveedor_id = :codigo");       
 
@@ -82,7 +82,7 @@ static public function MdlEditarProveedor($tabla,$datos){
     $stmt = null;
 }
 
-static public function MdlActualizarProveedor($tabla,$item1,$valor1,$item2,$valor2){
+static public function MdlActualizarCliente($tabla,$item1,$valor1,$item2,$valor2){
     $stmt = Conexion::conectar()-> prepare("UPDATE $tabla SET $item1 = :$item1 WHERE $item2=:$item2");
     $stmt->bindParam(":".$item1,$valor1,PDO::PARAM_STR);
     $stmt->bindParam(":".$item2,$valor2,PDO::PARAM_STR);
@@ -96,7 +96,7 @@ static public function MdlActualizarProveedor($tabla,$item1,$valor1,$item2,$valo
 
 }
 
-static public function MdlEliminaProveedor($tabla,$item,$valor){
+static public function MdlEliminaCliente($tabla,$item,$valor){
     $stmt = Conexion::conectar()-> prepare("DELETE FROM $tabla WHERE $item=:$item");
     $stmt -> bindParam(":".$item,$valor, PDO::PARAM_STR);
     if ($stmt ->execute()) {

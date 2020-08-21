@@ -169,7 +169,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="field-3" class="control-label">Cumpleaños</label>
-                                                        <input type="date" class="form-control" name="txtCumpleaños" id="txtCumpleanos" placeholder="Direccion de email">
+                                                        <input type="date" class="form-control" name="txtCumpleanos" id="txtCumpleanos" placeholder="Direccion de email">
                                                     </div>
                                                 </div>
                                             </div> 
