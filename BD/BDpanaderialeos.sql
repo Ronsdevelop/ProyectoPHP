@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.1.37-MariaDB : Database - bdpanaderialeos
+MySQL - 5.5.5-10.1.32-MariaDB : Database - bdpanaderialeos
 *********************************************************************
 */
 
@@ -117,7 +117,7 @@ CREATE TABLE `cliente` (
 
 /*Data for the table `cliente` */
 
-insert  into `cliente`(`cliente_id`,`nombre_razon`,`direccion`,`documento_identi`,`alias`,`referencia`,`representante`,`nCelular`,`email`,`fRegistro`,`cumpleaños`,`tipoCliente_id`,`identificacion_id`,`sucursal_id`,`colaborador_id`) values ('CL00000001','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:58:07','2020-11-05',1,1,1,1),('CL00000002','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:58:45','2020-11-05',1,1,1,1),('CL00000003','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:58:58','2020-11-05',1,1,1,1),('CL00000004','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 20:44:46','2020-11-05',2,2,1,1),('CL00000005','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:00','2020-11-05',1,1,1,1),('CL00000006','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:01','2020-11-05',1,1,1,1),('CL00000007','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:02','2020-11-05',1,1,1,1),('CL00000008','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:02','2020-11-05',1,1,1,1),('CL00000009','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:03','2020-11-05',1,1,1,1),('CL00000010','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:03','2020-11-05',1,1,1,1),('CL00000011','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:03','2020-11-05',1,1,1,1);
+insert  into `cliente`(`cliente_id`,`nombre_razon`,`direccion`,`documento_identi`,`alias`,`referencia`,`representante`,`nCelular`,`email`,`fRegistro`,`cumpleaños`,`tipoCliente_id`,`identificacion_id`,`sucursal_id`,`colaborador_id`) values ('CL00000002','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:58:45','2020-11-05',1,1,1,1),('CL00000003','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:58:58','2020-11-05',1,1,1,1),('CL00000004','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 20:44:46','2020-11-05',2,2,1,1),('CL00000005','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:00','2020-11-05',1,1,1,1),('CL00000006','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:01','2020-11-05',1,1,1,1),('CL00000007','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:02','2020-11-05',1,1,1,1),('CL00000008','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:02','2020-11-05',1,1,1,1),('CL00000009','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:03','2020-11-05',1,1,1,1),('CL00000010','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:03','2020-11-05',1,1,1,1),('CL001','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-22 07:03:49','2020-11-05',1,1,1,1);
 
 /*Table structure for table `colaborador` */
 
@@ -146,7 +146,7 @@ CREATE TABLE `colaborador` (
 
 /*Data for the table `colaborador` */
 
-insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15','vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-19 18:46:47',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11','vistas/img/usuarios/Jess/458.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
+insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15','vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-22 06:52:09',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11','vistas/img/usuarios/Jess/458.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
 
 /*Table structure for table `compras_ingresos` */
 
@@ -481,7 +481,7 @@ CREATE TABLE `proveedor` (
 
 /*Data for the table `proveedor` */
 
-insert  into `proveedor`(`proveedor_id`,`rason`,`ruc`,`direccion`,`contacto`,`email`,`nCelular`,`nFono`,`referencia`) values ('PV001','GRUPO FUMINSUMOS SAC','20600149645','CALLE LOS FICUS MZ Q LT 23 CASTILLA','JUAN MARTINEZ','grupo@hotmail.com','123456789','383883','A ESPALDAS DEL ESTADIO');
+insert  into `proveedor`(`proveedor_id`,`rason`,`ruc`,`direccion`,`contacto`,`email`,`nCelular`,`nFono`,`referencia`) values ('CL001','GRUPO FUMINSUMOS SAC','20600149645','CALLE LOS FICUS MZ Q LT 23 CASTILLA','JUAN MARTINEZ','grupo@hotmail.com','123456789','383883','A ESPALDAS DEL ESTADIO');
 
 /*Table structure for table `seccion` */
 
@@ -525,11 +525,11 @@ CREATE TABLE `tipo_cliente` (
   `tipo` varchar(50) NOT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`tipoCliente_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tipo_cliente` */
 
-insert  into `tipo_cliente`(`tipoCliente_id`,`tipo`,`descripcion`) values (1,'DISTRIBUIDOR','CLIENTES QUE SE ENTREGA PAN PARA VENDER'),(2,'CONSUMIDOR','CLIENTE QUE COMPRA EN TIENDA');
+insert  into `tipo_cliente`(`tipoCliente_id`,`tipo`,`descripcion`) values (1,'DISTRIBUIDOR','CLIENTES QUE SE ENTREGA PAN PARA VENDER'),(2,'CONSUMIDOR','CLIENTE QUE COMPRA EN TIENDA'),(3,'OTRO','OTRO TIPO DE CLIENTE');
 
 /*Table structure for table `tipo_comprobante` */
 

@@ -4,11 +4,11 @@
 
     class AjaxClientes{
 
-        public $codCliente;
+        public $codClienteEditar;
         public function ajaxEditarCliente(){
             $tabla ="cliente";
             $item ="cliente_id";
-            $valor = "CL00000001";
+            $valor = $this-> codClienteEditar;
             $respuesta = ModeloCliente::MdlMostrarClientes($tabla,$item,$valor);
             echo json_encode($respuesta);
 
@@ -40,9 +40,9 @@
     }
 
 
-    if (isset($_POST["codigoCli"])) {
+    if (isset($_POST["codigoEditar"])) {
         $cEditar = new AjaxClientes();
-        
+        $cEditar -> codClienteEditar = $_POST["codigoEditar"];
         $cEditar -> ajaxEditarCliente();
          
     }
