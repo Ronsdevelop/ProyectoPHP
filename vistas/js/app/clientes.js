@@ -94,7 +94,7 @@ form.addEventListener('submit',function(e){
    document.getElementById("btnEditar").innerText = "Actualizar Cliente";   
    document.getElementById("txtOpcion").value = opcion;
      const data = new FormData();
-     data.append('codigoEditar','CL001');
+     data.append('codigoEditar',codCliente);
      $("#con-close-modal").modal("show");
  
   let url = "ajax/clientes.ajax.php";

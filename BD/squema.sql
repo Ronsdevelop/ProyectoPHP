@@ -2,7 +2,7 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
 -- Schema BDpanaderialeos
@@ -85,18 +85,18 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`COLABORADOR` (
   `nombre` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
   `aPaterno` VARCHAR(80) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
   `aMaterno` VARCHAR(80) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
-  `dni` CHAR(8) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
-  `direccion` VARCHAR(150) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
-  `nCelular` CHAR(9) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
+  `dni` CHAR(8) NOT NULL,
+  `direccion` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
+  `nCelular` CHAR(9) NULL,
   `fIngreso` DATE NOT NULL,
-  `fCreacion` TIMESTAMP NOT NULL,
-  `avatar` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
+  `fCreacion` TIMESTAMP NULL,
+  `avatar` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
   `user` VARCHAR(30) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
   `pass` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
-  `email` VARCHAR(80) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
-  `cargo_id` INT NOT NULL,  
+  `email` VARCHAR(80) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
+  `cargo_id` INT NOT NULL,
   PRIMARY KEY (`colaborador_id`),
-  INDEX `fk_COLABORADOR_CARGO1_idx` (`cargo_id` ASC) VISIBLE,
+  INDEX `fk_COLABORADOR_CARGO1_idx` (`cargo_id` ASC),
   CONSTRAINT `fk_COLABORADOR_CARGO1`
     FOREIGN KEY (`cargo_id`)
     REFERENCES `BDpanaderialeos`.`CARGO` (`cargo_id`)
@@ -126,10 +126,10 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`CLIENTE` (
   `sucursal_id` INT NOT NULL,
   `colaborador_id` INT NOT NULL,
   PRIMARY KEY (`cliente_id`),
-  INDEX `fk_CLIENTE_TIPO_CLIENTE1_idx` (`tipoCliente_id` ASC) VISIBLE,
-  INDEX `fk_CLIENTE_IDENTIFICACION_CLIENTE1_idx` (`identificacion_id` ASC) VISIBLE,
-  INDEX `fk_CLIENTE_SUCURSAL1_idx` (`sucursal_id` ASC) VISIBLE,
-  INDEX `fk_CLIENTE_COLABORADOR1_idx` (`colaborador_id` ASC) VISIBLE,
+  INDEX `fk_CLIENTE_TIPO_CLIENTE1_idx` (`tipoCliente_id` ASC),
+  INDEX `fk_CLIENTE_IDENTIFICACION_CLIENTE1_idx` (`identificacion_id` ASC),
+  INDEX `fk_CLIENTE_SUCURSAL1_idx` (`sucursal_id` ASC),
+  INDEX `fk_CLIENTE_COLABORADOR1_idx` (`colaborador_id` ASC),
   CONSTRAINT `fk_CLIENTE_TIPO_CLIENTE1`
     FOREIGN KEY (`tipoCliente_id`)
     REFERENCES `BDpanaderialeos`.`TIPO_CLIENTE` (`tipoCliente_id`)
@@ -191,17 +191,17 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`VENTA` (
   `fRegistro` TIMESTAMP NOT NULL,
   `tipoComprobante_id` INT NOT NULL,
   `cliente_id` CHAR(10) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
-  `colaborador_id` INT NOT NULL,
   `sucursal_id` INT NOT NULL,
   `tPago_id` INT NOT NULL,
   `turno_id` INT NOT NULL,
+  `colaborador_id` INT NOT NULL,
   PRIMARY KEY (`venta_id`),
-  INDEX `fk_VENTA_TIPO_COMPROBANTE1_idx` (`tipoComprobante_id` ASC) VISIBLE,
-  INDEX `fk_VENTA_CLIENTE1_idx` (`cliente_id` ASC) VISIBLE,
-  INDEX `fk_VENTA_COLABORADOR1_idx` (`colaborador_id` ASC) VISIBLE,
-  INDEX `fk_VENTA_SUCURSAL1_idx` (`sucursal_id` ASC) VISIBLE,
-  INDEX `fk_VENTA_TIPO_PAGO1_idx` (`tPago_id` ASC) VISIBLE,
-  INDEX `fk_VENTA_TURNO1_idx` (`turno_id` ASC) VISIBLE,
+  INDEX `fk_VENTA_TIPO_COMPROBANTE1_idx` (`tipoComprobante_id` ASC),
+  INDEX `fk_VENTA_CLIENTE1_idx` (`cliente_id` ASC),
+  INDEX `fk_VENTA_SUCURSAL1_idx` (`sucursal_id` ASC),
+  INDEX `fk_VENTA_TIPO_PAGO1_idx` (`tPago_id` ASC),
+  INDEX `fk_VENTA_TURNO1_idx` (`turno_id` ASC),
+  INDEX `fk_VENTA_COLABORADOR1_idx` (`colaborador_id` ASC),
   CONSTRAINT `fk_VENTA_TIPO_COMPROBANTE1`
     FOREIGN KEY (`tipoComprobante_id`)
     REFERENCES `BDpanaderialeos`.`TIPO_COMPROBANTE` (`tipoComprobante_id`)
@@ -210,11 +210,6 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`VENTA` (
   CONSTRAINT `fk_VENTA_CLIENTE1`
     FOREIGN KEY (`cliente_id`)
     REFERENCES `BDpanaderialeos`.`CLIENTE` (`cliente_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_VENTA_COLABORADOR1`
-    FOREIGN KEY (`colaborador_id`)
-    REFERENCES `BDpanaderialeos`.`COLABORADOR` (`colaborador_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_VENTA_SUCURSAL1`
@@ -230,6 +225,11 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`VENTA` (
   CONSTRAINT `fk_VENTA_TURNO1`
     FOREIGN KEY (`turno_id`)
     REFERENCES `BDpanaderialeos`.`TURNO` (`turno_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_VENTA_COLABORADOR1`
+    FOREIGN KEY (`colaborador_id`)
+    REFERENCES `BDpanaderialeos`.`COLABORADOR` (`colaborador_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -259,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`CATEGORIA` (
   `estado` BIT(1) NOT NULL,
   `seccion_id` INT NOT NULL,
   PRIMARY KEY (`categoria_id`),
-  INDEX `fk_CATEGORIA_SECCION1_idx` (`seccion_id` ASC) VISIBLE,
+  INDEX `fk_CATEGORIA_SECCION1_idx` (`seccion_id` ASC),
   CONSTRAINT `fk_CATEGORIA_SECCION1`
     FOREIGN KEY (`seccion_id`)
     REFERENCES `BDpanaderialeos`.`SECCION` (`seccion_id`)
@@ -282,7 +282,7 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`PRODUCTO` (
   `descripcion` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
   `categoria_id` CHAR(5) NOT NULL,
   PRIMARY KEY (`producto_id`),
-  INDEX `fk_PRODUCTO_CATEGORIA1_idx` (`categoria_id` ASC) VISIBLE,
+  INDEX `fk_PRODUCTO_CATEGORIA1_idx` (`categoria_id` ASC),
   CONSTRAINT `fk_PRODUCTO_CATEGORIA1`
     FOREIGN KEY (`categoria_id`)
     REFERENCES `BDpanaderialeos`.`CATEGORIA` (`categoria_id`)
@@ -317,7 +317,7 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`MATERIA_PRIMA` (
   `observacion` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
   `unMedida_Id` INT NOT NULL,
   PRIMARY KEY (`mPrima_id`),
-  INDEX `fk_MATERIA_PRIMA_UNIDAD_MEDIDA1_idx` (`unMedida_Id` ASC) VISIBLE,
+  INDEX `fk_MATERIA_PRIMA_UNIDAD_MEDIDA1_idx` (`unMedida_Id` ASC),
   CONSTRAINT `fk_MATERIA_PRIMA_UNIDAD_MEDIDA1`
     FOREIGN KEY (`unMedida_Id`)
     REFERENCES `BDpanaderialeos`.`UNIDAD_MEDIDA` (`unMedida_Id`)
@@ -336,8 +336,8 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`DETALLE_VENTA` (
   `cantidad` INT NOT NULL,
   `precio` DECIMAL(9,2) NOT NULL,
   `valorVena` DECIMAL(9,2) NOT NULL,
-  INDEX `fk_DETALLE_VENTA_PRODUCTO1_idx` (`producto_id` ASC) VISIBLE,
-  INDEX `fk_DETALLE_VENTA_VENTA1_idx` (`venta_id` ASC) VISIBLE,
+  INDEX `fk_DETALLE_VENTA_PRODUCTO1_idx` (`producto_id` ASC),
+  INDEX `fk_DETALLE_VENTA_VENTA1_idx` (`venta_id` ASC),
   CONSTRAINT `fk_DETALLE_VENTA_PRODUCTO1`
     FOREIGN KEY (`producto_id`)
     REFERENCES `BDpanaderialeos`.`PRODUCTO` (`producto_id`)
@@ -366,7 +366,7 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`CAJA` (
   `estado` INT(1) NOT NULL,
   `observaciones` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
   PRIMARY KEY (`caja_id`),
-  INDEX `fk_CAJA_SUCURSAL1_idx` (`sucursal_id` ASC) VISIBLE,
+  INDEX `fk_CAJA_SUCURSAL1_idx` (`sucursal_id` ASC),
   CONSTRAINT `fk_CAJA_SUCURSAL1`
     FOREIGN KEY (`sucursal_id`)
     REFERENCES `BDpanaderialeos`.`SUCURSAL` (`sucursal_id`)
@@ -401,10 +401,10 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`MOVIMIENTOS_CAJA` (
   `monto` DECIMAL(9,2) NOT NULL,
   `observacion` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
   `estado` INT(1) NULL,
-  INDEX `fk_MOVIMIENTOS_CAJA_TIPO_MOVIMIENTO1_idx` (`tMovimiento_id` ASC) VISIBLE,
-  INDEX `fk_MOVIMIENTOS_CAJA_TIPO_COMPROBANTE1_idx` (`tipoComprobante_id` ASC) VISIBLE,
+  INDEX `fk_MOVIMIENTOS_CAJA_TIPO_MOVIMIENTO1_idx` (`tMovimiento_id` ASC),
+  INDEX `fk_MOVIMIENTOS_CAJA_TIPO_COMPROBANTE1_idx` (`tipoComprobante_id` ASC),
   PRIMARY KEY (`movCaja_id`),
-  INDEX `fk_MOVIMIENTOS_CAJA_CAJA1_idx` (`caja_id` ASC) VISIBLE,
+  INDEX `fk_MOVIMIENTOS_CAJA_CAJA1_idx` (`caja_id` ASC),
   CONSTRAINT `fk_MOVIMIENTOS_CAJA_TIPO_MOVIMIENTO1`
     FOREIGN KEY (`tMovimiento_id`)
     REFERENCES `BDpanaderialeos`.`TIPO_MOVIMIENTO` (`tMovimiento_id`)
@@ -454,7 +454,7 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`MAQUINA` (
   `imagen` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
   `sucursal_id` INT NOT NULL,
   PRIMARY KEY (`maquina_id`),
-  INDEX `fk_MAQUINA_SUCURSAL1_idx` (`sucursal_id` ASC) VISIBLE,
+  INDEX `fk_MAQUINA_SUCURSAL1_idx` (`sucursal_id` ASC),
   CONSTRAINT `fk_MAQUINA_SUCURSAL1`
     FOREIGN KEY (`sucursal_id`)
     REFERENCES `BDpanaderialeos`.`SUCURSAL` (`sucursal_id`)
@@ -475,8 +475,8 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`PRODUCCCION` (
   `turno_id` INT NOT NULL,
   `colaborador_id` INT NOT NULL,
   PRIMARY KEY (`produccion_id`),
-  INDEX `fk_PRODUCCCION_TURNO1_idx` (`turno_id` ASC) VISIBLE,
-  INDEX `fk_PRODUCCCION_COLABORADOR1_idx` (`colaborador_id` ASC) VISIBLE,
+  INDEX `fk_PRODUCCCION_TURNO1_idx` (`turno_id` ASC),
+  INDEX `fk_PRODUCCCION_COLABORADOR1_idx` (`colaborador_id` ASC),
   CONSTRAINT `fk_PRODUCCCION_TURNO1`
     FOREIGN KEY (`turno_id`)
     REFERENCES `BDpanaderialeos`.`TURNO` (`turno_id`)
@@ -501,8 +501,8 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`FICHA_PRODUCCION` (
   `canpanxLatasIcompletas` INT NULL,
   `canTotal` INT NOT NULL,
   `observacion` TEXT CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
-  INDEX `fk_DETALLE_PRODUCCION_PRODUCTO1_idx` (`producto_id` ASC) VISIBLE,
-  INDEX `fk_DETALLE_PRODUCCION_PRODUCCCION1_idx` (`produccion_id` ASC) VISIBLE,
+  INDEX `fk_DETALLE_PRODUCCION_PRODUCTO1_idx` (`producto_id` ASC),
+  INDEX `fk_DETALLE_PRODUCCION_PRODUCCCION1_idx` (`produccion_id` ASC),
   CONSTRAINT `fk_DETALLE_PRODUCCION_PRODUCTO1`
     FOREIGN KEY (`producto_id`)
     REFERENCES `BDpanaderialeos`.`PRODUCTO` (`producto_id`)
@@ -549,9 +549,9 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`PEDIDO` (
   `turno_id` INT NOT NULL,
   `colaborador_id` INT NOT NULL,
   PRIMARY KEY (`pedido_id`),
-  INDEX `fk_PEDIDO_CLIENTE1_idx` (`cliente_id` ASC) VISIBLE,
-  INDEX `fk_PEDIDO_TURNO1_idx` (`turno_id` ASC) VISIBLE,
-  INDEX `fk_PEDIDO_COLABORADOR1_idx` (`colaborador_id` ASC) VISIBLE,
+  INDEX `fk_PEDIDO_CLIENTE1_idx` (`cliente_id` ASC),
+  INDEX `fk_PEDIDO_TURNO1_idx` (`turno_id` ASC),
+  INDEX `fk_PEDIDO_COLABORADOR1_idx` (`colaborador_id` ASC),
   CONSTRAINT `fk_PEDIDO_CLIENTE1`
     FOREIGN KEY (`cliente_id`)
     REFERENCES `BDpanaderialeos`.`CLIENTE` (`cliente_id`)
@@ -592,9 +592,9 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`DETALLE_PEDIDO` (
   `cant_venta_pan_id` INT NOT NULL,
   `cantidad` INT NOT NULL,
   `crearegistro` TIMESTAMP NULL,
-  INDEX `fk_DETALLE_PEDIDO_PEDIDO1_idx` (`pedido_id` ASC) VISIBLE,
-  INDEX `fk_DETALLE_PEDIDO_PRODUCTO1_idx` (`producto_id` ASC) VISIBLE,
-  INDEX `fk_DETALLE_PEDIDO_CANT_VENTA_PAN1_idx` (`cant_venta_pan_id` ASC) VISIBLE,
+  INDEX `fk_DETALLE_PEDIDO_PEDIDO1_idx` (`pedido_id` ASC),
+  INDEX `fk_DETALLE_PEDIDO_PRODUCTO1_idx` (`producto_id` ASC),
+  INDEX `fk_DETALLE_PEDIDO_CANT_VENTA_PAN1_idx` (`cant_venta_pan_id` ASC),
   CONSTRAINT `fk_DETALLE_PEDIDO_PEDIDO1`
     FOREIGN KEY (`pedido_id`)
     REFERENCES `BDpanaderialeos`.`PEDIDO` (`pedido_id`)
@@ -623,7 +623,7 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`DETALLES_MAQUINA` (
   `observacion` TEXT CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
   `costo` DECIMAL(9,2) NULL,
   `maquina_id` INT NOT NULL,
-  INDEX `fk_DETALLES_MAQUINA_MAQUINA_idx` (`maquina_id` ASC) VISIBLE,
+  INDEX `fk_DETALLES_MAQUINA_MAQUINA_idx` (`maquina_id` ASC),
   CONSTRAINT `fk_DETALLES_MAQUINA_MAQUINA`
     FOREIGN KEY (`maquina_id`)
     REFERENCES `BDpanaderialeos`.`MAQUINA` (`maquina_id`)
@@ -639,8 +639,8 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`PERMISO_COLABORADOR` (
   `permiso_id` INT NOT NULL,
   `colaborador_id` INT NOT NULL,
-  INDEX `fk_PERMISO_COLABORADOR_PERMISO1_idx` (`permiso_id` ASC) VISIBLE,
-  INDEX `fk_PERMISO_COLABORADOR_COLABORADOR1_idx` (`colaborador_id` ASC) VISIBLE,
+  INDEX `fk_PERMISO_COLABORADOR_PERMISO1_idx` (`permiso_id` ASC),
+  INDEX `fk_PERMISO_COLABORADOR_COLABORADOR1_idx` (`colaborador_id` ASC),
   CONSTRAINT `fk_PERMISO_COLABORADOR_PERMISO1`
     FOREIGN KEY (`permiso_id`)
     REFERENCES `BDpanaderialeos`.`PERMISO` (`permiso_id`)
@@ -663,8 +663,8 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`USO_MPRIMA` (
   `mPrima_id` INT NOT NULL,
   `cantidad` DECIMAL(9,2) NOT NULL,
   `observacion` TEXT CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
-  INDEX `fk_PRODUCTO_MPRIMA_MATERIA_PRIMA1_idx` (`mPrima_id` ASC) VISIBLE,
-  INDEX `fk_USO_MPRIMA_PRODUCCCION1_idx` (`produccion_id` ASC) VISIBLE,
+  INDEX `fk_PRODUCTO_MPRIMA_MATERIA_PRIMA1_idx` (`mPrima_id` ASC),
+  INDEX `fk_USO_MPRIMA_PRODUCCCION1_idx` (`produccion_id` ASC),
   CONSTRAINT `fk_PRODUCTO_MPRIMA_MATERIA_PRIMA1`
     FOREIGN KEY (`mPrima_id`)
     REFERENCES `BDpanaderialeos`.`MATERIA_PRIMA` (`mPrima_id`)
@@ -693,9 +693,9 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`COMPRAS_INGRESOS` (
   `tipoComprobante_id` INT NOT NULL,
   `colaborador_id` INT NOT NULL,
   PRIMARY KEY (`ingresos_id`),
-  INDEX `fk_COMPRAS_INGRESOS_PROVEEDOR1_idx` (`proveedor_id` ASC) VISIBLE,
-  INDEX `fk_COMPRAS_INGRESOS_TIPO_COMPROBANTE1_idx` (`tipoComprobante_id` ASC) VISIBLE,
-  INDEX `fk_COMPRAS_INGRESOS_COLABORADOR1_idx` (`colaborador_id` ASC) VISIBLE,
+  INDEX `fk_COMPRAS_INGRESOS_PROVEEDOR1_idx` (`proveedor_id` ASC),
+  INDEX `fk_COMPRAS_INGRESOS_TIPO_COMPROBANTE1_idx` (`tipoComprobante_id` ASC),
+  INDEX `fk_COMPRAS_INGRESOS_COLABORADOR1_idx` (`colaborador_id` ASC),
   CONSTRAINT `fk_COMPRAS_INGRESOS_PROVEEDOR1`
     FOREIGN KEY (`proveedor_id`)
     REFERENCES `BDpanaderialeos`.`PROVEEDOR` (`proveedor_id`)
@@ -725,8 +725,8 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`DETALLE_MATPRIMA_PROVEEDOR` (
   `precio` DECIMAL(9,2) NOT NULL,
   `observacion` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
   `fVencimiento` DATE NOT NULL,
-  INDEX `fk_PROVEEDOR_MPRIMA_MATERIA_PRIMA1_idx` (`mPrima_id` ASC) VISIBLE,
-  INDEX `fk_PROVEEDOR_MPRIMA_COMPRAS_INGRESOS1_idx` (`ingresos_id` ASC) VISIBLE,
+  INDEX `fk_PROVEEDOR_MPRIMA_MATERIA_PRIMA1_idx` (`mPrima_id` ASC),
+  INDEX `fk_PROVEEDOR_MPRIMA_COMPRAS_INGRESOS1_idx` (`ingresos_id` ASC),
   CONSTRAINT `fk_PROVEEDOR_MPRIMA_MATERIA_PRIMA1`
     FOREIGN KEY (`mPrima_id`)
     REFERENCES `BDpanaderialeos`.`MATERIA_PRIMA` (`mPrima_id`)
@@ -751,8 +751,8 @@ CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`DETALLE_ABARROTES_PROVEEDOR` (
   `fVencimiento` DATE NOT NULL,
   `valorCompra` DECIMAL(9,2) NOT NULL,
   `ingresos_id` CHAR(10) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
-  INDEX `fk_DETALLE_PROD_PROVEEDOR_PRODUCTO1_idx` (`producto_id` ASC) VISIBLE,
-  INDEX `fk_DETALLE_PROD_PROVEEDOR_COMPRAS_INGRESOS1_idx` (`ingresos_id` ASC) VISIBLE,
+  INDEX `fk_DETALLE_PROD_PROVEEDOR_PRODUCTO1_idx` (`producto_id` ASC),
+  INDEX `fk_DETALLE_PROD_PROVEEDOR_COMPRAS_INGRESOS1_idx` (`ingresos_id` ASC),
   CONSTRAINT `fk_DETALLE_PROD_PROVEEDOR_PRODUCTO1`
     FOREIGN KEY (`producto_id`)
     REFERENCES `BDpanaderialeos`.`PRODUCTO` (`producto_id`)
@@ -767,5 +767,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
-
-
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
