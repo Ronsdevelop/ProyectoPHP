@@ -28,7 +28,7 @@ CREATE TABLE `caja` (
   `mApertura` decimal(9,2) NOT NULL,
   `mCierre` decimal(9,2) DEFAULT NULL,
   `hCierre` datetime DEFAULT NULL,
-  `estado` varchar(45) NOT NULL,
+  `estado` int(1) NOT NULL,
   `observaciones` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`caja_id`),
   KEY `fk_CAJA_SUCURSAL1_idx` (`sucursal_id`),
@@ -42,7 +42,7 @@ CREATE TABLE `caja` (
 DROP TABLE IF EXISTS `cant_venta_pan`;
 
 CREATE TABLE `cant_venta_pan` (
-  `cant_venta_pan_id` int(11) NOT NULL,
+  `cant_venta_pan_id` int(11) NOT NULL AUTO_INCREMENT,
   `cantidad_x_sol` int(11) NOT NULL,
   `detalles` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`cant_venta_pan_id`)
@@ -58,7 +58,7 @@ CREATE TABLE `cargo` (
   `cargo_id` int(11) NOT NULL AUTO_INCREMENT,
   `cargo` varchar(45) NOT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
-  `fCreacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `fCreacion` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`cargo_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
@@ -74,6 +74,7 @@ CREATE TABLE `categoria` (
   `categoria_id` char(5) NOT NULL,
   `categoria` varchar(45) NOT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
+  `estado` bit(1) NOT NULL,
   `seccion_id` int(11) NOT NULL,
   PRIMARY KEY (`categoria_id`),
   KEY `fk_CATEGORIA_SECCION1_idx` (`seccion_id`),
@@ -81,8 +82,6 @@ CREATE TABLE `categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `categoria` */
-
-insert  into `categoria`(`categoria_id`,`categoria`,`descripcion`,`seccion_id`) values ('CA001','DULCES','CATEGORIA DE TODOS LOS PANES CON DULCE',1),('CA002','PAN','CATEGORIA DE TODOS LOS PANES SALADO',1);
 
 /*Table structure for table `cliente` */
 
@@ -95,10 +94,10 @@ CREATE TABLE `cliente` (
   `documento_identi` char(11) NOT NULL,
   `alias` varchar(50) DEFAULT NULL,
   `referencia` text NOT NULL,
-  `representante` varchar(100) NOT NULL,
-  `nCelular` char(9) NOT NULL,
+  `representante` text NOT NULL,
+  `nCelular` char(9) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `fRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `fRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `cumpleaños` date DEFAULT NULL,
   `tipoCliente_id` int(11) NOT NULL,
   `identificacion_id` int(11) NOT NULL,
@@ -109,15 +108,15 @@ CREATE TABLE `cliente` (
   KEY `fk_CLIENTE_IDENTIFICACION_CLIENTE1_idx` (`identificacion_id`),
   KEY `fk_CLIENTE_SUCURSAL1_idx` (`sucursal_id`),
   KEY `fk_CLIENTE_COLABORADOR1_idx` (`colaborador_id`),
-  CONSTRAINT `fk_CLIENTE_COLABORADOR1` FOREIGN KEY (`colaborador_id`) REFERENCES `colaborador` (`colaborador_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_CLIENTE_IDENTIFICACION1` FOREIGN KEY (`identificacion_id`) REFERENCES `identificacion_cliente` (`identificacion_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_CLIENTE_SUCURSAL1` FOREIGN KEY (`sucursal_id`) REFERENCES `sucursal` (`sucursal_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_CLIENTE_TIPO_CLIENTE1` FOREIGN KEY (`tipoCliente_id`) REFERENCES `tipo_cliente` (`tipoCliente_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_CLIENTES_COLABORADOR1` FOREIGN KEY (`colaborador_id`) REFERENCES `colaborador` (`colaborador_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_CLIENTES_IDENTIFICACION_CLIENTE1` FOREIGN KEY (`identificacion_id`) REFERENCES `identificacion_cliente` (`identificacion_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_CLIENTES_SUCURSAL1` FOREIGN KEY (`sucursal_id`) REFERENCES `sucursal` (`sucursal_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_CLIENTES_TIPO_CLIENTE1` FOREIGN KEY (`tipoCliente_id`) REFERENCES `tipo_cliente` (`tipoCliente_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 CHECKSUM=1 DELAY_KEY_WRITE=1;
 
 /*Data for the table `cliente` */
 
-insert  into `cliente`(`cliente_id`,`nombre_razon`,`direccion`,`documento_identi`,`alias`,`referencia`,`representante`,`nCelular`,`email`,`fRegistro`,`cumpleaños`,`tipoCliente_id`,`identificacion_id`,`sucursal_id`,`colaborador_id`) values ('1','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-21 20:19:28','2020-11-05',1,1,1,1);
+insert  into `cliente`(`cliente_id`,`nombre_razon`,`direccion`,`documento_identi`,`alias`,`referencia`,`representante`,`nCelular`,`email`,`fRegistro`,`cumpleaños`,`tipoCliente_id`,`identificacion_id`,`sucursal_id`,`colaborador_id`) values ('CL00000002','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:58:45','2020-11-05',1,1,1,1),('CL00000003','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:58:58','2020-11-05',1,1,1,1),('CL00000004','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 20:44:46','2020-11-05',2,2,1,1),('CL00000005','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:00','2020-11-05',1,1,1,1),('CL00000006','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:01','2020-11-05',1,1,1,1),('CL00000007','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:02','2020-11-05',1,1,1,1),('CL00000008','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:02','2020-11-05',1,1,1,1),('CL00000009','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:03','2020-11-05',1,1,1,1),('CL00000010','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:03','2020-11-05',1,1,1,1),('CL001','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-22 21:33:12','2020-11-05',1,1,1,1);
 
 /*Table structure for table `colaborador` */
 
@@ -129,16 +128,17 @@ CREATE TABLE `colaborador` (
   `aPaterno` varchar(80) NOT NULL,
   `aMaterno` varchar(80) NOT NULL,
   `dni` char(8) NOT NULL,
-  `direccion` varchar(150) DEFAULT NULL,
+  `direccion` varchar(100) NOT NULL,
   `nCelular` char(9) DEFAULT NULL,
   `fIngreso` date NOT NULL,
-  `avatar` varchar(45) DEFAULT NULL,
+  `fCreacion` timestamp NULL DEFAULT NULL,
+  `avatar` varchar(50) DEFAULT NULL,
   `user` varchar(30) NOT NULL,
   `pass` varchar(255) NOT NULL,
-  `email` varchar(80) NOT NULL,
+  `email` varchar(80) DEFAULT NULL,
   `cargo_id` int(11) NOT NULL,
   `ultimoLogeo` datetime DEFAULT NULL,
-  `estado` int(11) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
   PRIMARY KEY (`colaborador_id`),
   KEY `fk_COLABORADOR_CARGO1_idx` (`cargo_id`),
   CONSTRAINT `fk_COLABORADOR_CARGO1` FOREIGN KEY (`cargo_id`) REFERENCES `cargo` (`cargo_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -146,14 +146,14 @@ CREATE TABLE `colaborador` (
 
 /*Data for the table `colaborador` */
 
-insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15','vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-21 18:59:27',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11','vistas/img/usuarios/Jess/458.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
+insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`fCreacion`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15',NULL,'vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-23 12:38:08',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11',NULL,'vistas/img/usuarios/Jess/458.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
 
 /*Table structure for table `compras_ingresos` */
 
 DROP TABLE IF EXISTS `compras_ingresos`;
 
 CREATE TABLE `compras_ingresos` (
-  `ingresos_id` char(15) NOT NULL,
+  `ingresos_id` char(10) NOT NULL,
   `proveedor_id` char(5) NOT NULL,
   `nroComprobante` char(11) NOT NULL,
   `fecha` date NOT NULL,
@@ -167,7 +167,7 @@ CREATE TABLE `compras_ingresos` (
   KEY `fk_COMPRAS_INGRESOS_TIPO_COMPROBANTE1_idx` (`tipoComprobante_id`),
   KEY `fk_COMPRAS_INGRESOS_COLABORADOR1_idx` (`colaborador_id`),
   CONSTRAINT `fk_COMPRAS_INGRESOS_COLABORADOR1` FOREIGN KEY (`colaborador_id`) REFERENCES `colaborador` (`colaborador_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_COMPRAS_INGRESOS_PROVEEDOR` FOREIGN KEY (`proveedor_id`) REFERENCES `proveedor` (`proveedor_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_COMPRAS_INGRESOS_PROVEEDOR1` FOREIGN KEY (`proveedor_id`) REFERENCES `proveedor` (`proveedor_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_COMPRAS_INGRESOS_TIPO_COMPROBANTE1` FOREIGN KEY (`tipoComprobante_id`) REFERENCES `tipo_comprobante` (`tipoComprobante_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -183,7 +183,7 @@ CREATE TABLE `detalle_abarrotes_proveedor` (
   `pCompra` decimal(9,2) NOT NULL,
   `fVencimiento` date NOT NULL,
   `valorCompra` decimal(9,2) NOT NULL,
-  `ingresos_id` char(15) NOT NULL,
+  `ingresos_id` char(10) NOT NULL,
   KEY `fk_DETALLE_PROD_PROVEEDOR_PRODUCTO1_idx` (`producto_id`),
   KEY `fk_DETALLE_PROD_PROVEEDOR_COMPRAS_INGRESOS1_idx` (`ingresos_id`),
   CONSTRAINT `fk_DETALLE_PROD_PROVEEDOR_COMPRAS_INGRESOS1` FOREIGN KEY (`ingresos_id`) REFERENCES `compras_ingresos` (`ingresos_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -197,7 +197,7 @@ CREATE TABLE `detalle_abarrotes_proveedor` (
 DROP TABLE IF EXISTS `detalle_matprima_proveedor`;
 
 CREATE TABLE `detalle_matprima_proveedor` (
-  `ingresos_id` char(15) NOT NULL,
+  `ingresos_id` char(10) NOT NULL,
   `mPrima_id` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio` decimal(9,2) NOT NULL,
@@ -216,11 +216,11 @@ CREATE TABLE `detalle_matprima_proveedor` (
 DROP TABLE IF EXISTS `detalle_pedido`;
 
 CREATE TABLE `detalle_pedido` (
-  `pedido_id` char(20) NOT NULL,
+  `pedido_id` char(10) NOT NULL,
   `producto_id` char(10) NOT NULL,
   `cant_venta_pan_id` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `crearegistro` datetime DEFAULT NULL,
+  `crearegistro` timestamp NULL DEFAULT NULL,
   KEY `fk_DETALLE_PEDIDO_PEDIDO1_idx` (`pedido_id`),
   KEY `fk_DETALLE_PEDIDO_PRODUCTO1_idx` (`producto_id`),
   KEY `fk_DETALLE_PEDIDO_CANT_VENTA_PAN1_idx` (`cant_venta_pan_id`),
@@ -236,7 +236,7 @@ CREATE TABLE `detalle_pedido` (
 DROP TABLE IF EXISTS `detalle_venta`;
 
 CREATE TABLE `detalle_venta` (
-  `venta_id` char(20) NOT NULL,
+  `venta_id` char(10) NOT NULL,
   `producto_id` char(10) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio` decimal(9,2) NOT NULL,
@@ -256,7 +256,7 @@ DROP TABLE IF EXISTS `detalles_maquina`;
 CREATE TABLE `detalles_maquina` (
   `fDetalle` date NOT NULL,
   `concepto` varchar(100) NOT NULL,
-  `observacion` varchar(150) DEFAULT NULL,
+  `observacion` text,
   `costo` decimal(9,2) DEFAULT NULL,
   `maquina_id` int(11) NOT NULL,
   KEY `fk_DETALLES_MAQUINA_MAQUINA_idx` (`maquina_id`),
@@ -270,12 +270,12 @@ CREATE TABLE `detalles_maquina` (
 DROP TABLE IF EXISTS `ficha_produccion`;
 
 CREATE TABLE `ficha_produccion` (
-  `produccion_id` char(20) NOT NULL,
+  `produccion_id` char(10) NOT NULL,
   `producto_id` char(10) NOT NULL,
   `latasCompletas` int(11) NOT NULL,
   `canpanxLatasIcompletas` int(11) DEFAULT NULL,
   `canTotal` int(11) NOT NULL,
-  `observacion` varchar(100) DEFAULT NULL,
+  `observacion` text,
   KEY `fk_DETALLE_PRODUCCION_PRODUCTO1_idx` (`producto_id`),
   KEY `fk_DETALLE_PRODUCCION_PRODUCCCION1_idx` (`produccion_id`),
   CONSTRAINT `fk_DETALLE_PRODUCCION_PRODUCCCION1` FOREIGN KEY (`produccion_id`) REFERENCES `producccion` (`produccion_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -292,12 +292,13 @@ CREATE TABLE `identificacion_cliente` (
   `identificacion_id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo_identificacion` varchar(50) NOT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
+  `fRegistro` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`identificacion_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `identificacion_cliente` */
 
-insert  into `identificacion_cliente`(`identificacion_id`,`tipo_identificacion`,`descripcion`) values (1,'RUC','CLIENTE CON RUC '),(2,'DNI','CLIENTE CON DNI'),(3,'PASAPORTE',NULL);
+insert  into `identificacion_cliente`(`identificacion_id`,`tipo_identificacion`,`descripcion`,`fRegistro`) values (1,'RUC','CLIENTE CON RUC ',NULL),(2,'DNI','CLIENTE CON DNI',NULL),(3,'PASAPORTE',NULL,NULL);
 
 /*Table structure for table `maquina` */
 
@@ -356,7 +357,7 @@ CREATE TABLE `movimientos_caja` (
   `nombreEmpre_persona` varchar(45) NOT NULL,
   `monto` decimal(9,2) NOT NULL,
   `observacion` varchar(45) DEFAULT NULL,
-  `estado` bit(1) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
   PRIMARY KEY (`movCaja_id`),
   KEY `fk_MOVIMIENTOS_CAJA_TIPO_MOVIMIENTO1_idx` (`tMovimiento_id`),
   KEY `fk_MOVIMIENTOS_CAJA_TIPO_COMPROBANTE1_idx` (`tipoComprobante_id`),
@@ -373,20 +374,20 @@ CREATE TABLE `movimientos_caja` (
 DROP TABLE IF EXISTS `pedido`;
 
 CREATE TABLE `pedido` (
-  `pedido_id` char(20) NOT NULL,
+  `pedido_id` char(10) NOT NULL,
   `fecha` date NOT NULL,
   `monto` decimal(9,2) NOT NULL,
   `observaciones` varchar(100) DEFAULT NULL,
-  `estado` bit(1) NOT NULL,
-  `registroElab` datetime NOT NULL,
-  `cliente_id` char(15) NOT NULL,
+  `estado` int(1) NOT NULL,
+  `registroElab` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `cliente_id` char(10) NOT NULL,
   `turno_id` int(11) NOT NULL,
   `colaborador_id` int(11) NOT NULL,
   PRIMARY KEY (`pedido_id`),
   KEY `fk_PEDIDO_CLIENTE1_idx` (`cliente_id`),
   KEY `fk_PEDIDO_TURNO1_idx` (`turno_id`),
   KEY `fk_PEDIDO_COLABORADOR1_idx` (`colaborador_id`),
-  CONSTRAINT `fk_PEDIDO_CLIENTE1` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`cliente_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_PEDIDO_CLIENTE1` FOREIGN KEY (`pedido_id`) REFERENCES `cliente` (`cliente_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_PEDIDO_COLABORADOR1` FOREIGN KEY (`colaborador_id`) REFERENCES `colaborador` (`colaborador_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_PEDIDO_TURNO1` FOREIGN KEY (`turno_id`) REFERENCES `turno` (`turno_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -398,7 +399,7 @@ CREATE TABLE `pedido` (
 DROP TABLE IF EXISTS `permiso`;
 
 CREATE TABLE `permiso` (
-  `permiso_id` int(11) NOT NULL,
+  `permiso_id` int(11) NOT NULL AUTO_INCREMENT,
   `permiso` varchar(50) NOT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
   `fCreacion` timestamp NULL DEFAULT NULL,
@@ -427,7 +428,7 @@ CREATE TABLE `permiso_colaborador` (
 DROP TABLE IF EXISTS `producccion`;
 
 CREATE TABLE `producccion` (
-  `produccion_id` char(20) NOT NULL,
+  `produccion_id` char(10) NOT NULL,
   `fProduccion` date NOT NULL,
   `cantidad` int(11) NOT NULL,
   `observaciones` varchar(100) DEFAULT NULL,
@@ -448,10 +449,10 @@ DROP TABLE IF EXISTS `producto`;
 
 CREATE TABLE `producto` (
   `producto_id` char(10) NOT NULL,
-  `nombre` varchar(45) NOT NULL,
-  `presentacion` varchar(45) NOT NULL,
-  `stock` varchar(45) NOT NULL,
-  `imagen` varchar(45) DEFAULT NULL,
+  `nombre` varchar(60) NOT NULL,
+  `presentacion` varchar(60) NOT NULL,
+  `stock` int(11) NOT NULL,
+  `imagen` varchar(100) DEFAULT NULL,
   `pVenta` decimal(9,2) NOT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
   `categoria_id` char(5) NOT NULL,
@@ -490,14 +491,14 @@ DROP TABLE IF EXISTS `seccion`;
 CREATE TABLE `seccion` (
   `seccion_id` int(11) NOT NULL AUTO_INCREMENT,
   `seccion` varchar(45) NOT NULL,
-  `descripcion` varchar(150) DEFAULT NULL,
-  `estado` bit(1) NOT NULL,
+  `descripcion` text,
+  `estado` int(1) NOT NULL,
   PRIMARY KEY (`seccion_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `seccion` */
 
-insert  into `seccion`(`seccion_id`,`seccion`,`descripcion`,`estado`) values (1,'PANADERIA','VENTA DE TODO TIPO DE PRODUCTOS DE PANADERIA',''),(2,'BODEGA','VENTA DE PRODUCTOS DE ALGUNOS PROUDUCTOS DE PRIMERA NECESIDA, BASICOS','');
+insert  into `seccion`(`seccion_id`,`seccion`,`descripcion`,`estado`) values (1,'PANADERIA','VENTA DE TODO TIPO DE PRODUCTOS DE PANADERIA',1),(2,'BODEGA','VENTA DE PRODUCTOS DE ALGUNOS PROUDUCTOS DE PRIMERA NECESIDA, BASICOS',1);
 
 /*Table structure for table `sucursal` */
 
@@ -508,7 +509,7 @@ CREATE TABLE `sucursal` (
   `direccion` varchar(100) NOT NULL,
   `nFono` char(9) DEFAULT NULL,
   `estado` int(1) NOT NULL,
-  `descripcion` varchar(100) DEFAULT NULL,
+  `descripcion` text,
   PRIMARY KEY (`sucursal_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
@@ -523,7 +524,7 @@ DROP TABLE IF EXISTS `tipo_cliente`;
 CREATE TABLE `tipo_cliente` (
   `tipoCliente_id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(50) NOT NULL,
-  `descripcion` varchar(100) DEFAULT NULL,
+  `descripcion` text,
   PRIMARY KEY (`tipoCliente_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -548,9 +549,9 @@ CREATE TABLE `tipo_comprobante` (
 DROP TABLE IF EXISTS `tipo_movimiento`;
 
 CREATE TABLE `tipo_movimiento` (
-  `tMovimiento_id` int(11) NOT NULL,
+  `tMovimiento_id` int(11) NOT NULL AUTO_INCREMENT,
   `tipoMovimiento` varchar(50) NOT NULL,
-  `estado` bit(1) DEFAULT NULL,
+  `estado` int(1) DEFAULT NULL,
   PRIMARY KEY (`tMovimiento_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -561,9 +562,9 @@ CREATE TABLE `tipo_movimiento` (
 DROP TABLE IF EXISTS `tipo_pago`;
 
 CREATE TABLE `tipo_pago` (
-  `tPago_id` int(11) NOT NULL,
+  `tPago_id` int(11) NOT NULL AUTO_INCREMENT,
   `tPago` varchar(50) NOT NULL,
-  `descriipcion` varchar(100) DEFAULT NULL,
+  `descriipcion` text,
   PRIMARY KEY (`tPago_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -574,7 +575,7 @@ CREATE TABLE `tipo_pago` (
 DROP TABLE IF EXISTS `turno`;
 
 CREATE TABLE `turno` (
-  `turno_id` int(11) NOT NULL,
+  `turno_id` int(11) NOT NULL AUTO_INCREMENT,
   `turno` varchar(50) NOT NULL,
   PRIMARY KEY (`turno_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -586,7 +587,7 @@ CREATE TABLE `turno` (
 DROP TABLE IF EXISTS `unidad_medida`;
 
 CREATE TABLE `unidad_medida` (
-  `unMedida_Id` int(11) NOT NULL,
+  `unMedida_Id` int(11) NOT NULL AUTO_INCREMENT,
   `unidadMedida` varchar(100) NOT NULL,
   `unidadConversion` int(11) DEFAULT NULL,
   PRIMARY KEY (`unMedida_Id`)
@@ -599,10 +600,10 @@ CREATE TABLE `unidad_medida` (
 DROP TABLE IF EXISTS `uso_mprima`;
 
 CREATE TABLE `uso_mprima` (
-  `produccion_id` char(20) NOT NULL,
+  `produccion_id` char(10) NOT NULL,
   `mPrima_id` int(11) NOT NULL,
   `cantidad` decimal(9,2) NOT NULL,
-  `observacion` varchar(100) DEFAULT NULL,
+  `observacion` text,
   KEY `fk_PRODUCTO_MPRIMA_MATERIA_PRIMA1_idx` (`mPrima_id`),
   KEY `fk_USO_MPRIMA_PRODUCCCION1_idx` (`produccion_id`),
   CONSTRAINT `fk_PRODUCTO_MPRIMA_MATERIA_PRIMA1` FOREIGN KEY (`mPrima_id`) REFERENCES `materia_prima` (`mPrima_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -616,27 +617,27 @@ CREATE TABLE `uso_mprima` (
 DROP TABLE IF EXISTS `venta`;
 
 CREATE TABLE `venta` (
-  `venta_id` char(20) NOT NULL,
+  `venta_id` char(10) NOT NULL,
   `correlativo` char(6) NOT NULL,
   `fecha` date NOT NULL,
   `total` decimal(9,2) NOT NULL,
   `igv` decimal(9,2) NOT NULL,
   `subtotal` decimal(9,2) NOT NULL,
-  `estado` varchar(45) NOT NULL,
+  `estado` int(11) NOT NULL,
   `fRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tipoComprobante_id` int(11) NOT NULL,
-  `cliente_id` char(15) NOT NULL,
-  `colaborador_id` int(11) NOT NULL,
+  `cliente_id` char(10) NOT NULL,
   `sucursal_id` int(11) NOT NULL,
   `tPago_id` int(11) NOT NULL,
   `turno_id` int(11) NOT NULL,
+  `colaborador_id` int(11) NOT NULL,
   PRIMARY KEY (`venta_id`),
   KEY `fk_VENTA_TIPO_COMPROBANTE1_idx` (`tipoComprobante_id`),
   KEY `fk_VENTA_CLIENTE1_idx` (`cliente_id`),
-  KEY `fk_VENTA_COLABORADOR1_idx` (`colaborador_id`),
   KEY `fk_VENTA_SUCURSAL1_idx` (`sucursal_id`),
   KEY `fk_VENTA_TIPO_PAGO1_idx` (`tPago_id`),
   KEY `fk_VENTA_TURNO1_idx` (`turno_id`),
+  KEY `fk_VENTA_COLABORADOR1_idx` (`colaborador_id`),
   CONSTRAINT `fk_VENTA_CLIENTE1` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`cliente_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_VENTA_COLABORADOR1` FOREIGN KEY (`colaborador_id`) REFERENCES `colaborador` (`colaborador_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_VENTA_SUCURSAL1` FOREIGN KEY (`sucursal_id`) REFERENCES `sucursal` (`sucursal_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -646,6 +647,18 @@ CREATE TABLE `venta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `venta` */
+
+/* Procedure structure for procedure `sp_datosCliente` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `sp_datosCliente` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_datosCliente`()
+BEGIN
+    SELECT * FROM cliente c INNER JOIN TIPO_CLIENTE tc ON c.tipoCliente_id = tc.tipoCliente_id INNER JOIN identificacion_cliente ic ON c.identificacion_id=ic.identificacion_id INNER JOIN sucursal s ON c.sucursal_id = s.sucursal_id INNER JOIN colaborador col ON c.colaborador_id = col.colaborador_id WHERE c.cliente_id = 'CL00000002';
+    END */$$
+DELIMITER ;
 
 /* Procedure structure for procedure `sp_ingresaCategoria` */
 

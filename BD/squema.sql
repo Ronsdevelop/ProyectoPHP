@@ -41,7 +41,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `BDpanaderialeos`.`IDENTIFICACION_CLIENTE`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`IDENTIFICACION_CLIENTE` (
-  `identificacion_id` INT NOT NULL,
+  `identificacion_id` INT NOT NULL AUTO_INCREMENT,
   `tipo_identificacion` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
   `descripcion` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
   `fRegistro` TIMESTAMP NULL,
@@ -158,7 +158,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `BDpanaderialeos`.`TIPO_PAGO`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`TIPO_PAGO` (
-  `tPago_id` INT NOT NULL,
+  `tPago_id` INT NOT NULL AUTO_INCREMENT,
   `tPago` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
   `descriipcion` TEXT CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
   PRIMARY KEY (`tPago_id`))
@@ -170,7 +170,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `BDpanaderialeos`.`TURNO`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`TURNO` (
-  `turno_id` INT NOT NULL,
+  `turno_id` INT NOT NULL AUTO_INCREMENT,
   `turno` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
   PRIMARY KEY (`turno_id`))
 ENGINE = InnoDB
@@ -296,7 +296,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `BDpanaderialeos`.`UNIDAD_MEDIDA`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`UNIDAD_MEDIDA` (
-  `unMedida_Id` INT NOT NULL,
+  `unMedida_Id` INT NOT NULL AUTO_INCREMENT,
   `unidadMedida` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
   `unidadConversion` INT NULL,
   PRIMARY KEY (`unMedida_Id`))
@@ -380,7 +380,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `BDpanaderialeos`.`TIPO_MOVIMIENTO`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`TIPO_MOVIMIENTO` (
-  `tMovimiento_id` INT NOT NULL,
+  `tMovimiento_id` INT NOT NULL AUTO_INCREMENT,
   `tipoMovimiento` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
   `estado` INT(1) NULL,
   PRIMARY KEY (`tMovimiento_id`))
@@ -428,7 +428,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `BDpanaderialeos`.`PERMISO`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`PERMISO` (
-  `permiso_id` INT NOT NULL,
+  `permiso_id` INT NOT NULL AUTO_INCREMENT,
   `permiso` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NOT NULL,
   `descripcion` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
   `fCreacion` TIMESTAMP NULL,
@@ -575,7 +575,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `BDpanaderialeos`.`CANT_VENTA_PAN`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BDpanaderialeos`.`CANT_VENTA_PAN` (
-  `cant_venta_pan_id` INT NOT NULL,
+  `cant_venta_pan_id` INT NOT NULL AUTO_INCREMENT,
   `cantidad_x_sol` INT NOT NULL,
   `detalles` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL,
   PRIMARY KEY (`cant_venta_pan_id`))
