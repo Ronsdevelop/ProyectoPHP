@@ -103,10 +103,9 @@ form.addEventListener('submit',function(e){
       method:'POST',
       body: data
  
-  }).then(resp => resp.text())
-  .then(response =>
-   console.log(response))
-   /* cargarDatos(response))*/
+  }).then(resp => resp.json())
+  .then(response => 
+    cargarDatos(response)) 
     
 });
 
@@ -124,7 +123,7 @@ function cargarDatos(datos) {
     document.getElementById("txtIndetificacion").value = datos["documento_identi"];
     document.getElementById("txtCelular").value = datos["nCelular"];
     document.getElementById("txtAlias").value = datos["alias"];
-    document.getElementById("txtCumpleanos").value = datos["cumpleaños"];
+    document.getElementById("txtCumpleanos").value = datos["cumpleanos"];
     document.getElementById("txtCorreo").value = datos["email"];
     document.getElementById("txtReferencia").value = datos["referencia"];
     document.getElementById("txtId").value = datos["cliente_id"];

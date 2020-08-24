@@ -109,18 +109,22 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
             $tabla = "cliente";
 
             $datos = array(
-                "rason" => $_POST["txtRazon"],
-                "ruc" => $_POST["txtIndetificacion"],
+                "rason" => $_POST["txtRazon"],            
                 "direccion" => $_POST["txtDireccion"],
-                "contacto" => $_POST["txtContacto"],
-                "email" => $_POST["txtCorreo"],
-                "nCelular" => $_POST["txtCelular"],
-                "nFono" => $_POST["txtFijo"],
+                "ruc" => $_POST["txtIndetificacion"],
+                "alias" => $_POST["txtAlias"],
                 "referencia" => $_POST["txtReferencia"],
-                "proveedor_id" => $_POST["txtId"]
+                "contacto" => $_POST["txtContacto"],
+                "nCelular" => $_POST["txtCelular"],
+                "email" => $_POST["txtCorreo"],
+                "cumpleanos" => $_POST["txtCumpleanos"],
+                "tipoCliente" => $_POST["txtTipoCli"],
+                "tipoIdent" => $_POST["txtTipoDoc"],
+                "sucursal" => 1,
+                "colaborador" => $_POST["txtColaborador"]
             );
 
-            $respuesta = ModeloProveedor::MdlEditarProveedor($tabla,$datos);
+            $respuesta = ModeloCliente::MdlIngresarCliente($tabla,$datos);
             echo json_encode($respuesta);
             
 

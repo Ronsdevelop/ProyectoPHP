@@ -5,13 +5,12 @@ class ModeloCliente{
 
       /* ----- Mostrar Proveedores ----- */
       static public function MdlMostrarClientes($tabla,$item,$valor){
-        if ($item != null) {
-           
+        if ($item != null) {           
 
-            $stmt=Conexion::conectar()->prepare("CALL sp_datosCliente");
-           // $stmt ->bindParam(":".$item,$valor,PDO::PARAM_STR);
+            $stmt=Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item=:$item");
+            $stmt ->bindParam(":".$item,$valor,PDO::PARAM_STR);
             $stmt -> execute();
-            return $stmt -> fetchAll();
+            return $stmt -> fetch();
         }else {
             $stmt=Conexion::conectar()->prepare("CALL sp_listarClientes");              
             $stmt -> execute();

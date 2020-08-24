@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.1.37-MariaDB : Database - bdpanaderialeos
+MySQL - 5.5.5-10.1.32-MariaDB : Database - bdpanaderialeos
 *********************************************************************
 */
 
@@ -98,7 +98,7 @@ CREATE TABLE `cliente` (
   `nCelular` char(9) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `fRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `cumpleaños` date DEFAULT NULL,
+  `cumpleanos` date DEFAULT NULL,
   `tipoCliente_id` int(11) NOT NULL,
   `identificacion_id` int(11) NOT NULL,
   `sucursal_id` int(11) NOT NULL,
@@ -116,7 +116,7 @@ CREATE TABLE `cliente` (
 
 /*Data for the table `cliente` */
 
-insert  into `cliente`(`cliente_id`,`nombre_razon`,`direccion`,`documento_identi`,`alias`,`referencia`,`representante`,`nCelular`,`email`,`fRegistro`,`cumpleaños`,`tipoCliente_id`,`identificacion_id`,`sucursal_id`,`colaborador_id`) values ('CL00000002','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:58:45','2020-11-05',1,1,1,1),('CL00000003','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:58:58','2020-11-05',1,1,1,1),('CL00000004','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 20:44:46','2020-11-05',2,2,1,1),('CL00000005','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:00','2020-11-05',1,1,1,1),('CL00000006','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:01','2020-11-05',1,1,1,1),('CL00000007','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:02','2020-11-05',1,1,1,1),('CL00000008','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:02','2020-11-05',1,1,1,1),('CL00000009','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:03','2020-11-05',1,1,1,1),('CL00000010','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-19 12:59:03','2020-11-05',1,1,1,1),('CL001','cliente1','direc','46261585','un alias','una referencia','un representate','965555','un email','2020-08-22 21:33:12','2020-11-05',1,1,1,1);
+insert  into `cliente`(`cliente_id`,`nombre_razon`,`direccion`,`documento_identi`,`alias`,`referencia`,`representante`,`nCelular`,`email`,`fRegistro`,`cumpleanos`,`tipoCliente_id`,`identificacion_id`,`sucursal_id`,`colaborador_id`) values ('CL00000001','cliente1','direc','46261585','un alias','una referencia','un representate','965555','email@hotmail.com','2020-08-22 21:33:12','2020-11-05',1,1,1,1);
 
 /*Table structure for table `colaborador` */
 
@@ -146,7 +146,7 @@ CREATE TABLE `colaborador` (
 
 /*Data for the table `colaborador` */
 
-insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`fCreacion`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15',NULL,'vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-23 12:38:08',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11',NULL,'vistas/img/usuarios/Jess/458.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
+insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`fCreacion`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15',NULL,'vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-24 15:01:37',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11',NULL,'vistas/img/usuarios/Jess/458.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
 
 /*Table structure for table `compras_ingresos` */
 
@@ -736,7 +736,7 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_listarClientes`()
 BEGIN
-	SELECT c.cliente_id AS ID, c.nombre_razon AS CLIENTE, c.direccion AS DIRECCION,ic.tipo_identificacion AS DOCUMENTO, c.documento_identi AS NUMERO, c.alias AS ALIAS,c.referencia AS REFERENCIA, c.nCelular AS CELULAR, c.representante AS CONTACTO, c.cumpleaños AS CUMPLEANOS,tc.tipo AS TIPCLIE FROM cliente c INNER JOIN tipo_cliente tc ON c.tipoCliente_id=tc.tipoCliente_id INNER JOIN identificacion_cliente ic ON c.identificacion_id=ic.identificacion_id ;
+	SELECT c.cliente_id AS ID, c.nombre_razon AS CLIENTE, c.direccion AS DIRECCION,ic.tipo_identificacion AS DOCUMENTO, c.documento_identi AS NUMERO, c.alias AS ALIAS,c.referencia AS REFERENCIA, c.nCelular AS CELULAR, c.representante AS CONTACTO, c.cumpleanos AS CUMPLEANOS,tc.tipo AS TIPCLIE FROM cliente c INNER JOIN tipo_cliente tc ON c.tipoCliente_id=tc.tipoCliente_id INNER JOIN identificacion_cliente ic ON c.identificacion_id=ic.identificacion_id ;
     END */$$
 DELIMITER ;
 
