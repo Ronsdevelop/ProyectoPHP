@@ -56,7 +56,7 @@
         $validarProv = new AjaxClientes();
         $validarProv -> valorValidar=$_POST["valorValidar"];
         $validarProv -> itemValidar=$_POST["itemValidar"];
-        $validarProv -> ajaxValidarProveedor();
+        $validarProv -> ajaxValidarCliente();
     }
 
 

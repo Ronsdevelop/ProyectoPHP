@@ -61,19 +61,34 @@ EVENTO SUBMIT PARA AGREGAR Y EDITAR PROVEEDOR
 ====================================== */
 
 const form = document.getElementById('formulario');
-form.addEventListener('submit',function(e){
+    form.addEventListener('submit',function(e){
     e.preventDefault();
     let data = new FormData(form); 
     $("#con-close-modal").modal('hide');
     fetch("controladores/cliente.controlador.php",
         {method:"POST",
-        body:data}).then(response => response.text())
+        body:data}).then(response => response.json())
                    .then(response =>{
-                    console.log(response);
+                    if (response !='error') {
+                        Swal.fire({                            
+                            icon: 'success',
+                            title: response,
+                            showConfirmButton: false,
+                            timer: 1500
+                          }),
+                          tblcliente.ajax.reload()
+                    }else{
+                        Swal.fire({                            
+                            icon: 'error',
+                            title: 'No se ha podido Ejecutar la Accion',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
                                
-                    tblcliente.ajax.reload()
+                   
 
-                   }  )
+    })
                    
 
 
@@ -87,54 +102,45 @@ form.addEventListener('submit',function(e){
  /* ------------------------- */ 
  
  $(document).on("click",".btn-editar", function () {
-    let codCliente = $(this).attr("idCliente");
-    
+    let codCliente = $(this).attr("idCliente");    
     let opcion = 3;
     let cabeceraModal = document.getElementById("cabeceraM");
     cabeceraModal.classList.remove("bg-dark");
     cabeceraModal.classList.add("bg-success");
-   document.getElementById("tituloModal").innerText = "Editar Cliente"; 
-   document.getElementById("btnEditar").innerText = "Actualizar Cliente";   
-   document.getElementById("txtOpcion").value = opcion;
-     const data = new FormData();
-     data.append('codigoEditar',codCliente);
-     $("#con-close-modal").modal("show");
+    document.getElementById("tituloModal").innerText = "Editar Cliente"; 
+    document.getElementById("btnEditar").innerText = "Actualizar Cliente";   
+    document.getElementById("txtOpcion").value = opcion;
+    const data = new FormData();
+    data.append('codigoEditar',codCliente);
+    $("#con-close-modal").modal("show");
  
-  let url = "ajax/clientes.ajax.php";
+    let url = "ajax/clientes.ajax.php";
+    
+    fetch(url,{
+        method:'POST',
+        body: data
  
-  fetch(url,{
-      method:'POST',
-      body: data
- 
-  }).then(resp => resp.json())
-  .then(response => 
-    cargarDatos(response)) 
+    }).then(resp => resp.json())
+        .then(datos =>  {
+        
+            document.getElementById("txtRazon").value = datos["nombre_razon"];
+            document.getElementById("txtDireccion").value = datos["direccion"];
+            document.getElementById("txtContacto").value = datos["representante"];
+            document.getElementById("txtIndetificacion").value = datos["documento_identi"];
+            document.getElementById("txtCelular").value = datos["nCelular"];
+            document.getElementById("txtAlias").value = datos["alias"];
+            document.getElementById("txtCumpleanos").value = datos["cumpleanos"];
+            document.getElementById("txtCorreo").value = datos["email"];
+            document.getElementById("txtReferencia").value = datos["referencia"];
+            document.getElementById("txtId").value = datos["cliente_id"];
+            document.getElementById("txtTipoCli").selectedIndex = datos["tipoCliente_id"];
+            document.getElementById("txtTipoDoc").selectedIndex = datos["identificacion_id"];
+        })
+     
     
 });
 
-
-
- /* ------------------------- */
-/* FUNCION PARA ASIGNAR LOS DATOS A CADA ELEMENTO DEL MODAL EDITAR USURAIO*/
-/* ------------------------- */
-
-function cargarDatos(datos) {
-   
-    document.getElementById("txtRazon").value = datos["nombre_razon"];
-    document.getElementById("txtDireccion").value = datos["direccion"];
-    document.getElementById("txtContacto").value = datos["representante"];
-    document.getElementById("txtIndetificacion").value = datos["documento_identi"];
-    document.getElementById("txtCelular").value = datos["nCelular"];
-    document.getElementById("txtAlias").value = datos["alias"];
-    document.getElementById("txtCumpleanos").value = datos["cumpleanos"];
-    document.getElementById("txtCorreo").value = datos["email"];
-    document.getElementById("txtReferencia").value = datos["referencia"];
-    document.getElementById("txtId").value = datos["cliente_id"];
-    document.getElementById("txtTipoCli").selectedIndex = datos["tipoCliente_id"];
-    document.getElementById("txtTipoDoc").selectedIndex = datos["identificacion_id"];
-     
-}
-
+ 
 
 
 
@@ -165,7 +171,27 @@ $(document).on("click",".btn-eliminar", function () {
                     body: datos
         
                 }).then(resp => resp.json())
-                .then(response => confirmarEliminacion(response))
+                .then(response =>{
+                    if (response=='ok') {
+                        Swal.fire({                            
+                            icon: 'success',
+                            title: 'El Cliente se ha Eliminado Correctamente',
+                            showConfirmButton: false,
+                            timer: 1500
+                          }),
+                          tblcliente.ajax.reload()
+                    }else{
+                        Swal.fire({                            
+                            icon: 'error',
+                            title: 'El Cliente no se ha podido Eliminar',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
+                               
+                   
+
+                   }  )
           }      
         
         
@@ -173,45 +199,13 @@ $(document).on("click",".btn-eliminar", function () {
 });
 
 
-function confirmarEliminacion(respuesta){ 
-    console.log(respuesta);
-   
-    if (respuesta == "ok"){        
-        Swal.fire({
-            icon:"success",
-            title:"Se Elimino correctamente",
-            showConfirmButton: true,
-            confirmButtonText: "Cerrar"
-        }).then(function(result){
-
-            if(result.value){            
-                tblcliente.ajax.reload();
-
-            }
-
-        });
-         
-        
-    }else{
-        tblcliente.ajax.reload();
-        Swal.fire(
-            'No se pudo Eliminar!',
-            'El Cliente no se a eliminado de la base de datos.',
-            'error'
-          )
-      }
-} 
-
-
-
-
-$("#txtRazonnn").change(function(){ 
+$("#txtRazon").change(function(){ 
     $(".alert").remove();
    let razon = $(this).val();
    let etiqueta = "#txtRazon";
    const datos = new FormData();
    datos.append('valorValidar',razon);
-   datos.append('itemValidar','rason');
+   datos.append('itemValidar','nombre_razon');
    let url = "ajax/clientes.ajax.php";
  
   fetch(url,{
@@ -224,13 +218,13 @@ $("#txtRazonnn").change(function(){
     
 });
 
-$("#txtIndetificacionnn").change(function(){ 
+$("#txtIndetificacion").change(function(){ 
     $(".alert").remove();
    let ruc = $(this).val();
    let etiqueta ="#txtIndetificacion";
    const datos = new FormData();
    datos.append('valorValidar',ruc);
-   datos.append('itemValidar','ruc');
+   datos.append('itemValidar','documento_identi');
    let url = "ajax/clientes.ajax.php";
  
   fetch(url,{
@@ -238,25 +232,17 @@ $("#txtIndetificacionnn").change(function(){
       body: datos
 
   }).then(resp=> resp.json())
-  .then(response => comprobarDatos(response,etiqueta));
-    
-    
-});
-
-function comprobarDatos(resp,etiqueta) {
-    if (resp) {
+  .then(response => {
+    if (response) {
         $(etiqueta).parent().after('<div class="alert alert-danger" role="alert" ><i class="mdi mdi-block-helper mr-2"></i>El Cliente ya esta registrado en la base de datos!!</div>');
         $(etiqueta).val("");
         
     }
+
+  });
     
-}
-
- 
-
-
-
-
+    
+}); 
 
 })
 

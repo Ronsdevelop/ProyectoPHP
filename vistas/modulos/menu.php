@@ -27,7 +27,7 @@
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="../vistas/productos.php">Productos</a>
+                    <a href="productos">Productos</a>
                 </li>
                 <li>
                     <a href="categorias">Categorias</a>

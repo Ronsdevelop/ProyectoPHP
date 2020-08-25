@@ -93,7 +93,7 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
         
         }else{
 
-            echo json_encode("okNO");
+            echo json_encode("error");
         }
     }
 
@@ -126,7 +126,7 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
             );
 
             $respuesta = ModeloCliente::MdlEditarCliente($tabla,$datos);
-            echo json_encode($datos);
+            echo json_encode($respuesta);
             
 
         }else{

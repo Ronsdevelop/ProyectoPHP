@@ -52,7 +52,8 @@
                 $_GET["ruta"]== "usuarios"||
                 $_GET["ruta"]== "proveedores"||
                 $_GET["ruta"]== "clientes"||
-                $_GET["ruta"]=="salir") {
+                $_GET["ruta"]=="salir"||
+                $_GET["ruta"]=="productos") {
                 include "modulos/".$_GET["ruta"].".php";  
             }else{
                 include "modulos/404.php" ;
