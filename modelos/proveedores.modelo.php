@@ -63,11 +63,8 @@ static public function MdlEditarProveedor($tabla,$datos){
     $stmt->bindParam(":nCelular",$datos["nCelular"],PDO::PARAM_STR);
     $stmt->bindParam(":nFono",$datos["nFono"],PDO::PARAM_STR);
     $stmt->bindParam(":referencia",$datos["referencia"],PDO::PARAM_STR); 
-    $stmt->bindParam(":codigo",$datos["proveedor_id"],PDO::PARAM_STR); 
-
-
-     
-
+    $stmt->bindParam(":codigo",$datos["proveedor_id"],PDO::PARAM_STR);
+    
     if ($stmt->execute()) {
         return 'ok';
      }else{

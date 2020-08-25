@@ -98,7 +98,7 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
     }
 
  /* ====================================== 
- EDITAR PROVEEDOR
+ EDITAR CLIENTE
  ====================================== */
 }elseif (isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==3){
 
@@ -121,11 +121,12 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
                 "tipoCliente" => $_POST["txtTipoCli"],
                 "tipoIdent" => $_POST["txtTipoDoc"],
                 "sucursal" => 1,
-                "colaborador" => $_POST["txtColaborador"]
+                "colaborador" => $_POST["txtColaborador"],
+                "codigo" => $_POST["txtId"]
             );
 
-            $respuesta = ModeloCliente::MdlIngresarCliente($tabla,$datos);
-            echo json_encode($respuesta);
+            $respuesta = ModeloCliente::MdlEditarCliente($tabla,$datos);
+            echo json_encode($datos);
             
 
         }else{

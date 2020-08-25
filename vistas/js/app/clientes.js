@@ -67,10 +67,13 @@ form.addEventListener('submit',function(e){
     $("#con-close-modal").modal('hide');
     fetch("controladores/cliente.controlador.php",
         {method:"POST",
-        body:data}).then(response => response.json())
-                   .then(response =>  
+        body:data}).then(response => response.text())
+                   .then(response =>{
+                    console.log(response);
                                
-                    tblcliente.ajax.reload())
+                    tblcliente.ajax.reload()
+
+                   }  )
                    
 
 
