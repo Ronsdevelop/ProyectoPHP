@@ -16,11 +16,11 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="inicio">Inicio</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Administracción</a></li>
-                                <li class="breadcrumb-item active">Usuarios</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">kardex</a></li>
+                                <li class="breadcrumb-item active">Productos</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Administrar Usuarios</h4>
+                        <h4 class="page-title">Administrar Productos</h4>
                     </div>
                 </div>
             </div>     
@@ -31,24 +31,24 @@
                     <div class="card-box">
 
                     <button type="button" class="btn btn-success width-xl waves-effect waves-light float-right" onClick="abrirModal();" id="btnAbrirModal"><i
-                                        class="mdi mdi-plus-circle mr-1"></i>Agregar Usuario</button> 
-                        <h4 class="mb-4">USUARIOS DEL SISTEMA</h4>
+                                        class="mdi mdi-plus-circle mr-1"></i>Agregar Producto</button> 
+                        <h4 class="mb-4">PRODUCTOS PARA VENTAS</h4>
 
-                        <table  class="table table-hover m-0 table-centered dt-responsive nowrap w-100 table-sm tablas" id="tablas">   <!--id="tickets-table" data-toggle="modal" data-target="#con-close-modal"-->
+                        <table  class="table table-hover m-0 table-centered dt-responsive nowrap w-100 table-sm tablas" id="tablaProducto">   <!--id="tickets-table" data-toggle="modal" data-target="#con-close-modal"-->
                    <thead class="thead-dark">
                             <tr>
                                 <th>
                                     ID
                                 </th>
-                                <th>Nombre</th>
-                                <th>Foto</th>
-                                <th>Dni</th>
-                                <th>Direccion</th>
-                                <th>Usuario</th>
-                                <th>Ultimo Logueo</th> 
-                                <th>Estado</th>
-                                <th>Telefono</th>
-                                <th>Accion</th>                        
+                                <th>NOMBRE</th>
+                                <th>IMAGEN</th>
+                                <th>PRESENTACION</th>
+                                <th>PRECIO</th>
+                                <th>CATEGORIA</th>
+                                <th>SECCION</th> 
+                                <th>STOCK</th>
+                                <th>DESCRIPCION</th>
+                                <th>ACCION</th>                        
                             </tr>
                             </thead>
 
@@ -59,16 +59,15 @@
                                 <th>
                                     ID
                                 </th>
-                                <th>Nombre</th>
-                                <th>Foto</th>
-                                <th>Dni</th>
-                                <th>Direccion</th>
-                                <th>Usuario</th>
-                                <th>Ultimo Logueo</th> 
-                                <th>Estado</th>
-                                <th>Telefono</th>
-                                <th>Accion</th> 
-                                                    
+                                <th>NOMBRE</th>
+                                <th>IMAGEN</th>
+                                <th>PRESENTACION</th>
+                                <th>PRECIO</th>
+                                <th>CATEGORIA</th>
+                                <th>SECCION</th> 
+                                <th>STOCK</th>
+                                <th>DESCRIPCION</th>
+                                <th>ACCION</th>                        
                             </tr>
                             </tfoot> 
                         </table>
@@ -85,7 +84,7 @@
 
                                     <form role="form" id="formulario" enctype="multipart/form-data" autocomplete="off">
                                     <div id="cabeceraM" class="modal-header bg-dark">
-                                        <h4 class="modal-title text-light" id="tituloModal">Agregar Nuevo Usuario</h4>
+                                        <h4 class="modal-title text-light" id="tituloModal">Agregar Nuevo Producto</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
                                     <input type="hidden" id="txtOpcion" name="txtOpcion">
