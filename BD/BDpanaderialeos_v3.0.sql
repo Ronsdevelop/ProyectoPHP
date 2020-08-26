@@ -74,7 +74,7 @@ CREATE TABLE `categoria` (
   `categoria_id` char(5) NOT NULL,
   `categoria` varchar(45) NOT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
-  `estado` bit(1) NOT NULL,
+  `estado` int(1) NOT NULL,
   `seccion_id` int(11) NOT NULL,
   PRIMARY KEY (`categoria_id`),
   KEY `fk_CATEGORIA_SECCION1_idx` (`seccion_id`),
@@ -82,6 +82,8 @@ CREATE TABLE `categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `categoria` */
+
+insert  into `categoria`(`categoria_id`,`categoria`,`descripcion`,`estado`,`seccion_id`) values ('CA001','DULCES','PANES CON AZUCAR',1,1),('CA002','LACTEOS','TODO TIPO DE LECHES',1,2),('CA003','PAN','PAN EN GENERAL',1,1);
 
 /*Table structure for table `cliente` */
 
@@ -112,11 +114,11 @@ CREATE TABLE `cliente` (
   CONSTRAINT `fk_CLIENTES_IDENTIFICACION_CLIENTE1` FOREIGN KEY (`identificacion_id`) REFERENCES `identificacion_cliente` (`identificacion_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_CLIENTES_SUCURSAL1` FOREIGN KEY (`sucursal_id`) REFERENCES `sucursal` (`sucursal_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_CLIENTES_TIPO_CLIENTE1` FOREIGN KEY (`tipoCliente_id`) REFERENCES `tipo_cliente` (`tipoCliente_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 CHECKSUM=1 DELAY_KEY_WRITE=1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `cliente` */
 
-insert  into `cliente`(`cliente_id`,`nombre_razon`,`direccion`,`documento_identi`,`alias`,`referencia`,`representante`,`nCelular`,`email`,`fRegistro`,`cumpleanos`,`tipoCliente_id`,`identificacion_id`,`sucursal_id`,`colaborador_id`) values ('CL00000001','cliente1','direc','46261585','un alias','una referencia','un representate','965555','email@hotmail.com','2020-08-22 21:33:12','2020-11-05',1,1,1,1);
+insert  into `cliente`(`cliente_id`,`nombre_razon`,`direccion`,`documento_identi`,`alias`,`referencia`,`representante`,`nCelular`,`email`,`fRegistro`,`cumpleanos`,`tipoCliente_id`,`identificacion_id`,`sucursal_id`,`colaborador_id`) values ('CL00000001','RONY AGUILERA RIVERA','av. las jamaicas piura','46261585','un alias eral','una referencia','un representate real','927666740','email@hotmail.com','2020-08-22 21:33:12','2020-11-05',1,1,1,1),('CL00000002','GRUPO FUMINSUMOS SAC','CALLE LOS FICUS MZ Q LT 24 CASTILLA','20600149645','Loquillo','por el estadio miguel grau','RONY AGUILERA','927666740','rony@hotmail.com','2020-08-25 08:16:50','2020-08-25',1,1,1,1);
 
 /*Table structure for table `colaborador` */
 
@@ -146,7 +148,7 @@ CREATE TABLE `colaborador` (
 
 /*Data for the table `colaborador` */
 
-insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`fCreacion`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15',NULL,'vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-24 15:01:37',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11',NULL,'vistas/img/usuarios/Jess/458.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
+insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`fCreacion`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15',NULL,'vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-26 13:36:20',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11',NULL,'vistas/img/usuarios/Jess/458.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
 
 /*Table structure for table `compras_ingresos` */
 
@@ -463,6 +465,8 @@ CREATE TABLE `producto` (
 
 /*Data for the table `producto` */
 
+insert  into `producto`(`producto_id`,`nombre`,`presentacion`,`stock`,`imagen`,`pVenta`,`descripcion`,`categoria_id`) values ('PR00000001','ITALIANO','UNIDAD',0,NULL,1.00,'PAN SALADO','CA003');
+
 /*Table structure for table `proveedor` */
 
 DROP TABLE IF EXISTS `proveedor`;
@@ -701,7 +705,7 @@ BEGIN
 					SET id='CL00000001';
 				END IF;
 			END;
-		INSERT INTO `cliente` (`cliente_id`,`nombre_razon`,`direccion`,`documento_identi`,`alias`,`referencia`,`representante`,`nCelular`,`email`,`cumpleaños`,`tipoCliente_id`,`identificacion_id`,`sucursal_id`,`colaborador_id`)
+		INSERT INTO `cliente` (`cliente_id`,`nombre_razon`,`direccion`,`documento_identi`,`alias`,`referencia`,`representante`,`nCelular`,`email`,`cumpleanos`,`tipoCliente_id`,`identificacion_id`,`sucursal_id`,`colaborador_id`)
 		VALUES (id,ras,direc,doc,alis,refere,contac,nCel,emails,cumple,tpcli,tident,surco,colab);
     END */$$
 DELIMITER ;
@@ -737,6 +741,18 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_listarClientes`()
 BEGIN
 	SELECT c.cliente_id AS ID, c.nombre_razon AS CLIENTE, c.direccion AS DIRECCION,ic.tipo_identificacion AS DOCUMENTO, c.documento_identi AS NUMERO, c.alias AS ALIAS,c.referencia AS REFERENCIA, c.nCelular AS CELULAR, c.representante AS CONTACTO, c.cumpleanos AS CUMPLEANOS,tc.tipo AS TIPCLIE FROM cliente c INNER JOIN tipo_cliente tc ON c.tipoCliente_id=tc.tipoCliente_id INNER JOIN identificacion_cliente ic ON c.identificacion_id=ic.identificacion_id ;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `sp_listarProductos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `sp_listarProductos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_listarProductos`()
+BEGIN
+	SELECT p.producto_id AS ID, p.nombre AS NOMBRE, p.imagen AS IMAGEN ,p.presentacion AS PRESENTACION,p.pVenta AS PRECIO,c.categoria AS CATEGORIA, s.seccion AS SECCION, p.stock AS STOCK,        p.descripcion AS DESCRIPCION FROM producto p INNER JOIN categoria c ON p.categoria_id = c.categoria_id INNER JOIN seccion s ON s.seccion_id=c.seccion_id;
     END */$$
 DELIMITER ;
 
