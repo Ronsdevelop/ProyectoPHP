@@ -287,14 +287,11 @@ $(document).ready(function() {
         let cabeceraModal = document.getElementById("cabeceraM");
         cabeceraModal.classList.remove("bg-success");
         cabeceraModal.classList.add("bg-dark");
-        document.getElementById("tituloModal").innerText = "Agregar Nuevo Usuario";
-        document.getElementById("txtUsuario").readOnly = false;
-        document.getElementById("btnEditar").innerText = "Guardar Usuario";
-        document.getElementById("formulario").reset(); 
-      
-        document.getElementById("previsualizar").setAttribute("src","vistas/img/usuarios/default/anonymous.png");
-        document.getElementById("txtOpcion").value = opcion;      
-        
+        document.getElementById("tituloModal").innerText = "Agregar Nuevo Producto";   
+        document.getElementById("btnEditar").innerText = "Guardar producto";
+        document.getElementById("formulario").reset();       
+        document.getElementById("previsualizar").setAttribute("src","vistas/img/productos/productoDefault.png");
+        document.getElementById("txtOpcion").value = opcion;    
         $("#con-close-modal").modal("show");
         const datos = new FormData();
         datos.append("txtOpcion",1)
@@ -329,38 +326,56 @@ $(document).ready(function() {
         } 
          
      }
-     /* ------------------------- */
-     /* TRAENDO DATOS MEDIANTE FETCH PARA COLOCARLOS EN EL MODAL DE EDITAR */
-     /* ------------------------- */
      
-     
-     function editUser(codUser) {
-         ;
-         let opcion = 3;
-        let cabeceraModal = document.getElementById("cabeceraM");
-        cabeceraModal.classList.remove("bg-dark");
-        cabeceraModal.classList.add("bg-success");
-       document.getElementById("tituloModal").innerText = "Editar Usuario";
-       document.getElementById("txtUsuario").readOnly = true;
-       document.getElementById("btnEditar").innerText = "Actualizar Usuario";
-       var ele = $('#nuevaFoto');
-          ele.wrap('<form>').closest('form').get(0).reset();
-          ele.unwrap();
+ /* ------------------------- */
+ /* EDITAR PROVEEDOR  */
+ /* ------------------------- */ 
+ 
+$(document).on("click",".btn-editar", function () {
+    let codProducto = $(this).attr("idProducto");
+    let opcion = 3;
+    let cabeceraModal = document.getElementById("cabeceraM");
+    cabeceraModal.classList.remove("bg-dark");
+    cabeceraModal.classList.add("bg-success");
+   document.getElementById("tituloModal").innerText = "Editar Producto";
+ 
+   document.getElementById("btnEditar").innerText = "Actualizar Producto";
+   
+   document.getElementById("txtOpcion").value = opcion;
+     const data = new FormData();
+     data.append('codigoProd',codProducto);
+     $("#con-close-modal").modal("show");
+ 
+  let url = "ajax/productos.ajax.php";
+ 
+  fetch(url,{
+      method:'POST',
+      body: data
+ 
+  }).then(resp=> resp.json())
+  .then(response =>{
+      console.log(response);
+
+  } );
     
-       document.getElementById("txtOpcion").value = opcion;
-         const data = new FormData();
-         data.append('codigUser',codUser);
-         $("#con-close-modal").modal("show");
+});
+
+
+
+ /* ------------------------- */
+/* FUNCION PARA ASIGNAR LOS DATOS A CADA ELEMENTO DEL MODAL EDITAR USURAIO*/
+/* ------------------------- */
+
+function cargarDatosProveedor(datos) {
+    document.getElementById("txtRazon").value = datos["rason"];
+    document.getElementById("txtDireccion").value = datos["direccion"];
+    document.getElementById("txtContacto").value = datos["contacto"];
+    document.getElementById("txtIndetificacion").value = datos["ruc"];
+    document.getElementById("txtCelular").value = datos["nCelular"];
+    document.getElementById("txtFijo").value = datos["nFono"];
+    document.getElementById("txtCorreo").value = datos["email"];
+    document.getElementById("txtReferencia").value = datos["referencia"];
+    document.getElementById("txtId").value = datos["proveedor_id"];
      
-      let url = "ajax/usuarios.ajax.php";
-     
-      fetch(url,{
-          method:'POST',
-          body: data
-     
-      }).then(resp=> resp.json())
-      .then(response =>cargarDatos(response));
-     }
-    
-    
-    
+}
+

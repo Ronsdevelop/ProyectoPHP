@@ -92,81 +92,15 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="field-3" class="control-label">Nombres</label>
-                                                    <input type="text" class="form-control" name="txtNombres" id="txtNombres" placeholder="Nombres Completos">
+                                                    <label for="field-3" class="control-label">Nombre</label>
+                                                    <input type="text" class="form-control" name="txtNombre" id="txtNombre" placeholder="Nombres Completos">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="field-1" class="control-label">Apellido Paterno</label>
-                                                    <input type="text" class="form-control" name="txtApaterno" id="txtApaterno" placeholder="Apellido Paterno">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="field-2" class="control-label">Apellido Materno</label>
-                                                    <input type="text" class="form-control" name="txtAmaterno" id="txtAmaterno" placeholder="Apellido Materno">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="field-3" class="control-label">Direccion</label>
-                                                    <input type="text" class="form-control"name="txtDireccion" id="txtDireccion" placeholder="Direccion">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="field-4" class="control-label">Dni</label>
-                                                    <input type="text" class="form-control" name="txtDni" id="txtDni" placeholder="Dni">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="field-5" class="control-label">Celular</label>
-                                                    <input type="text" class="form-control" name="txtCelular" id="txtCelular" placeholder="Celular">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="field-6" class="control-label">Fecha Ingreso</label>
-                                                    <input type="date" class="form-control" name="txtFecha" id="txtFecha" placeholder="fecha">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="field-1" class="control-label">Usuario</label>
-                                                    <input type="text" class="form-control" name="txtUsuario" id="txtUsuario" placeholder="Usuario">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="field-2" class="control-label">Password</label>
-                                                    <input type="password" class="form-control" name="txtPass" placeholder="Ingrese Clave" autocomplete="off">
-                                                    <input type="hidden" name="passwordActual" id="passwordActual">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="field-3" class="control-label">Correo</label>
-                                                    <input type="email" class="form-control" name="txtCorreo" id="txtCorreo" placeholder="Direccion de email">
-                                                </div>
-                                            </div>
-                                        </div>
-                                      
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group"> 
-                                                <label for="field-3" class="control-label">Tipo Usuario</label>                                                       
+                                            <div class="form-group"> 
+                                                <label for="field-3" class="control-label">Categoria</label>                                                       
                                                 <select class="form-control" name="txtTipo" id="selecTCargo"  data-toggle="select2">
                                                 <option>Seleciona</option>  
                                                 <?php
@@ -177,21 +111,44 @@
                                                 ?>
                                                  
                                                 </select>                                             
-                                                </div>                                                        
+                                                </div>   
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="field-2" class="control-label">Precio Venta</label>
+                                                    <input type="number" class="form-control" name="txtPrecio" id="txtAmaterno" placeholder="Apellido Materno">
+                                                </div>
                                             </div>
                                         </div>
-
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="field-3" class="control-label">Presentación</label>
+                                                    <input type="text" class="form-control"name="txtPresentacion" id="txtPresentacion" placeholder="Direccion">
+                                                </div>
+                                            </div>
+                                        </div>                                  
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="field-3" class="control-label">Descripción</label> 
+                                                    <textarea class="form-control" name="txtDescripcion" id="txtDescripcion" cols="30" rows="1"></textarea>
+                                    
+                                                </div>
+                                            </div>
+                                        </div>                                         
+                
                                         <div class="row">
                                             <div class="col-md-12">  
                                                 
                                                 <div class="form-group">
-                                                    <label for="field-1" class="control-label">Foto de Perfil</label>
+                                                    <label for="field-1" class="control-label">Imagen de Producto</label>
                                                     <input type="hidden" name="fotoSinEditar" id="fotoSinEditar" >
                                                     <input type="file" name="nuevaFoto" class="nuevaFoto" id="nuevaFoto" >
                                                     <p class="text-muted font-13 m-b-30">
                                                         Peso Maximo de la foto 2MB
                                                     </p>
-                                                    <img src="vistas/img/usuarios/default/anonymous.png" alt="" id="previsualizar" class="img-thumbnail avatar-xl previsualizar">
+                                                    <img src="vistas/img/productos/productoDefault.png" alt="" id="previsualizar" class="img-thumbnail avatar-xl previsualizar">
                                                 </div>                                                
                                     
                                             </div>

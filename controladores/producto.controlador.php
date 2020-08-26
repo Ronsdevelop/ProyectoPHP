@@ -14,6 +14,14 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
     $datosTabla = array();
 
     foreach ($respuesta as $key => $value) { 
+        
+        $imagen="";
+
+        if ($value['IMAGEN'] != "") {
+            $imagen = $value['IMAGEN'];
+        }else{
+            $imagen = "vistas/img/productos/productoDefault.png";
+        }
        
 
             $datosTabla[$key] =[
@@ -22,7 +30,7 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
 
                 "NOMBRE" => $value['NOMBRE'],
 
-                "IMAGEN" => "<a href='javascript: void(0);'><img src='".$value['IMAGEN']."' alt='contact-img' title='contact-img' class='rounded-circle avatar-xs'/></a>",
+                "IMAGEN" => "<a href='javascript: void(0);'><img src='".$imagen."' alt='contact-img' title='contact-img' class='rounded-circle avatar-xs'/></a>",
 
                 "PRESENTACION" => $value['PRESENTACION'],
 
@@ -66,7 +74,7 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
 
                 /* ----- ----- CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO ----- ----- */
 
-                $directorio = "../vistas/img/usuarios/".$_POST["txtUsuario"];
+                $directorio = "../vistas/img/productos/".$_POST["txtUsuario"];
                 mkdir($directorio,0755);
 
                 /* ------------------------- */
