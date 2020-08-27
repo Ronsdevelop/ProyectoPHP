@@ -148,7 +148,7 @@ CREATE TABLE `colaborador` (
 
 /*Data for the table `colaborador` */
 
-insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`fCreacion`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15',NULL,'vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-26 13:36:20',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11',NULL,'vistas/img/usuarios/Jess/458.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
+insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`fCreacion`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15',NULL,'vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-27 08:07:11',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11',NULL,'vistas/img/usuarios/Jess/458.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
 
 /*Table structure for table `compras_ingresos` */
 
@@ -456,7 +456,7 @@ CREATE TABLE `producto` (
   `stock` int(11) NOT NULL,
   `imagen` varchar(100) DEFAULT NULL,
   `pVenta` decimal(9,2) NOT NULL,
-  `descripcion` varchar(45) DEFAULT NULL,
+  `descripcion` text,
   `categoria_id` char(5) NOT NULL,
   PRIMARY KEY (`producto_id`),
   KEY `fk_PRODUCTO_CATEGORIA1_idx` (`categoria_id`),
@@ -465,7 +465,7 @@ CREATE TABLE `producto` (
 
 /*Data for the table `producto` */
 
-insert  into `producto`(`producto_id`,`nombre`,`presentacion`,`stock`,`imagen`,`pVenta`,`descripcion`,`categoria_id`) values ('PR00000001','ITALIANO','UNIDAD',0,NULL,1.00,'PAN SALADO','CA003');
+insert  into `producto`(`producto_id`,`nombre`,`presentacion`,`stock`,`imagen`,`pVenta`,`descripcion`,`categoria_id`) values ('PR00000001','ITALIANO','UNIDAD',0,'',1.00,'PAN SALADO','CA002'),('PR00000002','FRANCES','UNIDAD',0,'vistas/img/productos/PAN/PR00000002.jpeg',2.00,'PAN SALADO SIN GRASA','CA003'),('PR00000003','MARRAQUETA','UNIDAD',0,'vistas/img/productos/PAN/PR00000003.jpeg',1.00,'PAN SALADO CON MANTECA','CA003'),('PR00000004','LECHE GLORIA AZUL','TARRO POR 250 ML',0,'vistas/img/productos/LACTEOS/PR00000004.jpeg',3.00,'LECHE AZUL','CA002');
 
 /*Table structure for table `proveedor` */
 
@@ -652,6 +652,46 @@ CREATE TABLE `venta` (
 
 /*Data for the table `venta` */
 
+/* Function  structure for function  `fun_codigoProducto` */
+
+/*!50003 DROP FUNCTION IF EXISTS `fun_codigoProducto` */;
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` FUNCTION `fun_codigoProducto`() RETURNS char(10) CHARSET utf8
+BEGIN
+		DECLARE id CHAR(10);
+   
+		SET id=(SELECT CONCAT("PR",RIGHT(CONCAT("00000000",
+		MAX(SUBSTRING(`producto_id`,8)+1)),8)) FROM `producto`);
+			BEGIN 
+				IF ISNULL(id) THEN 
+					SET id='PR00000001';
+				END IF;
+			END;
+		return id;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `sp_codigoProducto` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `sp_codigoProducto` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_codigoProducto`()
+BEGIN
+    DECLARE id CHAR(10);
+   
+		SET id=(SELECT CONCAT("PR",RIGHT(CONCAT("00000000",
+		MAX(SUBSTRING(`producto_id`,8)+1)),8)) FROM `producto`);
+			BEGIN 
+				IF ISNULL(id) THEN 
+					SET id='PR00000001';
+				END IF;
+			END;
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `sp_datosCliente` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `sp_datosCliente` */;
@@ -707,6 +747,28 @@ BEGIN
 			END;
 		INSERT INTO `cliente` (`cliente_id`,`nombre_razon`,`direccion`,`documento_identi`,`alias`,`referencia`,`representante`,`nCelular`,`email`,`cumpleanos`,`tipoCliente_id`,`identificacion_id`,`sucursal_id`,`colaborador_id`)
 		VALUES (id,ras,direc,doc,alis,refere,contac,nCel,emails,cumple,tpcli,tident,surco,colab);
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `sp_ingresaProducto` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `sp_ingresaProducto` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ingresaProducto`(nom VARCHAR(60),presen VARCHAR(60),estock int,img VARCHAR(100),precio decimal(9,2),descp text,idcat CHAR(5))
+BEGIN 
+		DECLARE id CHAR(10);
+   
+		SET id=(SELECT CONCAT("PR",RIGHT(CONCAT("00000000",
+		MAX(SUBSTRING(`producto_id`,8)+1)),8)) FROM `producto`);
+			BEGIN 
+				IF ISNULL(id) THEN 
+					SET id='PR00000001';
+				END IF;
+			END;
+		INSERT INTO `producto` (`producto_id`,`nombre`,`presentacion`,`stock`,`imagen`,`pVenta`,`descripcion`,`categoria_id`)
+		VALUES (id,nom,presen,estock,img,precio,descp,idcat);
     END */$$
 DELIMITER ;
 

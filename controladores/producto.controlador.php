@@ -55,14 +55,17 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
       AGREGAR USUARIO
       ====================================== */
 
-}elseif (isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==2){  
+}elseif (isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==2){
 
-    if (isset($_POST["txtNombres"])) {
+  
 
-        if (preg_match('/^[a-zA-Z0-9ñÑáíóúÁÉÍÓÚ ]+$/',$_POST["txtNombres"]) && preg_match('/^[a-zA-Z0-9]+$/',$_POST["txtUsuario"]) && preg_match('/^[a-zA-Z0-9]+$/',$_POST["txtPass"])) {
+
+ if (isset($_POST["txtNombre"])) {
+
+        if (preg_match('/^[a-zA-Z0-9ñÑáíóúÁÉÍÓÚ ]+$/',$_POST["txtNombre"])) {
             /* ====================================== 
             VALIDAR FOTO
-            ====================================== */
+            ======================================  */
             $ruta ="";
 
             if (isset($_FILES["nuevaFoto"]["tmp_name"])) {
@@ -72,24 +75,27 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
                 $nuevoAncho = 500;
                 $nuevoAlto = 500;
 
-                /* ----- ----- CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO ----- ----- */
+                /* ----- ----- CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO ----- -----  */
+                if (!file_exists("../vistas/img/productos/".$_POST["categoria"]) ) {
+                    $directorio = "../vistas/img/productos/".$_POST["categoria"];
+                    mkdir($directorio,0755);
+                } 
 
-                $directorio = "../vistas/img/productos/".$_POST["txtUsuario"];
-                mkdir($directorio,0755);
+               
 
                 /* ------------------------- */
-                /* DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP */
-                /* ------------------------- */
+                /* DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP  
+                /* -------------------------  */
 
                 if ($_FILES["nuevaFoto"]["type"]== "image/jpeg") {
 
                     /* ====================================== 
                     GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-                    ====================================== */
+                    ======================================  */
                     
-                    $aleatorio = mt_rand(100,999);
-                    $ruta = "../vistas/img/usuarios/".$_POST["txtUsuario"]."/".$aleatorio.".jpeg";
-                    $rutaBD = "vistas/img/usuarios/".$_POST["txtUsuario"]."/".$aleatorio.".jpeg";
+                 
+                    $ruta = "../vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"].".jpeg";
+                    $rutaBD = "vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"].".jpeg";
                     $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
                     $destino = imagecreatetruecolor($nuevoAncho,$nuevoAlto);
                     //imagecopyresized(dst_image,src_image,dst_x,dst_y,src_x,src_y,dst_w,dst_h,src_w,src_h);
@@ -99,14 +105,14 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
                 }
                 /* ------------------------- */
                 /* DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP */
-                /* ------------------------- */
+                /* -------------------------  */
                 if ($_FILES["nuevaFoto"]["type"]== "image/png") {
                     /* ====================================== 
                     GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-                    ====================================== */
-                    $aleatorio = mt_rand(100,999);
-                    $ruta = "../vistas/img/usuarios/".$_POST["txtUsuario"]."/".$aleatorio.".png";
-                    $rutaBD = "vistas/img/usuarios/".$_POST["txtUsuario"]."/".$aleatorio.".png";
+                    ======================================  */
+                
+                    $ruta = "../vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"].".png";
+                    $rutaBD = "vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"].".png";
                     $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
                     $destino = imagecreatetruecolor($nuevoAncho,$nuevoAlto);
                     //imagecopyresized(dst_image,src_image,dst_x,dst_y,src_x,src_y,dst_w,dst_h,src_w,src_h);
@@ -116,38 +122,35 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
                 }
 
                 
-            }
+            }           
+         
 
 
-            $tabla = "colaborador";
-            $conEncriptada = password_hash($_POST["txtPass"], PASSWORD_DEFAULT);
+            $tabla = "producto";
+           
 
             $datos = array(
-                "nombre" => $_POST["txtNombres"],
-                "aPaterno" => $_POST["txtApaterno"],
-                "aMaterno" => $_POST["txtAmaterno"],
-                "dni" => $_POST["txtDni"],
-                "direccion" => $_POST["txtDireccion"],
-                "avatar" => $rutaBD,
-                "nCelular" => $_POST["txtCelular"],
-                "fIngreso" => $_POST["txtFecha"],
-                "user" => $_POST["txtUsuario"],
-                "pass" => $conEncriptada,
-                "email" => $_POST["txtCorreo"],
-                "cargo_id" => $_POST["txtTipo"],
-                "estado" => 1
+                "nombre" => $_POST["txtNombre"],
+                "presentacion" => $_POST["txtPresentacion"],
+                "stock" => $_POST["txtStock"],        
+                "precio" => $_POST["txtPrecio"],
+                "img" => $rutaBD,
+                "descripcion" => $_POST["txtDescripcion"],
+                "idcategoria" => $_POST["txtCategoria"],
+                 
             );
 
-            $respuesta = ModeloUsuario::MdlIngresarUsuario($tabla,$datos);
+            $respuesta = ModeloProducto::MdlIngresarProducto($tabla,$datos);
             echo json_encode($respuesta);
         
         }else{
 
             echo json_encode("okNO");
         }
-    }
+    }  
 
- /* ====================================== 
+ 
+    /* ====================================== 
  EDITAR USUARIOS
  ====================================== */
 }elseif (isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==3){
@@ -296,5 +299,8 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
 
     }
 
+}else{
+    $respuesta = ModeloProducto::MdlCodigoProducto();
+    echo json_encode($respuesta);
 }
 ?>

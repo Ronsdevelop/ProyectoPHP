@@ -88,6 +88,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
                                     <input type="hidden" id="txtOpcion" name="txtOpcion">
+                                    <input type="hidden" id="txtId" name="txtId">
                                     <div class="modal-body p-4">
                                         <div class="row">
                                             <div class="col-md-12">
@@ -98,25 +99,31 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                             <div class="form-group"> 
                                                 <label for="field-3" class="control-label">Categoria</label>                                                       
-                                                <select class="form-control" name="txtTipo" id="selecTCargo"  data-toggle="select2">
+                                                <select class="form-control" name="txtCategoria" id="txtCategoria"  data-toggle="select2">
                                                 <option>Seleciona</option>  
                                                 <?php
-                                                $cargos = ControladorCargos::crtMostrarCargos($item,$valor);
-                                                foreach ($cargos as $key => $value) {
-                                                    echo'<option value="'.$value["cargo_id"].'">'.$value["cargo"].'</option>';
+                                                $categoria= ControladorCategoria::crtMostrarCategoria();
+                                                foreach ($categoria as $key => $value) {
+                                                    echo'<option value="'.$value["categoria_id"].'">'.$value["categoria"].'</option>';
                                                          }
                                                 ?>
                                                  
                                                 </select>                                             
                                                 </div>   
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="field-2" class="control-label">Precio Venta</label>
-                                                    <input type="number" class="form-control" name="txtPrecio" id="txtAmaterno" placeholder="Apellido Materno">
+                                                    <input type="number" class="form-control" name="txtPrecio" id="txtPrecio" placeholder="Apellido Materno">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="field-2" class="control-label">Stock</label>
+                                                    <input type="number" class="form-control" name="txtStock" id="txtStock" placeholder="Apellido Materno">
                                                 </div>
                                             </div>
                                         </div>
@@ -124,7 +131,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="field-3" class="control-label">Presentación</label>
-                                                    <input type="text" class="form-control"name="txtPresentacion" id="txtPresentacion" placeholder="Direccion">
+                                                    <input type="text" class="form-control" name="txtPresentacion" id="txtPresentacion" placeholder="Direccion">
                                                 </div>
                                             </div>
                                         </div>                                  

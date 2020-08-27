@@ -116,7 +116,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="field-3" class="control-label">Direccion</label>
-                                                    <input type="text" class="form-control"name="txtDireccion" id="txtDireccion" placeholder="Direccion">
+                                                    <input type="text" class="form-control" name="txtDireccion" id="txtDireccion" placeholder="Direccion">
                                                 </div>
                                             </div>
                                         </div>
@@ -171,7 +171,7 @@
                                                 <select class="form-control" name="txtTipo" id="selecTCargo"  data-toggle="select2">
                                                 <option>Seleciona</option>  
                                                 <?php
-                                                $cargos = ControladorCargos::crtMostrarCargos($item,$valor);
+                                                $cargos = ControladorCargos::crtMostrarCargos();
                                                 foreach ($cargos as $key => $value) {
                                                     echo'<option value="'.$value["cargo_id"].'">'.$value["cargo"].'</option>';
                                                          }

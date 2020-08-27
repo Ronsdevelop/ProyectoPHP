@@ -64,21 +64,24 @@ $(document).ready(function() {
     form.addEventListener('submit',function(e){
         e.preventDefault();
         let data = new FormData(form); 
+        let categoria = document.getElementById('txtCategoria').options[document.getElementById('txtCategoria').selectedIndex].text;
+     
+        data.append("categoria",categoria);
         $("#con-close-modal").modal('hide');
-        fetch("controladores/usuario.controlador.php",
+        fetch("controladores/producto.controlador.php",
             {method:"POST",
             body:data}).then(response => response.text())
-                       .then(response =>                 
-                        tblProd.ajax.reload())
+                       .then(response => {
+                        console.log(response);              
+                         tblProd.ajax.reload();
+                       } 
+                       )
                        
     
     
     
     })
-    
-     
-    
-    
+
     /* ====================================== 
     VALIDANDO IMAGEN DE PERFIL
     ====================================== */
@@ -118,65 +121,11 @@ $(document).ready(function() {
     
        
     })
-    
-    /* ====================================== 
-    FUNCION PARA ACTIVAR O DESACTIVAR USUARIO
-    ====================================== */
-    
-    
-     $(document).on("click",".btn-activar", function(){ 
-        
-        let idUsuario = $(this).attr("idUsuario");
-        let estadoUsuario = $(this).attr("estadoUsuario");   
-        const datos = new FormData();
-        datos.append('activarId',idUsuario);
-        datos.append('activarUsuario',estadoUsuario);
-        let url = "ajax/usuarios.ajax.php";
-     
-      fetch(url,{
-          method:'POST',
-          body: datos
-    
-      }).then(resp=> resp.text())
-      .then(response =>  
-        tblUser.ajax.reload(),
-        confirmarAccion(estadoUsuario)
-    
-        
-        );
-       
-    });
-    
-    function confirmarAccion(estado) {
-        if (estado == 0) {
-           Swal.fire({
-               position: 'top-end',
-               icon: 'success',
-               title: 'Usuario Desacivado',
-               showConfirmButton: false,
-               timer: 1500
-           })
-           
-        } else if(estado == 1) {
-           Swal.fire({
-               position: 'top-end',
-               icon: 'success',
-               title: 'Usuario Activado',
-               showConfirmButton: false,
-               timer: 1500
-           })
-        }
-    }
-    
-    
-    
-    
+
     /*=====================
     COMPROBAR SI NO ESTA REPETIDO EL USUARIO
     ======================*/
-    
-    
-    
+
     $("#txtUsuario").change(function(){ 
         $(".alert").remove();
        let usuario = $(this).val();
@@ -293,40 +242,16 @@ $(document).ready(function() {
         document.getElementById("previsualizar").setAttribute("src","vistas/img/productos/productoDefault.png");
         document.getElementById("txtOpcion").value = opcion;    
         $("#con-close-modal").modal("show");
-        const datos = new FormData();
-        datos.append("txtOpcion",1)
-        fetch("controladores/producto.controlador.php",{
-            method:'POST',
-            body:datos
-            
-        }).then(resp => resp.json()).then(resp => console.log(resp))
+         
+        fetch("controladores/producto.controlador.php")
+        .then(resp => resp.json()).then(resp => {
+             
+            document.getElementById("txtId").value = resp[0][0];
+        })
         
     }
     
     
-    /* ------------------------- */
-    /* FUNCION PARA ASIGNAR LOS DATOS A CADA ELEMENTO DEL MODAL EDITAR USURAIO*/
-    /* ------------------------- */
-    
-    function cargarDatos(datos) {
-        document.getElementById("txtNombres").value = datos["nombre"];
-        document.getElementById("txtApaterno").value = datos["aPaterno"];
-        document.getElementById("txtAmaterno").value = datos["aMaterno"];
-        document.getElementById("txtDireccion").value = datos["direccion"];
-        document.getElementById("txtDni").value = datos["dni"];
-        document.getElementById("txtCelular").value = datos["nCelular"];
-        document.getElementById("txtFecha").value = datos["fIngreso"];
-        document.getElementById("txtUsuario").value = datos["user"];
-        document.getElementById("passwordActual").value = datos["pass"];
-        document.getElementById("fotoSinEditar").value = datos["avatar"];
-        document.getElementById("txtCorreo").value = datos["email"]; 
-        document.getElementById("selecTCargo").selectedIndex = datos["cargo_id"];
-        if (datos["avatar"] != "") {
-            document.getElementById("previsualizar").setAttribute("src",datos["avatar"]);   
-        } 
-         
-     }
-     
  /* ------------------------- */
  /* EDITAR PROVEEDOR  */
  /* ------------------------- */ 
@@ -354,28 +279,22 @@ $(document).on("click",".btn-editar", function () {
  
   }).then(resp=> resp.json())
   .then(response =>{
-      console.log(response);
-
+    document.getElementById("txtNombre").value = response["nombre"];
+    document.getElementById("txtPrecio").value = response["pVenta"];
+    document.getElementById("txtStock").value = response["stock"];
+    document.getElementById("txtPresentacion").value = response["presentacion"];
+    document.getElementById("txtDescripcion").value = response["descripcion"];   
+    document.getElementById("fotoSinEditar").value = response["imagen"];  
+    document.getElementById("txtId").value = response["producto_id"]; 
+    document.getElementById("txtCategoria").value = response["categoria_id"];
+   
+    if (response["imagen"] != "") {
+        document.getElementById("previsualizar").setAttribute("src",response["imagen"]);   
+    } 
   } );
     
 });
 
 
 
- /* ------------------------- */
-/* FUNCION PARA ASIGNAR LOS DATOS A CADA ELEMENTO DEL MODAL EDITAR USURAIO*/
-/* ------------------------- */
-
-function cargarDatosProveedor(datos) {
-    document.getElementById("txtRazon").value = datos["rason"];
-    document.getElementById("txtDireccion").value = datos["direccion"];
-    document.getElementById("txtContacto").value = datos["contacto"];
-    document.getElementById("txtIndetificacion").value = datos["ruc"];
-    document.getElementById("txtCelular").value = datos["nCelular"];
-    document.getElementById("txtFijo").value = datos["nFono"];
-    document.getElementById("txtCorreo").value = datos["email"];
-    document.getElementById("txtReferencia").value = datos["referencia"];
-    document.getElementById("txtId").value = datos["proveedor_id"];
-     
-}
-
+  
