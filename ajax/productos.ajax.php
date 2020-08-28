@@ -15,12 +15,32 @@
 
         }
 
-        public $proveedorEliminar;
-        public function ajaxEliminarProveedor(){
+        public $elimarProducto;
+        public $eliminaImagen;
+        public $eliminaCarpeta;
+        public function ajaxEliminarProducto(){
             $tabla = "producto";
             $item = "producto_id";
-            $valor = $this-> proveedorEliminar;
-            $respuesta = ModeloProveedor::MdlEliminaProveedor($tabla,$item,$valor);
+            $valor = $this-> elimarProducto;
+            $imagen=$this-> eliminaImagen;
+            $carpeta = $this-> eliminaCarpeta;
+           
+     
+             $respuesta = ModeloProducto::MdlEliminaProducto($tabla,$item,$valor); 
+        
+            if ($respuesta != "error") {                  
+                 unlink('../'.$imagen); 
+                 $archivos = scandir('../vistas/img/productos/'.$carpeta."/".$valor);
+                if (count($archivos) == 2) {
+                    rmdir('../vistas/img/productos/'.$carpeta."/".$valor);
+                }
+                $archivos = scandir('../vistas/img/productos/'.$carpeta."/");
+                if (count($archivos) == 2) {
+                    rmdir('../vistas/img/productos/'.$carpeta."/");
+                }
+
+                          
+            } 
             echo json_encode($respuesta);
       
             
@@ -46,10 +66,12 @@
         $proveedor-> ajaxEditarPoductos();
          
     }
-    if (isset($_POST["codProveedor"])) {
-        $pEliminar = new AjaxProveedores();
-        $pEliminar -> proveedorEliminar = $_POST["codProveedor"];
-        $pEliminar -> ajaxEliminarProveedor();
+    if (isset($_POST["codProducto"])) {
+        $pEliminar = new AjaxProductos();
+        $pEliminar -> elimarProducto = $_POST["codProducto"];
+        $pEliminar -> eliminaImagen = $_POST["imgProducto"];
+        $pEliminar -> eliminaCarpeta = $_POST["categProducto"];
+        $pEliminar -> ajaxEliminarProducto();
     }
 
     if (isset($_POST["valorValidar"])) {

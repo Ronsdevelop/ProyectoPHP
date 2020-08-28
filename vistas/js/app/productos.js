@@ -72,10 +72,25 @@ $(document).ready(function() {
             {method:"POST",
             body:data}).then(response => response.text())
                        .then(response => {
-                        console.log(response);              
-                         tblProd.ajax.reload();
-                       } 
-                       )
+               
+                          if (response !='error') {
+                            Swal.fire({                            
+                                icon: 'success',
+                                title: response,
+                                showConfirmButton: false,
+                                timer: 1500
+                              }),
+                              tblProd.ajax.reload()
+                        }else{
+                            Swal.fire({                            
+                                icon: 'error',
+                                title: 'No se ha podido Ejecutar la Accion',
+                                showConfirmButton: false,
+                                timer: 1500
+                              })
+                        }
+                    })
+                      
                        
     
     
@@ -88,6 +103,7 @@ $(document).ready(function() {
     
     $(".nuevaFoto").change(function() {
         let imagen = this.files[0];
+         
         /* ------------------------- */
         /* VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG */
         /* ------------------------- */
@@ -161,19 +177,17 @@ $(document).ready(function() {
     ====================================== */
      
     $(document).on("click",".btn-eliminar", function () {
-        let codUsuario = $(this).attr("idUsuario");
-        let usuario = $(this).attr("usuario");
-        let userfoto = $(this).attr("fotoUser");
-    
-     
+        let codProducto = $(this).attr("idProducto");
+        let categoria = $(this).attr("categoria");
+        let imgProducto = $(this).attr("fotoProducto");
         const datos = new FormData();
-        datos.append('codUsuario',codUsuario); 
-        datos.append('user',usuario);
-        datos.append('fotoUser',userfoto);
-        const url = "ajax/usuarios.ajax.php";
+        datos.append('codProducto',codProducto); 
+        datos.append('categProducto',categoria);
+        datos.append('imgProducto',imgProducto);
+        const url = "ajax/productos.ajax.php";
     
         Swal.fire({
-            title: 'Seguro que deseas elimar el usuario?',
+            title: 'Seguro que deseas eliminar el Producto?',
             text: "Se eliminara totalmente de la base de datos!",
             icon: 'warning',
             showCancelButton: true,
@@ -209,7 +223,7 @@ $(document).ready(function() {
     
                 if(result.value){
                 
-                    tblUser.ajax.reload();
+                    tblProd.ajax.reload();
     
                 }
     
@@ -217,7 +231,7 @@ $(document).ready(function() {
              
             
         }else{
-            tblUser.ajax.reload();
+            tblProd.ajax.reload();
             Swal.fire(
                 'No se pudo Eliminar!',
                 'El usuario no se a eliminado de la base de datos.',
@@ -236,7 +250,8 @@ $(document).ready(function() {
         let cabeceraModal = document.getElementById("cabeceraM");
         cabeceraModal.classList.remove("bg-success");
         cabeceraModal.classList.add("bg-dark");
-        document.getElementById("tituloModal").innerText = "Agregar Nuevo Producto";   
+        document.getElementById("tituloModal").innerText = "Agregar Nuevo Producto";
+        document.getElementById("txtStock").readOnly = false;   
         document.getElementById("btnEditar").innerText = "Guardar producto";
         document.getElementById("formulario").reset();       
         document.getElementById("previsualizar").setAttribute("src","vistas/img/productos/productoDefault.png");
@@ -246,7 +261,7 @@ $(document).ready(function() {
         fetch("controladores/producto.controlador.php")
         .then(resp => resp.json()).then(resp => {
              
-            document.getElementById("txtId").value = resp[0][0];
+            document.getElementById("txtId").value = resp[0];
         })
         
     }
@@ -265,7 +280,7 @@ $(document).on("click",".btn-editar", function () {
    document.getElementById("tituloModal").innerText = "Editar Producto";
  
    document.getElementById("btnEditar").innerText = "Actualizar Producto";
-   
+   document.getElementById("txtStock").readOnly = true;
    document.getElementById("txtOpcion").value = opcion;
      const data = new FormData();
      data.append('codigoProducto',codProducto);
@@ -288,6 +303,7 @@ $(document).on("click",".btn-editar", function () {
     document.getElementById("fotoSinEditar").value = response["imagen"];  
     document.getElementById("txtId").value = response["producto_id"]; 
     document.getElementById("txtCategoria").value = response["categoria_id"];
+    
    
     if (response["imagen"] != "") {
         document.getElementById("previsualizar").setAttribute("src",response["imagen"]);   

@@ -94,7 +94,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="field-3" class="control-label">Nombre</label>
-                                                    <input type="text" class="form-control" name="txtNombre" id="txtNombre" placeholder="Nombres Completos">
+                                                    <input type="text" class="form-control" name="txtNombre" id="txtNombre" placeholder="Nombre del Pan">
                                                 </div>
                                             </div>
                                         </div>
@@ -117,13 +117,13 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="field-2" class="control-label">Precio Venta</label>
-                                                    <input type="number" class="form-control" name="txtPrecio" id="txtPrecio" placeholder="Apellido Materno">
+                                                    <input type="number" class="form-control" name="txtPrecio" id="txtPrecio" step="0.01" placeholder="precio">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="field-2" class="control-label">Stock</label>
-                                                    <input type="number" class="form-control" name="txtStock" id="txtStock" placeholder="Apellido Materno">
+                                                    <input type="number" class="form-control" name="txtStock" id="txtStock" placeholder="stock">
                                                 </div>
                                             </div>
                                         </div>
@@ -131,7 +131,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="field-3" class="control-label">Presentación</label>
-                                                    <input type="text" class="form-control" name="txtPresentacion" id="txtPresentacion" placeholder="Direccion">
+                                                    <input type="text" class="form-control" name="txtPresentacion" id="txtPresentacion" placeholder="Presentación">
                                                 </div>
                                             </div>
                                         </div>                                  
@@ -139,7 +139,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="field-3" class="control-label">Descripción</label> 
-                                                    <textarea class="form-control" name="txtDescripcion" id="txtDescripcion" cols="30" rows="1"></textarea>
+                                                    <textarea class="form-control" name="txtDescripcion" id="txtDescripcion" cols="30" placeholder="Descripcion del Pan" rows="1"></textarea>
                                     
                                                 </div>
                                             </div>

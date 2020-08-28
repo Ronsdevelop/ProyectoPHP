@@ -44,7 +44,7 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
 
                 "DESCRIPCION" => $value['DESCRIPCION'],
 
-                "ACCION" => "<div class='btn-group dropdown'><a href='javascript: void(0);' class='table-action-btn dropdown-toggle arrow-none btn btn-secondary btn-sm' data-toggle='dropdown' aria-expanded='false'><i class='mdi mdi-dots-horizontal'></i></a><div class='dropdown-menu dropdown-menu-right'><button class='dropdown-item btn-editar' idProducto='".$value['ID']."' ><i class='mdi mdi-pencil mr-2 text-muted font-18 vertical-middle'></i>Editar</button><button class='dropdown-item btn-eliminar' idProducto='".$value['ID']."' producto='".$value['CATEGORIA']."' fotoProducto='".$imagen."'><i class='mdi mdi-delete mr-2 text-muted font-18 vertical-middle'></i>Eliminar</button></div></div>"
+                "ACCION" => "<div class='btn-group dropdown'><a href='javascript: void(0);' class='table-action-btn dropdown-toggle arrow-none btn btn-secondary btn-sm' data-toggle='dropdown' aria-expanded='false'><i class='mdi mdi-dots-horizontal'></i></a><div class='dropdown-menu dropdown-menu-right'><button class='dropdown-item btn-editar' idProducto='".$value['ID']."' ><i class='mdi mdi-pencil mr-2 text-muted font-18 vertical-middle'></i>Editar</button><button class='dropdown-item btn-eliminar' idProducto='".$value['ID']."' categoria='".$value['CATEGORIA']."' fotoProducto='".$imagen."'><i class='mdi mdi-delete mr-2 text-muted font-18 vertical-middle'></i>Eliminar</button></div></div>"
             ];
 
     } 
@@ -78,9 +78,12 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
 
                 /* ----- ----- CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO ----- -----  */
                 if (!file_exists("../vistas/img/productos/".$_POST["categoria"]) ) {
-                    $directorio = "../vistas/img/productos/".$_POST["categoria"];
-                    mkdir($directorio,0755);
+                    $subdirectorio = "../vistas/img/productos/".$_POST["categoria"];
+                    mkdir($subdirectorio,0755);                  
                 } 
+
+                $directorio = "../vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"];
+                mkdir($directorio,0755);  
 
                
 
@@ -94,9 +97,9 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
                     GUARDAMOS LA IMAGEN EN EL DIRECTORIO
                     ======================================  */
                     
-                 
-                    $ruta = "../vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"].".jpeg";
-                    $rutaBD = "vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"].".jpeg";
+                    $aleatorio = mt_rand(100,999);
+                    $ruta = "../vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"]."/".$aleatorio.".jpeg";
+                    $rutaBD = "vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"]."/".$aleatorio.".jpeg";
                     $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
                     $destino = imagecreatetruecolor($nuevoAncho,$nuevoAlto);
                     //imagecopyresized(dst_image,src_image,dst_x,dst_y,src_x,src_y,dst_w,dst_h,src_w,src_h);
@@ -111,9 +114,9 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
                     /* ====================================== 
                     GUARDAMOS LA IMAGEN EN EL DIRECTORIO
                     ======================================  */
-                
-                    $ruta = "../vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"].".png";
-                    $rutaBD = "vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"].".png";
+                    $aleatorio = mt_rand(100,999);
+                    $ruta = "../vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"]."/".$aleatorio.".png";
+                    $rutaBD = "vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"]."/".$aleatorio.".png";
                     $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
                     $destino = imagecreatetruecolor($nuevoAncho,$nuevoAlto);
                     //imagecopyresized(dst_image,src_image,dst_x,dst_y,src_x,src_y,dst_w,dst_h,src_w,src_h);
@@ -152,7 +155,7 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
 
  
     /* ====================================== 
- EDITAR USUARIOS
+ EDITAR PRODUCTO
  ====================================== */
 }elseif (isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==3){
 
@@ -170,22 +173,22 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
                 list($ancho,$alto)=getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
                 $nuevoAncho = 500;
                 $nuevoAlto = 500;
-                /* ----- ----- CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO ----- ----- */
-                if (!file_exists("../vistas/img/productos/".$_POST["categoria"])) {
-                    $directorio = "../vistas/img/productos/".$_POST["categoria"];
-                }
-               
-            
+              /* ----- ----- CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO ----- -----  */
+                if (!file_exists("../vistas/img/productos/".$_POST["categoria"]) ) {
+                    $subdirectorio = "../vistas/img/productos/".$_POST["categoria"];
+                    mkdir($subdirectorio,0755);                  
+                } 
+
+                if (!file_exists("../vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"]) ) {
+                    $directorio = "../vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"];
+                    mkdir($directorio,0755);  
+                } 
                 /* ====================================== 
                 PIRMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
                 ====================================== */
                 if (!empty($_POST["fotoSinEditar"])) {
 
-                    unlink("../".$_POST["fotoSinEditar"]);
-
-                }else {
-
-                    mkdir($directorio,0755);
+                    unlink("../".$_POST["fotoSinEditar"]);                   
 
                 }
 
@@ -196,9 +199,9 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
                     /* ====================================== 
                     GUARDAMOS LA IMAGEN EN EL DIRECTORIO
                     ====================================== */
-                 
-                    $rutaEdit = "../vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"].".jpeg";
-                    $rutaBD = "vistas/img/productos/".$_POST["txtUsuario"]."/".$_POST["txtId"].".jpeg";
+                    $aleatorio = mt_rand(100,999);
+                    $rutaEdit = "../vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"]."/".$aleatorio.".jpeg";
+                    $rutaBD = "vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"]."/".$aleatorio.".jpeg";
                     $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
                     $destino = imagecreatetruecolor($nuevoAncho,$nuevoAlto);
                     //imagecopyresized(dst_image,src_image,dst_x,dst_y,src_x,src_y,dst_w,dst_h,src_w,src_h);
@@ -213,9 +216,9 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
                     /* ====================================== 
                     GUARDAMOS LA IMAGEN EN EL DIRECTORIO
                     ====================================== */
-                    
-                    $rutaEdit = "../vistas/img/productos/".$_POST["txtUsuario"]."/".$_POST["txtId"].".png";
-                    $rutaBD = "vistas/img/productos/".$_POST["txtUsuario"]."/".$_POST["txtId"].".png";
+                    $aleatorio = mt_rand(100,999);
+                    $rutaEdit = "../vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"]."/".$aleatorio.".png";
+                    $rutaBD = "vistas/img/productos/".$_POST["categoria"]."/".$_POST["txtId"]."/".$aleatorio.".png";
                     $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
                     $destino = imagecreatetruecolor($nuevoAncho,$nuevoAlto);
                     //imagecopyresized(dst_image,src_image,dst_x,dst_y,src_x,src_y,dst_w,dst_h,src_w,src_h);
@@ -223,6 +226,15 @@ if(isset($_POST["txtOpcion"])&& $_POST["txtOpcion"]==1 ){
                     imagejpeg($destino,$rutaEdit);
                     
                 }
+
+                $carpetas = explode(".",$_POST["fotoSinEditar"]);
+                $directrioEvaluar= substr($carpetas[0],0,-3);
+
+                $archivos = scandir("../".$directrioEvaluar );
+                if (count($archivos) == 2) {
+                    rmdir("../".$directrioEvaluar);
+                }
+                   
 
                 
             }

@@ -85,7 +85,7 @@ static public function MdlActualizarCliente($tabla,$item1,$valor1,$item2,$valor2
 
 }
 
-static public function MdlEliminaCliente($tabla,$item,$valor){
+static public function MdlEliminaProducto($tabla,$item,$valor){
     $stmt = Conexion::conectar()-> prepare("DELETE FROM $tabla WHERE $item=:$item");
     $stmt -> bindParam(":".$item,$valor, PDO::PARAM_STR);
     if ($stmt ->execute()) {

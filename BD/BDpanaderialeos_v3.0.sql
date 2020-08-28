@@ -148,7 +148,7 @@ CREATE TABLE `colaborador` (
 
 /*Data for the table `colaborador` */
 
-insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`fCreacion`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15',NULL,'vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-27 08:07:11',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11',NULL,'vistas/img/usuarios/Jess/458.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
+insert  into `colaborador`(`colaborador_id`,`nombre`,`aPaterno`,`aMaterno`,`dni`,`direccion`,`nCelular`,`fIngreso`,`fCreacion`,`avatar`,`user`,`pass`,`email`,`cargo_id`,`ultimoLogeo`,`estado`) values (1,'RONY','AGUILERA','RIVERA','46261585','CASTILLA - PIURA','927111112','2019-11-15',NULL,'vistas/img/usuarios/Rony/751.jpeg','Rony','$2y$10$BakQHyFE5CYJsiHzbvcunO5bvlK3Lui//q3u8ZZgZhDzeF4i8syye','rony@panaderialeos.com',1,'2020-08-28 06:55:54',1),(2,'JESUS','RAMOS','GARCIA','46263434','CASTILLA - PIURA','984383838','2020-08-11',NULL,'vistas/img/usuarios/Jess/278.jpeg','Jess','$2y$10$OYAK49E/SqQVctXmXeTvtO2kgOtUjzHAfr8.5GZ1RRgO85aZZhSjq','jesus@panaderialeos.com',2,'2020-08-16 16:42:30',1);
 
 /*Table structure for table `compras_ingresos` */
 
@@ -465,7 +465,7 @@ CREATE TABLE `producto` (
 
 /*Data for the table `producto` */
 
-insert  into `producto`(`producto_id`,`nombre`,`presentacion`,`stock`,`imagen`,`pVenta`,`descripcion`,`categoria_id`) values ('PR00000001','ITALIANO','UNIDAD',0,'',1.00,'PAN SALADO','CA002'),('PR00000002','FRANCES','UNIDAD',0,'vistas/img/productos/PAN/PR00000002.jpeg',2.00,'PAN SALADO SIN GRASA','CA003'),('PR00000003','MARRAQUETA','UNIDAD',0,'vistas/img/productos/PAN/PR00000003.jpeg',1.00,'PAN SALADO CON MANTECA','CA003'),('PR00000004','LECHE GLORIA AZUL','TARRO POR 250 ML',0,'vistas/img/productos/LACTEOS/PR00000004.jpeg',3.00,'LECHE AZUL','CA002');
+insert  into `producto`(`producto_id`,`nombre`,`presentacion`,`stock`,`imagen`,`pVenta`,`descripcion`,`categoria_id`) values ('PR00000001','FRANCES','UNIDAD',20,'vistas/img/productos/LACTEOS/PR00000001/628.jpeg',1.42,'PAN SALADO SIN MANTECA','CA002'),('PR00000002','INTEGRAL','UNIDAD',15,'vistas/img/productos/PAN/PR00000002/453.jpeg',1.32,'PAN INTEGRAL','CA003');
 
 /*Table structure for table `proveedor` */
 
