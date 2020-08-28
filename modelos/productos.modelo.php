@@ -50,23 +50,17 @@ class ModeloProducto{
 
 }
 
-static public function MdlEditarCliente($tabla,$datos){
+static public function MdlEditarProducto($tabla,$datos){
 
-    $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre_razon = :rason , documento_identi = :ruc , direccion = :direccion , alias = :alias , referencia = :referencia , representante = :contacto , email = :email , nCelular = :nCelular , cumpleanos = :cumple , tipoCliente_id = :tipoCliente ,identificacion_id=:tipoIden , sucursal_id = :sucursal , colaborador_id = :colaborador  WHERE cliente_id = :codigo");       
-    $stmt->bindParam(":rason",$datos["rason"],PDO::PARAM_STR);
-    $stmt->bindParam(":ruc",$datos["ruc"],PDO::PARAM_STR);
-    $stmt->bindParam(":direccion",$datos["direccion"],PDO::PARAM_STR);  
-    $stmt->bindParam(":alias",$datos["alias"],PDO::PARAM_STR);
-    $stmt->bindParam(":referencia",$datos["referencia"],PDO::PARAM_STR);
-    $stmt->bindParam(":contacto",$datos["contacto"],PDO::PARAM_STR);
-    $stmt->bindParam(":email",$datos["email"],PDO::PARAM_STR); 
-    $stmt->bindParam(":nCelular",$datos["nCelular"],PDO::PARAM_STR);
-    $stmt->bindParam(":cumple",$datos["cumpleanos"],PDO::PARAM_STR); 
-    $stmt->bindParam(":tipoCliente",$datos["tipoCliente"],PDO::PARAM_STR); 
-    $stmt->bindParam(":tipoIden",$datos["tipoIdent"],PDO::PARAM_STR); 
-    $stmt->bindParam(":sucursal",$datos["sucursal"],PDO::PARAM_STR); 
-    $stmt->bindParam(":colaborador",$datos["colaborador"],PDO::PARAM_STR);
-    $stmt->bindParam(":codigo",$datos["codigo"],PDO::PARAM_STR);     
+    $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre , presentacion = :presentacion , stock = :stock , imagen = :imagen , pVenta = :pVenta , descripcion = :descripcion , categoria_id = :categoria_id WHERE producto_id = :codigo");       
+    $stmt->bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
+    $stmt->bindParam(":presentacion",$datos["presentacion"],PDO::PARAM_STR);
+    $stmt->bindParam(":stock",$datos["stock"],PDO::PARAM_STR);  
+    $stmt->bindParam(":imagen",$datos["img"],PDO::PARAM_STR);
+    $stmt->bindParam(":pVenta",$datos["precio"],PDO::PARAM_STR);
+    $stmt->bindParam(":descripcion",$datos["descripcion"],PDO::PARAM_STR);
+    $stmt->bindParam(":categoria_id",$datos["idcategoria"],PDO::PARAM_STR);      
+    $stmt->bindParam(":codigo",$datos["idproducto"],PDO::PARAM_STR);     
 
     if ($stmt->execute()) {
         return 'Se ha Editado Correctamente';
@@ -108,7 +102,7 @@ static public function MdlCodigoProducto(){
 
     $stmt = Conexion::conectar()-> prepare("SELECT fun_codigoProducto()");
     $stmt -> execute();
-    return $stmt -> fetchAll();
+    return $stmt -> fetch();
     $stmt -> close();
     $stmt = null;
 

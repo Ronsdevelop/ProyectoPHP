@@ -268,7 +268,7 @@ $(document).on("click",".btn-editar", function () {
    
    document.getElementById("txtOpcion").value = opcion;
      const data = new FormData();
-     data.append('codigoProd',codProducto);
+     data.append('codigoProducto',codProducto);
      $("#con-close-modal").modal("show");
  
   let url = "ajax/productos.ajax.php";
@@ -279,6 +279,7 @@ $(document).on("click",".btn-editar", function () {
  
   }).then(resp=> resp.json())
   .then(response =>{
+     
     document.getElementById("txtNombre").value = response["nombre"];
     document.getElementById("txtPrecio").value = response["pVenta"];
     document.getElementById("txtStock").value = response["stock"];

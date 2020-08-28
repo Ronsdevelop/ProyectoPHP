@@ -1,5 +1,5 @@
 <?php
-    require_once "../controladores/producto.controlador.php ";
+    
     require_once "../modelos/productos.modelo.php"; 
 
     class AjaxProductos{
@@ -40,9 +40,9 @@
     }
 
 
-    if (isset($_POST["codigoProd"])) {
+    if (isset($_POST["codigoProducto"])) {
         $proveedor = new AjaxProductos();
-        $proveedor -> codProvedor = $_POST["codigoProd"];
+        $proveedor -> codProvedor = $_POST["codigoProducto"];
         $proveedor-> ajaxEditarPoductos();
          
     }

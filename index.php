@@ -5,11 +5,13 @@ require_once "controladores/categoria.controlador.php";
 require_once "controladores/cargo.controlador.php";
  
  
+ 
 
 require_once "modelos/plantilla.modelo.php";
 require_once "modelos/usuarios.modelo.php";
 require_once "modelos/categorias.modelo.php";
  
+
 $plantilla = new ControladorPlantilla();
 
 $plantilla -> ctrPlantilla();
