@@ -14,37 +14,20 @@
         <li>
             <a href="inicio">
                 <i class="la la-dashboard"></i>
-                <span> Inicio</span>
+                <span>INICIO</span>
             </a>
         </li>
- 
-
         <li>
-            <a href="javascript: void(0);">
-                <i class="la la-cube"></i>
-                <span>Kardex</span>
-                <span class="menu-arrow"></span>
+            <a href="pos">
+                <i class="fas fa-luggage-cart"></i>
+                <span>PUNTO DE VENTA</span>
             </a>
-            <ul class="nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="productos">Productos</a>
-                </li>
-                <li>
-                    <a href="categorias">Categorias</a>
-                </li>
-                <li>
-                    <a href="#">Seccion</a>
-                </li>
-                <li>
-                    <a href="#">Almacen</a>
-                </li>
-            </ul>
         </li>
 
         <li>
             <a href="javascript: void(0);">
-                <i class="la la-clone"></i>
-                <span> Ventas</span>
+                <i class="la la-money"></i>
+                <span> VENTAS</span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
@@ -69,10 +52,88 @@
             </ul>
         </li>
 
+        
+        <li>
+            <a href="javascript: void(0);">
+                <i class="la la-clone"></i>
+                <span> COTIZACIÓN</span>
+                <span class="menu-arrow"></span>
+            </a>
+            <ul class="nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="clientes">clientes</a>
+                </li>
+                <li>
+                    <a href="#">Light Sidebar</a>
+                </li>
+                <li>
+                    <a href="#">Dark Topbar</a>
+                </li>
+                <li>
+                    <a href="#">Preloader</a>
+                </li>
+                <li>
+                    <a href="#">Sidebar Collapsed</a>
+                </li>
+                <li>
+                    <a href="#">Boxed</a>
+                </li>
+            </ul>
+        </li>
+
+
+ 
+
+        <li>
+            <a href="javascript: void(0);">
+                <i class="la la-cube"></i>
+                <span>Kardex</span>
+                <span class="menu-arrow"></span>
+            </a>
+            <ul class="nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="productos">Productos</a>
+                </li>
+                <li>
+                    <a href="categorias">Categorias</a>
+                </li>
+                <li>
+                    <a href="#">Seccion</a>
+                </li>
+                <li>
+                    <a href="#">Almacen</a>
+                </li>
+            </ul>
+        </li>
+
+        
+
+        <li>
+            <a href="javascript: void(0);">
+                <i class="fas fa-cash-register"></i>
+                <span>PAGOS</span>
+                <span class="menu-arrow"></span>
+            </a>
+            <ul class="nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="#">Inbox</a>
+                </li>
+                <li>
+                    <a href="#">Read Email</a>
+                </li>
+                <li>
+                    <a href="#">Compose Email</a>
+                </li>
+                <li>
+                    <a href="#">Email Templates</a>
+                </li>
+            </ul>
+        </li>
+        
         <li>
             <a href="javascript: void(0);">
                 <i class="la la-envelope"></i>
-                <span>Correo</span>
+                <span>COMPRA</span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
@@ -94,7 +155,85 @@
         <li>
             <a href="javascript: void(0);">
                 <i class="la la-file-text-o"></i>
-                <span>Caja</span>
+                <span>PRODUCTO</span>
+                <span class="menu-arrow"></span>
+            </a>
+            <ul class="nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="#">Starter</a>
+                </li>
+                <li>
+                    <a href="#">Log In</a>
+                </li>
+                <li>
+                    <a href="#">Register</a>
+                </li>
+                <li>
+                    <a href="#">Recover Password</a>
+                </li>
+                <li>
+                    <a href="#">Lock Screen</a>
+                </li>
+                <li>
+                    <a href="#">Logout</a>
+                </li>
+                <li>
+                    <a href="#">Confirm Mail</a>
+                </li>
+                <li>
+                    <a href="#">Error 404</a>
+                </li>
+                <li>
+                    <a href="#">Error 404-alt</a>
+                </li>
+                <li>
+                    <a href="#">Error 500</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript: void(0);">
+                <i class="la la-file-text-o"></i>
+                <span>CLIENTE</span>
+                <span class="menu-arrow"></span>
+            </a>
+            <ul class="nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="#">Starter</a>
+                </li>
+                <li>
+                    <a href="#">Log In</a>
+                </li>
+                <li>
+                    <a href="#">Register</a>
+                </li>
+                <li>
+                    <a href="#">Recover Password</a>
+                </li>
+                <li>
+                    <a href="#">Lock Screen</a>
+                </li>
+                <li>
+                    <a href="#">Logout</a>
+                </li>
+                <li>
+                    <a href="#">Confirm Mail</a>
+                </li>
+                <li>
+                    <a href="#">Error 404</a>
+                </li>
+                <li>
+                    <a href="#">Error 404-alt</a>
+                </li>
+                <li>
+                    <a href="#">Error 500</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript: void(0);">
+                <i class="la la-file-text-o"></i>
+                <span>PROVEEDOR</span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
@@ -135,10 +274,49 @@
 
 <li class="menu-title mt-2">Administración</li>
 
+
+
+
+        <li>
+            <a href="javascript: void(0);">
+                <i class="la la-bank"></i>
+                <span>CONTABILIDAD </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <ul class="nav-second-level" aria-expanded="false">
+                <li>
+                    <a href="#">Buttons</a>
+                </li>
+                <li>
+                    <a href="#">Cards</a>
+                </li>
+                <li>
+                    <a href="#">Tabs & Accordions</a>
+                </li>
+                <li>
+                    <a href="#">Modals</a>
+                </li>
+                <li>
+                    <a href="#">Progress</a>
+                </li>
+                <li>
+                    <a href="#">Notifications</a>
+                </li>
+                <li>
+                    <a href="#">General UI</a>
+                </li>
+                <li>
+                    <a href="#">Typography</a>
+                </li>
+                <li>
+                    <a href="#">Grid</a>
+                </li>
+            </ul>
+        </li>
         <li>
             <a href="javascript: void(0);">
                 <i class="la la-briefcase"></i>
-                <span>Configuración </span>
+                <span>GASTOS </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
@@ -172,18 +350,13 @@
             </ul>
         </li>
 
-        <li>
-            <a href="widgets.html">
-                <i class="la la-coffee"></i>
-                <span> Widgets </span>
-            </a>
-        </li>
 
+      
         <li>
             <a href="javascript: void(0);">
                 <i class="la la-bullhorn"></i>
                 <span class="badge badge-info float-right">Hot</span>
-                <span> Admin UI </span>
+                <span> REPORTES </span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
@@ -220,11 +393,17 @@
                  
             </ul>
         </li>
+        <li>
+            <a href="pos">
+                <i class="mdi mdi-chart-line"></i>
+                <span>ANALITICA</span>
+            </a>
+        </li>
 
         <li>
             <a href="javascript: void(0);">
-                <i class="la la-wrench"></i>
-                <span> Administracion </span>
+                <i class="fas fa-users"></i>
+                <span> USUARIOS </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
@@ -237,8 +416,8 @@
 
         <li>
             <a href="javascript: void(0);">
-                <i class="la la-table"></i>
-                <span> Tables </span>
+                <i class="fas fa-cogs"></i>
+                <span> SISTEMA </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
@@ -259,62 +438,7 @@
                 </li>
             </ul>
         </li>
-
-        <li>
-            <a href="javascript: void(0);">
-                <i class="la la-bar-chart"></i>
-                <span> Charts </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <ul class="nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="charts-apex.html">Apex Charts</a>
-                </li>
-                <li>
-                    <a href="charts-flot.html">Flot Charts</a>
-                </li>
-                <li>
-                    <a href="charts-morris.html">Morris Charts</a>
-                </li>
-                <li>
-                    <a href="charts-chartjs.html">Chartjs Charts</a>
-                </li>
-                <li>
-                    <a href="charts-bright.html">Bright Charts</a>
-                </li>
-                <li>
-                    <a href="charts-chartist.html">Chartist Charts</a>
-                </li>
-                <li>
-                    <a href="charts-peity.html">Peity Charts</a>
-                </li>
-                <li>
-                    <a href="charts-sparklines.html">Sparklines Charts</a>
-                </li>
-                <li>
-                    <a href="charts-knob.html">Jquery Knob Charts</a>
-                </li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="javascript: void(0);">
-                <i class="la la-map"></i>
-                <span> Maps </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <ul class="nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="maps-google.html">Google Maps</a>
-                </li>
-                <li>
-                    <a href="maps-vector.html">Vector Maps</a>
-                </li>
-                <li>
-                    <a href="maps-mapael.html">Mapael Maps</a>
-                </li>
-            </ul>
-        </li>
+  
 
         <li>
             <a href="javascript: void(0);">
