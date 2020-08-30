@@ -19,7 +19,7 @@
         </li>
         <li>
             <a href="pos">
-                <i class="fas fa-luggage-cart"></i>
+                <i class="fe-shopping-cart"></i>
                 <span>PUNTO DE VENTA</span>
             </a>
         </li>
@@ -55,7 +55,7 @@
         
         <li>
             <a href="javascript: void(0);">
-                <i class="la la-clone"></i>
+                <i class="fe-clipboard"></i>
                 <span> COTIZACIÓN</span>
                 <span class="menu-arrow"></span>
             </a>
@@ -86,8 +86,8 @@
 
         <li>
             <a href="javascript: void(0);">
-                <i class="la la-cube"></i>
-                <span>Kardex</span>
+                <i class="la la-newspaper-o"></i>
+                <span>KARDEX</span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
